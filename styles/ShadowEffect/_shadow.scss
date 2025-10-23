@@ -1,0 +1,33 @@
+%variable-shadow {
+    --shadow-1: 0px 1px 2px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30)), 0px 1px 3px 1px var(--SHADOW-15, rgba(0, 0, 0, 0.15));
+    --shadow-2: 0px 1px 2px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30)), 0px 2px 6px 2px var(--SHADOW-15, rgba(0, 0, 0, 0.15));
+    --shadow-3: 0px 4px 8px 3px var(--SHADOW-15, rgba(0, 0, 0, 0.15)), 0px 1px 3px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30));
+    --shadow-4: 0px 6px 10px 4px var(--SHADOW-15, rgba(0, 0, 0, 0.15)), 0px 2px 3px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30));
+    --shadow-5: 0px 8px 12px 6px var(--SHADOW-15, rgba(0, 0, 0, 0.15)), 0px 4px 4px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30));
+    --shadow-inner-1: inset 0px 1px 2px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30)), inset 0px 1px 3px 1px var(--SHADOW-15, rgba(0, 0, 0, 0.15));
+}
+
+// Shadow:
+.shadow-1 {
+    box-shadow: 0px 1px 2px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30)), 0px 1px 3px 1px var(--SHADOW-15, rgba(0, 0, 0, 0.15));
+}
+
+.shadow-2 {
+    box-shadow: 0px 1px 2px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30)), 0px 2px 6px 2px var(--SHADOW-15, rgba(0, 0, 0, 0.15));
+}
+
+.shadow-3 {
+    box-shadow: 0px 4px 8px 3px var(--SHADOW-15, rgba(0, 0, 0, 0.15)), 0px 1px 3px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30));
+}
+
+.shadow-4 {
+    box-shadow: 0px 6px 10px 4px var(--SHADOW-15, rgba(0, 0, 0, 0.15)), 0px 2px 3px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30));
+}
+
+.shadow-5 {
+    box-shadow: 0px 8px 12px 6px var(--SHADOW-15, rgba(0, 0, 0, 0.15)), 0px 4px 4px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30));
+}
+
+.shadow-inner-1 {
+    box-shadow: inset 0px 1px 2px 0px var(--SHADOW-30, rgba(0, 0, 0, 0.30)), inset 0px 1px 3px 1px var(--SHADOW-15, rgba(0, 0, 0, 0.15));
+}

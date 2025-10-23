@@ -1,0 +1,46 @@
+/* Key value - Mode 1 */
+$Typeface-Font-family-1: Epilogue;
+$Typeface-Font-family-2: Inconsolata;
+$Typeface-Weight-Regular: Regular;
+$Typeface-Weight-Bold: Bold;
+$Typeface-Weight-Medium: Medium;
+$Perfect-Typo-length-String: String value;
+$Perfect-Typo-length-Sized-Paragraph-Short---20-char: aaaaaaaaaaaaaaaaaaaa;
+$Perfect-Typo-length-Sized-Paragraph-Med---40-char: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
+$Perfect-Typo-length-Sized-Paragraph-Long---60-char: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
+$Appearance-Invisible: 0%;
+$Appearance-Disabled: 32%;
+$Appearance-Avaiable: 100%;
+$Appearance-BG-blur-for-text: 80%;
+$Stroke-Stroke-none: 0px;
+$Stroke-Stroke-1: 1px;
+$Stroke-Stroke-2: 2px;
+$Stroke-Stroke-3: 3px;
+$CM-state-layer-opacity-enabled-and-disabled: 0;
+$CM-state-layer-opacity-hovered: 0.12;
+$CM-state-layer-opacity-pressed-and-dragged: 0.20;
+$CM-state-layer-opacity-focused: 0.28;
+
+%var-key-value {
+    --Typeface-Font-family-1: #{$Typeface-Font-family-1};
+    --Typeface-Font-family-2: #{$Typeface-Font-family-2};
+    --Typeface-Weight-Regular: #{$Typeface-Weight-Regular};
+    --Typeface-Weight-Bold: #{$Typeface-Weight-Bold};
+    --Typeface-Weight-Medium: #{$Typeface-Weight-Medium};
+    --Perfect-Typo-length-String: #{$Perfect-Typo-length-String};
+    --Perfect-Typo-length-Sized-Paragraph-Short---20-char: #{$Perfect-Typo-length-Sized-Paragraph-Short---20-char};
+    --Perfect-Typo-length-Sized-Paragraph-Med---40-char: #{$Perfect-Typo-length-Sized-Paragraph-Med---40-char};
+    --Perfect-Typo-length-Sized-Paragraph-Long---60-char: #{$Perfect-Typo-length-Sized-Paragraph-Long---60-char};
+    --Appearance-Invisible: #{$Appearance-Invisible};
+    --Appearance-Disabled: #{$Appearance-Disabled};
+    --Appearance-Avaiable: #{$Appearance-Avaiable};
+    --Appearance-BG-blur-for-text: #{$Appearance-BG-blur-for-text};
+    --Stroke-Stroke-none: #{$Stroke-Stroke-none};
+    --Stroke-Stroke-1: #{$Stroke-Stroke-1};
+    --Stroke-Stroke-2: #{$Stroke-Stroke-2};
+    --Stroke-Stroke-3: #{$Stroke-Stroke-3};
+    --CM-state-layer-opacity-enabled-and-disabled: #{$CM-state-layer-opacity-enabled-and-disabled};
+    --CM-state-layer-opacity-hovered: #{$CM-state-layer-opacity-hovered};
+    --CM-state-layer-opacity-pressed-and-dragged: #{$CM-state-layer-opacity-pressed-and-dragged};
+    --CM-state-layer-opacity-focused: #{$CM-state-layer-opacity-focused};
+}

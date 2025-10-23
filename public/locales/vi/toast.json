@@ -1,0 +1,48 @@
+{
+  "success": {
+    "save": "Lưu thành công",
+    "update": "Cập nhật thành công",
+    "delete": "Xóa thành công",
+    "publish": "Đã xuất bản"
+  },
+  "error": {
+    "save": "Không thể lưu, vui lòng thử lại",
+    "update": "Không thể cập nhật",
+    "delete": "Xóa thất bại",
+    "network": "Mất kết nối, kiểm tra lại mạng",
+    "loadFailed": "Tải không thành công",
+    "uploadFailed": "Tải lên không thành công",
+    "unexpected": "Đã xảy ra lỗi không mong muốn, vui lòng thử lại",
+    "formInvalid": "Dữ liệu không hợp lệ, vui lòng kiểm tra lại",
+    "noPermission": "Bạn không có quyền thực hiện hành động này",
+    "notFound": "Không tìm thấy tài nguyên",
+    "timeout": "Hết thời gian chờ, vui lòng thử lại",
+    "500": "Lỗi máy chủ, vui lòng thử lại sau",
+    "403": "Bạn không có quyền truy cập tài nguyên này",
+    "401": "Phiên đã hết hạn, vui lòng đăng nhập lại",
+    "400": "Yêu cầu không hợp lệ, vui lòng kiểm tra lại",
+    "429": "Quá nhiều yêu cầu, vui lòng thử lại sau",
+    "502": "Lỗi cổng, vui lòng thử lại sau",
+    "503": "Dịch vụ không khả dụng, vui lòng thử lại sau",
+    "504": "Hết thời gian chờ cổng, vui lòng thử lại sau",
+    "413": "Tệp tải lên quá lớn, vui lòng chọn tệp nhỏ hơn",
+    "415": "Định dạng tệp không được hỗ trợ",
+    "422": "Dữ liệu không thể xử lý, vui lòng kiểm tra lại",
+    "409": "Xung đột dữ liệu, vui lòng kiểm tra lại",
+    "offline": "Bạn đang ngoại tuyến, vui lòng kiểm tra kết nối mạng",
+    "404": "Không tìm thấy trang",
+    "canceled": "Yêu cầu đã bị hủy"
+  },
+  "info": {
+    "loading": "Đang tải...",
+    "redirect": "Đang chuyển hướng...",
+    "noData": "Chưa có dữ liệu",
+    "noMoreData": "Không còn dữ liệu",
+    "updating": "Đang cập nhật..."
+  },
+  "warning": {
+    "unsaved": "Bạn có thay đổi chưa lưu",
+    "deleteConfirm": "Bạn chắc chắn muốn xóa?",
+    "limitReached": "Bạn đã đạt đến giới hạn cho phép"
+  }
+}

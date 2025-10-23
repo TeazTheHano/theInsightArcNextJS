@@ -1,0 +1,33 @@
+/* Typo responsive - Value */
+:root {
+  --Size-Display-Large: 57px;
+  --Size-Display-Medium: 45px;
+  --Size-Display-Small: 36px;
+  --Size-Headline-Large: 32px;
+  --Size-Headline-Medium: 28px;
+  --Size-Headline-Small: 24px;
+  --Size-Title-Large: 22px;
+  --Size-Title-Medium: 16px;
+  --Size-Title-Small: 14px;
+  --Size-Label-Large: 14px;
+  --Size-Label-Medium: 12px;
+  --Size-Label-Small: 11px;
+  --Size-Body-Large: 20px;
+  --Size-Body-Medium: 16px;
+  --Size-Body-Small: 14px;
+  --Line-height-Display-Large: 68px;
+  --Line-height-Display-Medium: 52px;
+  --Line-height-Display-Small: 44px;
+  --Line-height-Headline-Large: 40px;
+  --Line-height-Headline-Medium: 36px;
+  --Line-height-Headline-Small: 32px;
+  --Line-height-Title-Large: 28px;
+  --Line-height-Title-Medium: 24px;
+  --Line-height-Title-Small: 20px;
+  --Line-height-Label-Large: 20px;
+  --Line-height-Label-Medium: 16px;
+  --Line-height-Label-Small: 16px;
+  --Line-height-Body-Large: 28px;
+  --Line-height-Body-Medium: 24px;
+  --Line-height-Body-Small: 20px;
+}

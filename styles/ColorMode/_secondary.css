@@ -1,0 +1,35 @@
+/* ColorMode - Secondary */
+.colorModeSecondary {
+  --Fill-BG: var(--Schemes-Secondary-Container);
+  --Fill-State-layer: var(--Schemes-Secondary);
+  --Fill-Content: var(--Schemes-On-Secondary-Container);
+  --Fill-Content-Outline: var(--Schemes-Outline-Variant);
+  --Fill-BG-Selected: var(--Schemes-Secondary);
+  --Fill-Fixed-BG: var(--Schemes-Secondary-Fixed);
+  --Fill-Fixed-State-layer: var(--Schemes-Secondary-Fixed-Dim);
+  --Fill-Fixed-Content: var(--Schemes-On-Secondary-Fixed);
+  --Fill-Fixed-Content-Outline: var(--Schemes-Outline);
+  --Fill-Fixed-BG-Selected: var(--Schemes-Secondary-Fixed-Dim);
+  --Fill-Fixed-State-layer-Selected: var(--Schemes-On-Secondary-Fixed);
+  --Fill-Fixed-Content-Selected: var(--Schemes-On-Secondary-Fixed-Variant);
+  --Fill-Fixed-Content-Outline-Selected: var(--Schemes-On-Surface);
+  --Fill-State-layer-Selected: var(--Schemes-Secondary-Container);
+  --Fill-Content-Selected: var(--Schemes-On-Secondary);
+  --Fill-Content-Outline-Selected: var(--Schemes-Outline-Variant);
+  --Outlined-BG: #00000000;
+  --Outlined-State-layer: var(--Schemes-Secondary);
+  --Outlined-Content: var(--Schemes-Secondary);
+  --Outlined-Content-Outline: var(--Schemes-Outline);
+  --Outlined-BG-Selected: #00000000;
+  --Outlined-State-layer-Selected: var(--Schemes-Secondary);
+  --Outlined-Content-Selected: var(--Schemes-Secondary);
+  --Outlined-Content-Outline-Selected: var(--Schemes-Secondary);
+  --Elevated-BG: var(--Schemes-Surface-Container-Low);
+  --Elevated-State-layer: var(--Schemes-Surface-Container-Low);
+  --Elevated-Content: var(--Schemes-Secondary);
+  --Elevated-Content-Outline: var(--Schemes-Outline);
+  --Elevated-BG-Selected: var(--Schemes-Secondary);
+  --Elevated-State-layer-Selected: var(--Schemes-Secondary-Container);
+  --Elevated-Content-Selected: var(--Schemes-Surface-Container-Low);
+  --Elevated-Content-Outline-Selected: var(--Schemes-On-Surface);
+}

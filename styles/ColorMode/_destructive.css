@@ -1,0 +1,35 @@
+/* ColorMode - Destructive */
+.colorModeDestructive {
+  --Fill-BG: var(--Palettes-Error-30);
+  --Fill-State-layer: var(--Palettes-Error-30);
+  --Fill-Content: var(--Palettes-Error-90);
+  --Fill-Content-Outline: var(--Palettes-Error-30);
+  --Fill-BG-Selected: var(--Palettes-Error-30);
+  --Fill-Fixed-BG: var(--Palettes-Error-30);
+  --Fill-Fixed-State-layer: var(--Palettes-Error-30);
+  --Fill-Fixed-Content: var(--Palettes-Error-90);
+  --Fill-Fixed-Content-Outline: var(--Palettes-Error-30);
+  --Fill-Fixed-BG-Selected: var(--Palettes-Error-30);
+  --Fill-Fixed-State-layer-Selected: var(--Palettes-Error-30);
+  --Fill-Fixed-Content-Selected: var(--Palettes-Error-90);
+  --Fill-Fixed-Content-Outline-Selected: var(--Palettes-Error-30);
+  --Fill-State-layer-Selected: var(--Palettes-Error-30);
+  --Fill-Content-Selected: var(--Palettes-Error-90);
+  --Fill-Content-Outline-Selected: var(--Palettes-Error-30);
+  --Outlined-BG: #00000000;
+  --Outlined-State-layer: var(--Palettes-Error-30);
+  --Outlined-Content: var(--Palettes-Error-30);
+  --Outlined-Content-Outline: var(--Palettes-Error-30);
+  --Outlined-BG-Selected: #00000000;
+  --Outlined-State-layer-Selected: var(--Palettes-Error-30);
+  --Outlined-Content-Selected: var(--Palettes-Error-30);
+  --Outlined-Content-Outline-Selected: var(--Palettes-Error-30);
+  --Elevated-BG: var(--Schemes-Surface-Container-Low);
+  --Elevated-State-layer: var(--Schemes-Surface-Container-Low);
+  --Elevated-Content: var(--Palettes-Error-30);
+  --Elevated-Content-Outline: var(--Palettes-Error-30);
+  --Elevated-BG-Selected: var(--Palettes-Error-30);
+  --Elevated-State-layer-Selected: var(--Palettes-Error-30);
+  --Elevated-Content-Selected: var(--Palettes-Error-90);
+  --Elevated-Content-Outline-Selected: var(--Palettes-Error-30);
+}
