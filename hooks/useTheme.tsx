@@ -1,3 +1,5 @@
+"use client"
+
 // src/hooks/useTheme.ts (Hook quản lý logic theme)
 import { useState, useEffect, createContext, useContext, type ReactNode } from 'react';
 
@@ -23,20 +25,31 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  * @returns [currentTheme, setThemeFunction] - Trạng thái theme hiện tại và hàm để cập nhật theme.
  */
 function useThemeLogic(): [Theme, React.Dispatch<React.SetStateAction<Theme>>, ThemeContextType['resolvedTheme']] {
-    const storedTheme = localStorage.getItem('theme') as Theme | null;
-    const initialTheme: Theme = storedTheme && ['light', 'dark', 'light-medium-contrast', 'light-high-contrast', 'system'].includes(storedTheme)
-        ? storedTheme
-        : 'system';
+    const [theme, setTheme] = useState<Theme>(() => {
+        if (typeof window !== 'undefined') {
+            const storedTheme = localStorage.getItem('theme') as Theme | null;
+            return storedTheme && ['light', 'dark', 'light-medium-contrast', 'light-high-contrast', 'system'].includes(storedTheme)
+                ? storedTheme
+                : 'system';
+        }
+        return 'system';
+    });
 
-    const [theme, setTheme] = useState<Theme>(initialTheme);
     // State để lưu trữ theme đã được giải quyết (resolved theme)
     const [resolvedTheme, setResolvedTheme] = useState<ThemeContextType['resolvedTheme']>(() => {
-        // Tính toán resolvedTheme ban đầu
-        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-        if (initialTheme === 'system') {
-            return mediaQuery.matches ? 'dark' : 'light';
+        if (typeof window !== 'undefined') {
+            const storedTheme = localStorage.getItem('theme') as Theme | null;
+            const initialTheme: Theme = storedTheme && ['light', 'dark', 'light-medium-contrast', 'light-high-contrast', 'system'].includes(storedTheme)
+                ? storedTheme
+                : 'system';
+            // Tính toán resolvedTheme ban đầu
+            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            if (initialTheme === 'system') {
+                return mediaQuery.matches ? 'dark' : 'light';
+            }
+            return initialTheme as ThemeContextType['resolvedTheme'];
         }
-        return initialTheme as ThemeContextType['resolvedTheme'];
+        return 'light'; // default for server
     });
 
 

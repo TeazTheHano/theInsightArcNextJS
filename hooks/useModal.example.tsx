@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useModal } from './useModal';
 import Button from '../components/Button/Button';

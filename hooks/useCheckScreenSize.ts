@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 
 // Custom hook to detect if current screen size is in the provided sizes based on body classes
