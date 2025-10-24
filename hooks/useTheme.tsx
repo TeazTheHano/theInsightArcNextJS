@@ -25,33 +25,28 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  * @returns [currentTheme, setThemeFunction] - Trạng thái theme hiện tại và hàm để cập nhật theme.
  */
 function useThemeLogic(): [Theme, React.Dispatch<React.SetStateAction<Theme>>, ThemeContextType['resolvedTheme']] {
-    const [theme, setTheme] = useState<Theme>(() => {
-        if (typeof window !== 'undefined') {
-            const storedTheme = localStorage.getItem('theme') as Theme | null;
-            return storedTheme && ['light', 'dark', 'light-medium-contrast', 'light-high-contrast', 'system'].includes(storedTheme)
-                ? storedTheme
-                : 'system';
-        }
-        return 'system';
-    });
+    // Initialize with consistent server/client values to prevent hydration mismatch
+    const [theme, setTheme] = useState<Theme>('system');
+    const [resolvedTheme, setResolvedTheme] = useState<ThemeContextType['resolvedTheme']>('light');
 
-    // State để lưu trữ theme đã được giải quyết (resolved theme)
-    const [resolvedTheme, setResolvedTheme] = useState<ThemeContextType['resolvedTheme']>(() => {
-        if (typeof window !== 'undefined') {
-            const storedTheme = localStorage.getItem('theme') as Theme | null;
-            const initialTheme: Theme = storedTheme && ['light', 'dark', 'light-medium-contrast', 'light-high-contrast', 'system'].includes(storedTheme)
-                ? storedTheme
-                : 'system';
-            // Tính toán resolvedTheme ban đầu
-            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-            if (initialTheme === 'system') {
-                return mediaQuery.matches ? 'dark' : 'light';
-            }
-            return initialTheme as ThemeContextType['resolvedTheme'];
-        }
-        return 'light'; // default for server
-    });
 
+    // Initialize theme from localStorage after hydration
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme') as Theme | null;
+        const initialTheme: Theme = storedTheme && ['light', 'dark', 'light-medium-contrast', 'light-high-contrast', 'system'].includes(storedTheme)
+            ? storedTheme
+            : 'system';
+        
+        setTheme(initialTheme);
+        
+        // Calculate initial resolved theme
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        if (initialTheme === 'system') {
+            setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
+        } else {
+            setResolvedTheme(initialTheme as ThemeContextType['resolvedTheme']);
+        }
+    }, []);
 
     useEffect(() => {
         // Lắng nghe sự thay đổi theme của hệ thống (dark/light mode)

@@ -8,7 +8,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en-US",
+    fallbackLng: "en",
     // Chỉ preload common (dùng nhiều nơi: button, label...)
     ns: ["common"],
     defaultNS: "common",
@@ -27,6 +27,6 @@ i18n
 export default i18n;
 
 export const languageList: { [key: string]: string } = {
-  "vi-VN": "Tiếng Việt",
-  "en-US": "English",
+  vi: "Tiếng Việt",
+  en: "English",
 };
