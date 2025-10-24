@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Inconsolata';
-  src: url('/public/assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf') format('truetype');
+  src: url('/public/assets/fonts/Inconsolata-VariableFont_wdth.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .theme-light-high-contrast {
-  @import "./color-m3-based/light";
+  @import "./color-m3-based/lightHightContrast";
   @import "./color-m3-based/variable";
   @extend %var-color-m3-based;
 }

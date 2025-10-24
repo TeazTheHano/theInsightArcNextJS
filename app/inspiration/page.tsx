@@ -19,15 +19,37 @@ export default function Inspiration() {
   const { t: t_inspiration } = useTranslation('inspiration')
   const { t: t_toast } = useTranslation('toast')
 
-  const [gridView, setGridView] = useState<boolean>(() => localStorage.getItem('inspirationGridView') === 'true');
-  const [showDescription, setShowDescription] = useState<boolean>(() => localStorage.getItem('inspirationShowDescription') === 'true');
+  const [gridView, setGridView] = useState<boolean>(false);
+  const [showDescription, setShowDescription] = useState<boolean>(true);
 
   useEffect(() => {
-    localStorage.setItem('inspirationGridView', gridView.toString());
+    if (typeof window === 'undefined') return;
+    const storedGridView = localStorage.getItem('inspirationGridView');
+    if (storedGridView !== null) {
+      setGridView(storedGridView === 'true');
+    }
+    const storedShowDescription = localStorage.getItem('inspirationShowDescription');
+    if (storedShowDescription !== null) {
+      setShowDescription(storedShowDescription === 'true');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      localStorage.setItem('inspirationGridView', gridView.toString());
+    } catch (error) {
+      console.warn('Failed to save inspirationGridView to localStorage:', error);
+    }
   }, [gridView]);
 
   useEffect(() => {
-    localStorage.setItem('inspirationShowDescription', showDescription.toString());
+    if (typeof window === 'undefined') return;
+    try {
+      localStorage.setItem('inspirationShowDescription', showDescription.toString());
+    } catch (error) {
+      console.warn('Failed to save inspirationShowDescription to localStorage:', error);
+    }
   }, [showDescription]);
 
   const handleGridViewChange = useCallback((e: string) => setGridView(e === '1'), []);

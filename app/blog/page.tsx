@@ -14,6 +14,12 @@ import type { BlogItemProps } from '../../data/type';
 import { fetchBlogList } from '../../utils/fetchContent';
 import useCheckScreenSize from '../../hooks/useCheckScreenSize';
 import ContainerWithLoading from '../../components/ContainerWithLoading/ContainerWithLoading';
+import dynamic from 'next/dynamic';
+
+const DynamicComponentWithNoSSR = dynamic(
+  { ssr: false }
+
+)
 
 export default function BlogList() {
   const { t } = useTranslation('blog')
@@ -102,7 +108,7 @@ export default function BlogList() {
           <BlogItem2RowGen dataList={TRENDING_POSTS} thumbSize={layoutConfig.trendingThumbSize} ratio={layoutConfig.trendingRatio} hideDescription />
         </DivFlexColumn>
       </ContainerWithLoading>
-
+      <DynamicComponentWithNoSSR />
 
     </div>
   )

@@ -12,10 +12,7 @@ const useCheckScreenSize = (sizes: ('xl' | 'lg' | 'md' | 'sm')[]) => {
         return null;
     };
 
-    const [isInSizes, setIsInSizes] = useState<boolean>(() => {
-        const currentSize = getCurrentSize();
-        return currentSize ? sizes.includes(currentSize) : false;
-    });
+    const [isInSizes, setIsInSizes] = useState<boolean>(false);
 
     useEffect(() => {
         const checkScreenSize = () => {

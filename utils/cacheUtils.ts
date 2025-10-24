@@ -9,10 +9,12 @@
  * @returns true nếu cache còn hạn, false nếu không
  */
 export const isCacheValid = (key: string, expireHours: number): boolean => {
+    if (typeof window === 'undefined') return false; // Không có localStorage trên server
+    if (!expireHours || expireHours <= 0) return true; // Không hết hạn nếu expireHours <= 0
+
     const cache = localStorage.getItem(key);
     if (!cache) return false;
-    if (!expireHours || expireHours <= 0) return true; // Không hết hạn nếu expireHours <= 0
-    
+
     try {
         const { timestamp } = JSON.parse(cache);
         // Tính thời gian đã trôi qua kể từ khi lưu cache
@@ -32,11 +34,16 @@ export const isCacheValid = (key: string, expireHours: number): boolean => {
  * @param data - Dữ liệu cần lưu
  */
 export const saveCache = (key: string, data: any) => {
-    const cacheData = {
-        timestamp: Date.now(),
-        data
-    };
-    localStorage.setItem(key, JSON.stringify(cacheData));
+    if (typeof window === 'undefined') return; // Không lưu cache trên server
+    try {
+        const cacheData = {
+            timestamp: Date.now(),
+            data
+        };
+        localStorage.setItem(key, JSON.stringify(cacheData));
+    } catch (error) {
+        console.warn('Failed to save cache:', error);
+    }
 };
 
 /**
@@ -46,15 +53,16 @@ export const saveCache = (key: string, data: any) => {
  * @returns Dữ liệu cache nếu hợp lệ, null nếu không
  */
 export const getCache = (key: string, expireHours: number): any | null => {
-    if (isCacheValid(key, expireHours)) {
-        const cache = localStorage.getItem(key);
-        if (cache) {
-            try {
+    if (typeof window === 'undefined') return null; // Không có cache trên server
+    try {
+        if (isCacheValid(key, expireHours)) {
+            const cache = localStorage.getItem(key);
+            if (cache) {
                 return JSON.parse(cache).data;
-            } catch {
-                return null;
             }
         }
+    } catch (error) {
+        console.warn('Failed to get cache:', error);
     }
     return null;
 };

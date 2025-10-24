@@ -110,8 +110,10 @@ export default function Footer() {
                 styleMode='Outlined'
                 colorMode='Error'
                 onClick={() => {
-                    localStorage.clear();
-                    window.location.reload();
+                    if (typeof window !== 'undefined') {
+                        localStorage.clear();
+                        window.location.reload();
+                    }
                 }}
             />
 

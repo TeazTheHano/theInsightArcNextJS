@@ -3,13 +3,14 @@
 import type { Metadata } from "next";
 // import "./globals.css";
 import "../styles/index.scss"
-import { useTheme } from "@/hooks/useTheme";
+import { ThemeProvider, useTheme } from "@/hooks/useTheme";
 import { useEffect, useState } from "react";
 import NavigationUnit from "@/components/NavigationUnit/NavigationUnit";
 import Divider from "@/components/Divider/Divider";
 import Footer from "@/components/HeaderAndFooter/Footer";
 import CircleFollowMouse from "@/components/CircleFollowMouse/CircleFollowMouse";
 import styles from './rootLayout.module.css'
+import { ModalProvider } from "@/hooks/useModal";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -70,30 +71,34 @@ export default function RootLayout({
 
 
   return (
-    <html lang="en">
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={`App theme-${resolvedTheme} size-and-spacing-${sizeAndSpacing} ${styles.appLayout}`} style={{ backgroundColor: 'var(--Schemes-Surface)' }}
-      >
-        {/* Thanh điều hướng */}
-        <NavigationUnit />
+    <ThemeProvider>
+      <html lang="en">
+        <body
+          // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`App theme-${resolvedTheme} size-and-spacing-${sizeAndSpacing} ${styles.appLayout}`} style={{ backgroundColor: 'var(--Schemes-Surface)' }}
+        >
+          {/* Thanh điều hướng */}
+          <NavigationUnit />
 
-        {/* Content */}
-        <div className={styles.contentContainerLayout}>
-          <main>
-            {children}
-          </main>
+          {/* Content */}
+          <div className={styles.contentContainerLayout}>
+            <main>
+              <ModalProvider>
+                {children}
+              </ModalProvider>
+            </main>
 
-          <Divider />
-          <Footer />
-        </div>
+            <Divider />
+            <Footer />
+          </div>
 
-        {/* Circle that follows the mouse */}
-        {
-          resolvedTheme === 'dark' ?
-            <CircleFollowMouse /> : null
-        }
-      </body>
-    </html>
+          {/* Circle that follows the mouse */}
+          {
+            resolvedTheme === 'dark' ?
+              <CircleFollowMouse /> : null
+          }
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

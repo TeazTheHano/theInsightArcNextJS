@@ -1,3 +1,5 @@
+"use client"
+
 import { DivFlexColumn } from '../../components/LayoutDiv/LayoutDiv';
 import ModalExample from '../../hooks/useModal.example';
 

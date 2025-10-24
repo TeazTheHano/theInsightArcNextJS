@@ -6,9 +6,9 @@ export const CONFIG = {
   // --- GitHub content source ---
   GITHUB: {
     OWNER: "TeazTheHano",
-    CONTENT_REPO: import.meta.env.VITE_CONTENT_REPO || "TeazTheHano/theInsightArcContent",
-    TOKEN: import.meta.env.VITE_GITHUB_TOKEN || "",
-    BRANCH: import.meta.env.VITE_CONTENT_BRANCH || "main",
+    CONTENT_REPO: process.env.VITE_CONTENT_REPO || "TeazTheHano/theInsightArcContent",
+    TOKEN: process.env.VITE_GITHUB_TOKEN || "",
+    BRANCH: process.env.VITE_CONTENT_BRANCH || "main",
   },
 
   // --- Blog structure ---

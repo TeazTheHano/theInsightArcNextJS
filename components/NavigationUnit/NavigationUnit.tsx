@@ -149,7 +149,7 @@ const NavigationUnit: React.FC = () => {
 
     return (
         <>
-            <nav className={styles.nav}>
+            <nav className={styles.nav} role="navigation">
                 {/* LOGO row */}
                 <DivFlexRowSpaceBetweenCenter className={styles.navLogoContainer}>
                     {/* Logo icon */}

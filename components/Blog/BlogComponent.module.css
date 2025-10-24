@@ -1,4 +1,4 @@
-* {
+.blogItemContainer * {
   text-decoration: none;
 }
 
@@ -223,7 +223,7 @@
   stroke: var(--Schemes-On-Surface, #1A1C1B) !important;
 }
 
-.markdownContent img, video, iframe {
+.markdownContent .blogItemContainer img, .blogItemContainer video, .blogItemContainer iframe {
   max-width: 100%;
   height: auto;
   display: block;
