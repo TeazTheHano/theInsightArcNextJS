@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useCallback } from 'react'
 import segmentedButtonStyle from './SegmentedButton.module.css'
 import { DivFlexRowCenter } from '../LayoutDiv/LayoutDiv';

@@ -89,7 +89,7 @@ const BasicSearchResult: React.FC<{
 
 const NavigationUnit: React.FC = () => {
 
-    const [t] = useTranslation('common');
+    const { t } = useTranslation('common');
     const pathname = usePathname();
 
 

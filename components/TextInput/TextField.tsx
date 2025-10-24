@@ -108,7 +108,7 @@ export interface TextFieldProps {
     leadingIcon?: React.ReactNode | string;
 }
 
-const generateRandomId = () => `textField-${Math.random().toString(36).substr(2, 9)}`;
+// const generateRandomId = () => `textField-${Math.random().toString(36).substr(2, 9)}`;
 
 /**
  * A customizable text input component with various styling and behavior options.
@@ -180,7 +180,7 @@ const TextField = forwardRef<HTMLDivElement, TextFieldProps>(({
     const [focused, setFocused] = useState<boolean>(false);
 
     // Memoize effectiveValue to avoid unnecessary recalculations
-    const autoID = useMemo(() => id || generateRandomId(), [id]);
+    // const autoID = useMemo(() => id || generateRandomId(), [id]);
 
     const isError = !!errorMessage;
     const currentSupportText = useMemo(() => isError ? errorMessage : supportText, [isError, errorMessage, supportText]);
@@ -314,7 +314,7 @@ const TextField = forwardRef<HTMLDivElement, TextFieldProps>(({
                             {/* end of compact mode label */}
 
                             <input
-                                id={autoID}
+                                // id={autoID}
                                 name={name}
                                 type={type}
                                 value={currentValue}

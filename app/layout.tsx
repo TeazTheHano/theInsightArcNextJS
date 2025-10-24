@@ -30,7 +30,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <GlobalLayout>
-          {children}
+            {children}
           </GlobalLayout>
         </ThemeProvider >
       </body>

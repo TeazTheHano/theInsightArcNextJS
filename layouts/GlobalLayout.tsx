@@ -8,18 +8,16 @@ import Divider from '../components/Divider/Divider';
 import CircleFollowMouse from '../components/CircleFollowMouse/CircleFollowMouse';
 
 import styles from './GlobalLayout.module.css'
+// import '../i18n';
 
 export default function GlobalLayout({ children }: { children: React.ReactNode }) {
 
   const { resolvedTheme } = useTheme(); // Lấy theme và setTheme từ Context
 
-  const [isHydrated, setIsHydrated] = useState(false);
-
   const [sizeAndSpacing, setSizeAndSpacing] = useState<'sm' | 'md' | 'lg' | 'xl'>('md');
 
   // Apply size and spacing class to body
   useEffect(() => {
-    setIsHydrated(true);
     function updateSizeAndSpacing() {
       if (window.innerWidth < 768) {
         setSizeAndSpacing('sm');
@@ -50,25 +48,6 @@ export default function GlobalLayout({ children }: { children: React.ReactNode }
       document.body.style.setProperty('background-color', computedStyle.backgroundColor);
     }
   }, [resolvedTheme]);
-
-  if (!isHydrated) {
-    return (
-      <div className={`App theme-light size-and-spacing-md ${styles.appLayout}`} style={{ backgroundColor: 'var(--Schemes-Surface)' }}>
-        {/* Thanh điều hướng */}
-        <NavigationUnit />
-
-        {/* Content */}
-        <div className={styles.contentContainerLayout}>
-          <main>
-            {children}
-          </main>
-
-          <Divider />
-          <Footer />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className={`App theme-${resolvedTheme} size-and-spacing-${sizeAndSpacing} ${styles.appLayout}`} style={{ backgroundColor: 'var(--Schemes-Surface)' }}>
