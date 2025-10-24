@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react'
 import chipStyle from './Chip.module.css'
-import { IconGen } from '../../assets/icon/OtherIcon';
+import { IconGen } from '../../public/assets/icon/OtherIcon';
 import { TextBodyMedium } from '../TextBox/textBox';
 
 /**

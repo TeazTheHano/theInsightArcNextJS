@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, type ChangeEvent, forwardRef } f
 import { DivFlexColumn, DivFlexRowCenter, DivFlexRowSpaceBetweenBaseline } from '../LayoutDiv/LayoutDiv';
 
 import TextFieldStyle from './TextField.module.css';
-import { IconGen } from '../../assets/icon/OtherIcon';
+import { IconGen } from '../../public/assets/icon/OtherIcon';
 import { TextBodyMedium, TextBodySmall } from '../TextBox/textBox';
 import Divider from '../Divider/Divider';
 import Button from '../Button/Button';

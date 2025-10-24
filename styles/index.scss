@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'Epilogue';
-  src: url('../assets/fonts/Epilogue-VariableFont_wght.ttf') format('truetype');
+  src: url('/assets/fonts/Epilogue-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Epilogue Italic';
-  src: url('../assets/fonts/Epilogue-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('/assets/fonts/Epilogue-Italic-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Inconsolata';
-  src: url('../assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf') format('truetype');
+  src: url('/assets/fonts/Inconsolata-VariableFont_wdth.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .theme-light-high-contrast {
-  @import "./color-m3-based/light";
+  @import "./color-m3-based/lightHightContrast";
   @import "./color-m3-based/variable";
   @extend %var-color-m3-based;
 }

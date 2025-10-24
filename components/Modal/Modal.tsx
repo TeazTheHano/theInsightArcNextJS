@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useCallback } from "react";
 import styles from './Modal.module.css'
 import { DivFlexColumn, DivFlexRowCenter, DivFlexRowSpaceBetween, DivFlexRow, DivFlexColumnSpaceBetween } from "../LayoutDiv/LayoutDiv";

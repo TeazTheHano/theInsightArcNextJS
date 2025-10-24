@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 import { marked } from "marked";
 import type { BlogItemProps } from "../../data/type";

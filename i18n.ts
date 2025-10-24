@@ -27,6 +27,6 @@ i18n
 export default i18n;
 
 export const languageList: { [key: string]: string } = {
-  vi: "Tiếng Việt",
-  en: "English",
+  "vi-VN": "Tiếng Việt",
+  "en-US": "English",
 };

@@ -151,9 +151,9 @@
    VARIANT MODES
    =========================================== */
 
-button[class*="variantModeIcon"]>span:not([class^="leadingIcon"]),
-button[class*="variantModeIconRatio1W"]>span:not([class^="leadingIcon"]),
-button[class*="variantModeIconRatio1H"]>span:not([class^="leadingIcon"]) {
+.layoutButtonWrapper button[class*="variantModeIcon"]>span:not([class^="leadingIcon"]),
+.layoutButtonWrapper button[class*="variantModeIconRatio1W"]>span:not([class^="leadingIcon"]),
+.layoutButtonWrapper button[class*="variantModeIconRatio1H"]>span:not([class^="leadingIcon"]) {
     display: none !important;
 }
 
@@ -171,8 +171,8 @@ button[class*="variantModeIconRatio1H"]>span:not([class^="leadingIcon"]) {
     width: calc(var(--Icon-BASE-Icon-size, 24px) * var(--scale-factor, 1));
 }
 
-[class*='variantModeIconRatio1W'] span,
-[class*='variantModeIconRatio1W'] span * {
+.layoutButtonWrapper [class*='variantModeIconRatio1W'] span,
+.layoutButtonWrapper [class*='variantModeIconRatio1W'] span * {
     width: 100% !important;
     height: 100% !important;
 }

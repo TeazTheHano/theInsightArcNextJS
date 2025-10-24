@@ -7,7 +7,7 @@ const getDateFormatter = (() => {
     return (language: string) => {
         const key = language;
         if (!cache.has(key)) {
-            cache.set(key, new Intl.DateTimeFormat(language === 'vi' ? 'vi-VN' : 'en-US', {
+            cache.set(key, new Intl.DateTimeFormat(language === 'vi' ? 'vi' : 'en', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric'

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { DivFlexColumnSpaceBetween, DivFlexRow } from '../LayoutDiv/LayoutDiv'
 import LazyImage from '../LazyImage/lazyImage'
-import { IconGen } from '../../assets/icon/OtherIcon'
+import { IconGen } from '../../public/assets/icon/OtherIcon'
 import { TextBodyLarge, TextHeadlineMedium } from '../TextBox/textBox'
 
 import styles from './BlogComponent.module.css'

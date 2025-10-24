@@ -1,5 +1,5 @@
 /* Base Navigation Styles */
-nav {
+.nav {
     display: flex;
     flex-direction: column;
     height: 100dvh;
@@ -90,7 +90,7 @@ nav {
 }
 
 /* Responsive Styles for Medium (MD) Breakpoint */
-:global(body.size-and-spacing-md) nav {
+:global(body.size-and-spacing-md) .nav {
     height: auto;
     width: auto;
 }
@@ -128,7 +128,7 @@ nav {
 }
 
 /* Responsive Styles for Small (SM) Breakpoint */
-:global(body.size-and-spacing-sm) nav {
+:global(body.size-and-spacing-sm) .nav {
     height: auto;
     width: auto;
 }

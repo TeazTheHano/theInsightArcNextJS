@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useRef, useState, useEffect, useCallback, useMemo, memo } from 'react';
 import styles from './LazyImage.module.css';
 import { useTranslation } from 'react-i18next'

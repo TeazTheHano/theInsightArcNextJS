@@ -15,6 +15,8 @@ export default function Footer() {
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
+        console.log(i18n.language);
+
     };
 
     return (

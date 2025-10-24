@@ -1,9 +1,12 @@
+"use client"
+
 import { DivFlexColumn, DivFlexRow, DivFlexRowSpaceBetweenCenter } from '../LayoutDiv/LayoutDiv'
 import { TextBodyMedium, TextTitleLarge, TextTitleMedium, TextTitleSmall } from '../TextBox/textBox'
-import TheInsightArcLogo from '../../assets/icon/Logo'
+import TheInsightArcLogo from '../../public/assets/icon/Logo'
 import Divider from '../Divider/Divider'
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { usePathname } from 'next/navigation'
 
 import styles from './NavigationUnit.module.css'
 import ButtonDefault from '../Button/Button'
@@ -87,6 +90,7 @@ const BasicSearchResult: React.FC<{
 const NavigationUnit: React.FC = () => {
 
     const [t] = useTranslation('common');
+    const pathname = usePathname();
 
 
     const [logoSubButtonIcon, setLogoSubButtonIcon] = useState('dehaze');
@@ -131,7 +135,7 @@ const NavigationUnit: React.FC = () => {
     const navItems = useMemo(() => navItemsData.map(({ href, key, supText }, index) => (
         <a key={index} href={href}
             aria-label={t(key)}
-            className={[styles.navMenuItem, location.pathname.startsWith(href) ? styles.active : null].join(' ')}
+            className={[styles.navMenuItem, pathname.startsWith(href) ? styles.active : null].join(' ')}
             onClick={handleNavItemClick}
         >
             <p className={styles.navMenuItemText}>
@@ -139,7 +143,7 @@ const NavigationUnit: React.FC = () => {
                 {supText && <sup><b className={styles.navMenuItemTextSup}>{supText}</b></sup>}
             </p>
         </a>
-    )), [location.pathname, handleNavItemClick, t]);
+    )), [pathname, handleNavItemClick, t]);
 
     return (
         <>
