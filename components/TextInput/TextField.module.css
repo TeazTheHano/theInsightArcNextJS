@@ -1,0 +1,185 @@
+/* ===========================================
+   COLOR APPLICATION
+   =========================================== */
+.label {
+    color: var(--Schemes-On-Surface-Variant)
+}
+
+.leadingIcon {
+    color: var(--Schemes-On-Surface-Variant);
+}
+
+.inputField {
+    color: var(--Schemes-On-Surface);
+}
+
+.stateLayer {
+    background-color: var(--Schemes-On-Surface-Variant);
+}
+
+/* ===========================================
+   LAYOUT & TYPOGRAPHY
+   =========================================== */
+
+.component {
+    height: fit-content;
+    position: relative;
+    width: 100%;
+}
+
+.main {
+    padding: var(--Spacing-Spacing-XS) var(--Spacing-Spacing-XXXS) var(--Spacing-Spacing-XS) 0;
+}
+
+.leadingIcon {
+    padding: var(--Spacing-Spacing-XXS, 8px) 0 var(--Spacing-Spacing-XXS, 8px) var(--Spacing-Spacing-XXS, 8px);
+    width: var(--Icon-Icon-Base, 24px);
+}
+
+.icon {
+    width: var(--Icon-Icon-Base, 24px);
+
+}
+
+.inputRow {
+    padding: var(--Spacing-Spacing-0, 0) var(--Spacing-Spacing-XS, 12px);
+    position: relative;
+    flex: 1;
+    min-width: 10px;
+    max-width: none;
+}
+
+.label {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.labelCompactMode {
+    position: absolute;
+    z-index: 0;
+    /* width: 100%; */
+    pointer-events: none;
+    top: 10%;
+}
+
+.inputField {
+    font-family: var(--Body-Family, Inconsolata);
+    font-size: var(--Body-Font-Size, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Body-Line-height, 28px);
+    /* 140% */
+    letter-spacing: var(--Body-Letter-spacing, 0.5px);
+    background: transparent;
+    border: none;
+    width: 100%;
+    z-index: 1;
+}
+
+.iconHeightKeeper {
+    height: var(--Icon-Icon-Base, 24px);
+    width: 0px;
+    padding: var(--Spacing-Spacing-XXS, 8px) 0;
+    box-sizing: content-box !important;
+}
+
+.perfectLengthSizer {
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none !important;
+}
+
+.stateLayer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.divider {
+    position: absolute;
+    bottom: 0;
+    left: var(--Spacing-Spacing-XS);
+    width: calc(100% - var(--Spacing-Spacing-XS) - var(--Spacing-Spacing-XS)) !important;
+}
+
+/* ===========================================
+   INTERACTION STATES - COLOR CHANGES
+   =========================================== */
+
+/* Hover */
+.component:hover {
+    z-index: 1;
+}
+
+.component:hover .stateLayer {
+    opacity: var(--CM-state-layer-opacity-hovered);
+}
+
+/* Focus */
+.component:has(.inputField:focus-visible) .leadingIcon,
+.inputField:focus-visible {
+    color: var(--Schemes-Primary);
+    outline-width: 0;
+}
+
+.component.error .label,
+.component.error .leadingIcon,
+.component.error .inputField {
+    color: var(--Schemes-Error) !important;
+}
+
+.component.error .divider {
+    background-color: var(--Schemes-Error) !important;
+}
+
+.component.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.38;
+}
+
+/* ===========================================
+   VARIANT MODES
+   =========================================== */
+
+.Outlined .main {
+    border-style: solid;
+    border-width: var(--Stroke-Stroke-1);
+    border-color: var(--Schemes-Outline);
+}
+
+.Filled {
+    background-color: var(--Schemes-Surface-Container);
+    /* border: none; */
+}
+
+/* Compact mode */
+.compactMode .label {
+    display: none;
+}
+
+.compactMode .labelCompactMode {
+    display: block;
+}
+
+.compactMode .main {
+    padding: 0 var(--Spacing-Spacing-XXXS, 4px) 0 0;
+}
+
+/* width mode */
+
+.widthMode-fix-perfect-length .textField {
+    width: 100%;
+}
+
+.widthMode-fix-perfect-length.component {
+    width: fit-content !important;
+}

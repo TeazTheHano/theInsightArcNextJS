@@ -1,0 +1,152 @@
+/* Base Navigation Styles */
+nav {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    width: 300px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: var(--Schemes-Surface);
+}
+
+/* Logo Styles */
+.navLogo {
+    height: var(--Icon-FAB-Icon, 36px);
+}
+
+.navLogoContainer {
+    padding: var(--Spacing-Spacing-S, 16px) var(--Spacing-Spacing-M, 24px);
+}
+
+.navLogoContainer>div {
+    display: none !important;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Menu Container Styles */
+.navMenuContainer {
+    gap: var(--Spacing-Spacing-XXS, 8px);
+    width: fit-content;
+    padding: var(--Spacing-Spacing-M, 24px);
+}
+
+/* Menu Item Styles */
+.navMenuItem {
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+    font-family: var(--Title-Family, Inconsolata);
+    font-size: var(--Title-Font-Size, 14px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: var(--Title-Line-height, 20px);
+    letter-spacing: var(--Title-Letter-spacing, 0.1px);
+}
+
+.navMenuItemText {
+    white-space: nowrap;
+    color: var(--Schemes-On-Surface);
+}
+
+.navMenuItemTextSup {
+    color: var(--Schemes-Primary);
+    letter-spacing: 4;
+}
+
+/* Active Menu Item Styles */
+:global(body.size-and-spacing-xl) .navMenuItem.active,
+:global(body.size-and-spacing-lg) .navMenuItem.active,
+:global(body.size-and-spacing-sm) .navMenuItem.active {
+    font-family: var(--Headline-Family, Epilogue) !important;
+    font-size: var(--Headline-Font-Size, 24px) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: var(--Headline-Line-height, 32px) !important;
+    letter-spacing: var(--Headline-Letter-spacing, 0) !important;
+}
+
+:global(body.size-and-spacing-md) .navMenuItem.active {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+/* Utility Classes */
+:global(body.size-and-spacing-md) .hideMdSm,
+:global(body.size-and-spacing-sm) .hideMdSm {
+    display: none !important;
+}
+
+:global(body.size-and-spacing-sm) .hideSm {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+:global(body.size-and-spacing-md) .hideMd {
+    display: none !important;
+}
+
+/* Responsive Styles for Medium (MD) Breakpoint */
+:global(body.size-and-spacing-md) nav {
+    height: auto;
+    width: auto;
+}
+
+:global(body.size-and-spacing-md) .navLogo,
+:global(body.size-and-spacing-sm) .navLogo {
+    margin: 0;
+    height: var(--Icon-Icon-Base, 24px);
+}
+
+:global(body.size-and-spacing-md) .navLogoContainer {
+    padding: var(--Spacing-Spacing-XXXS, 4px) var(--Spacing-Spacing-M, 24px);
+}
+
+:global(body.size-and-spacing-md) .navLogoContainer>div,
+:global(body.size-and-spacing-sm) .navLogoContainer>div {
+    display: flex !important;
+}
+
+:global(body.size-and-spacing-md) .navMenuContainer {
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--Spacing-Spacing-XS);
+    flex-wrap: wrap;
+    width: 100%;
+    padding: var(--Spacing-Spacing-S) var(--Spacing-Spacing-M, 24px) !important;
+    flex-direction: row !important;
+}
+
+:global(body.size-and-spacing-md) .navHidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    display: none !important;
+    pointer-events: none;
+}
+
+/* Responsive Styles for Small (SM) Breakpoint */
+:global(body.size-and-spacing-sm) nav {
+    height: auto;
+    width: auto;
+}
+
+:global(body.size-and-spacing-sm) .navLogoContainer {
+    padding: var(--Spacing-Spacing-XXXS, 4px) var(--Spacing-Spacing-XXXS, 4px) var(--Spacing-Spacing-XXXS, 4px) var(--Spacing-Spacing-S, 16px);
+}
+
+:global(body.size-and-spacing-sm) .navMenuContainer {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: calc(100dvh - var(--Icon-Icon-Base) - (calc(var(--Spacing-Spacing-XXS))*2) - (calc(var(--Spacing-Spacing-XXXS))*2));
+    backdrop-filter: blur(20px);
+    background-color: color-mix(in srgb, var(--Schemes-Surface) 50%, transparent);
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}

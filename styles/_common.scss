@@ -1,0 +1,12 @@
+// CM Border Radius
+.CM-border-radius-mode-none {
+    border-radius: var(--Border-radius-BR-none);
+}
+
+.CM-border-radius-mode-default {
+    border-radius: var(--Border-radius-BR-M);
+}
+
+.CM-border-radius-mode-rounded {
+    border-radius: var(--Border-radius-BR-Rounded);
+}
