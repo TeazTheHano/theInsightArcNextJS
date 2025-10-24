@@ -144,6 +144,7 @@ const ButtonDefault = forwardRef<HTMLButtonElement, ButtonProps>(({
 
     return (
         <button
+            suppressHydrationWarning
             ref={ref}
             // only set aria-label if we have an accessible name different/necessary
             aria-label={ariaLabel}
@@ -192,5 +193,9 @@ const ButtonDefault = forwardRef<HTMLButtonElement, ButtonProps>(({
     );
 })
 
-export default React.memo(ButtonDefault);
-// ...existing code...
+import dynamic from 'next/dynamic'
+const ButtonNoSSR = dynamic(() => Promise.resolve(ButtonDefault), {
+    ssr: false,
+});
+
+export default React.memo(ButtonNoSSR);

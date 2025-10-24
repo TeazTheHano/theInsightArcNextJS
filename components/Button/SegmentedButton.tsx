@@ -130,10 +130,16 @@ const SegmentedButton: React.FC<SegmentedButtonProps> = ({
             ref={containerRef}
             className={[borderRadiusClass, className, segmentedButtonStyle.buttonWrapper, 'colorModeTertiary'].filter(Boolean).join(' ')}
             style={{ ...borderRadiusStyle, ...containerStyle }}
+            suppressHydrationWarning
         >
             {dataList.map(renderButton)}
         </DivFlexRowCenter>
     );
 };
 
-export default React.memo(SegmentedButton);
+import dynamic from 'next/dynamic'
+const SegmentedButtonNoSSR = dynamic(() => Promise.resolve(SegmentedButton), {
+    ssr: false,
+});
+
+export default React.memo(SegmentedButtonNoSSR);
