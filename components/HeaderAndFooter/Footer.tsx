@@ -15,9 +15,9 @@ export default function Footer() {
     const { theme, setTheme } = useTheme()
     const { t } = useTranslation('common');
 
-    // const changeLanguage = (lng: string) => {
-    //     i18n.changeLanguage(lng);
-    // };
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
 
     return (
         <footer
@@ -73,9 +73,9 @@ export default function Footer() {
                         { label: 'Tiếng Việt', value: 'vi' },
                     ]}
                     onChange={(value: string) => {
-                        // changeLanguage(value)
+                        changeLanguage(value)
                     }}
-                    // preSelected={i18n.language}
+                    preSelected={i18n.language}
                     iconOnSelected='check'
                 />
             </DivFlexRowSpaceBetweenBaseline>
