@@ -1,4 +1,5 @@
-// ...existing code...
+"use client"
+
 import React, { useMemo, forwardRef } from 'react'
 import buttonStyle from './Button.module.css'
 import { IconGen } from '../../public/assets/icon/OtherIcon';

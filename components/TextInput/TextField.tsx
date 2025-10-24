@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useMemo, useCallback, type ChangeEvent, forwardRef } from 'react'
 import { DivFlexColumn, DivFlexRowCenter, DivFlexRowSpaceBetweenBaseline } from '../LayoutDiv/LayoutDiv';
 

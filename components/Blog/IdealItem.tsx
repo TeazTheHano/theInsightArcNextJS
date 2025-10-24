@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useMemo, useCallback } from 'react'
 import { DivFlexColumn, DivFlexRow } from '../LayoutDiv/LayoutDiv'
 import LazyImage from '../LazyImage/lazyImage'

@@ -1,3 +1,5 @@
+"use client"
+
 interface LayoutDivProps extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode;
     id?: string;

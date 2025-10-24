@@ -8,7 +8,7 @@ import Divider from '../components/Divider/Divider';
 import CircleFollowMouse from '../components/CircleFollowMouse/CircleFollowMouse';
 
 import styles from './GlobalLayout.module.css'
-// import '../i18n';
+import '../i18n';
 
 export default function GlobalLayout({ children }: { children: React.ReactNode }) {
 

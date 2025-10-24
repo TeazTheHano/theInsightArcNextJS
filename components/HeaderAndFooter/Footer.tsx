@@ -17,6 +17,7 @@ export default function Footer() {
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
+        console.log(i18n.language);
     };
 
     return (
@@ -69,8 +70,8 @@ export default function Footer() {
                 <TextTitleLarge children={t('language')} />
                 <SegmentedButton
                     dataList={[
-                        { label: 'English', value: 'en' },
-                        { label: 'Tiếng Việt', value: 'vi' },
+                        { label: 'English', value: 'en-US' },
+                        { label: 'Tiếng Việt', value: 'vi-VN' },
                     ]}
                     onChange={(value: string) => {
                         changeLanguage(value)

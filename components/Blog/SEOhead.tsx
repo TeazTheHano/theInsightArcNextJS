@@ -1,3 +1,5 @@
+"use client"
+
 import { useSEO } from "../../hooks/useSEO";
 
 export const SEOhead = ({ meta }: { meta: any }) => {

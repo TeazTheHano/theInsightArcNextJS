@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import LoadingIndicators from '../Loading Indicators/LoadingIndicators';
 import { TextBodyLarge } from '../TextBox/textBox';

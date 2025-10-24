@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import { DivFlexColumn, DivFlexRow } from '../LayoutDiv/LayoutDiv'
 import { TextTitleSmall } from '../TextBox/textBox'

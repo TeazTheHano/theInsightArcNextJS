@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useMemo } from "react";
 import fabStyle from "../Button/FAB.module.css"
 import { IconGen } from "../../public/assets/icon/OtherIcon";

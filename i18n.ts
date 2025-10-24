@@ -10,7 +10,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    fallbackLng: "en-US",
     // Chỉ preload common (dùng nhiều nơi: button, label...)
     ns: ["common"],
     defaultNS: "common",
@@ -20,15 +20,24 @@ i18n
     detection: {
       order: ["querystring", "localStorage", "navigator", "htmlTag"],
       caches: ["localStorage"],
+      convertDetectedLanguage: (lng: string) => {
+        if (lng.startsWith('vi')) return 'vi-VN';
+        if (lng.startsWith('en')) return 'en-US';
+        return 'en-US';
+      },
     },
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json", // cấu trúc file dịch
     },
+    // Map browser language codes to our supported languages
+    supportedLngs: ["en-US", "vi-VN"],
+    nonExplicitSupportedLngs: true,
+    load: "languageOnly",
   });
 
 export default i18n;
 
 export const languageList: { [key: string]: string } = {
-  vi: "Tiếng Việt",
-  en: "English",
+  "vi-VN": "Tiếng Việt",
+  "en-US": "English",
 };

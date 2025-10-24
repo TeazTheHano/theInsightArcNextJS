@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useMemo } from 'react'
 import { DivFlexColumnSpaceBetween, DivFlexRow } from '../LayoutDiv/LayoutDiv'
 import LazyImage from '../LazyImage/lazyImage'

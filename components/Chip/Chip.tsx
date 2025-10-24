@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useMemo, useCallback } from 'react'
 import chipStyle from './Chip.module.css'
 import { IconGen } from '../../public/assets/icon/OtherIcon';

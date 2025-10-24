@@ -18,7 +18,7 @@ import { useSearch } from '../../hooks/useSearch'
 import LoadingIndicators from '../Loading Indicators/LoadingIndicators'
 
 const navItemsData = [
-    { href: '/landingpage', key: 'about-us', supText: '01' },
+    { href: '/landing', key: 'about-us', supText: '01' },
     { href: '/inspiration', key: 'inspiration', supText: '02' },
     { href: '/blog', key: 'blog-page', supText: '03' },
     { href: '/game', key: 'game-page', supText: '04' },
