@@ -31,15 +31,14 @@ const BasicSearchResult: React.FC<{
         return <TextBodyMedium children='No database' />
     }
 
-    const { t } = useTranslation('common');
-
     const renderItemGroup = (items: BlogItemProps[], label: string) => {
         if (!items || items.length === 0) {
             return null;
         }
+        const { t } = useTranslation('common');
         return (
             <React.Fragment key={label}>
-                <TextTitleMedium>{label}</TextTitleMedium>
+                <TextTitleMedium>{t(label)}</TextTitleMedium>
                 <BlogItem2RowGen
                     dataList={items}
                     thumbSize={100}
@@ -74,10 +73,10 @@ const BasicSearchResult: React.FC<{
                                 : null
 
                         }
-                        {renderItemGroup(item.result.title, t('title'))}
-                        {renderItemGroup(item.result.category, t('category'))}
-                        {renderItemGroup(item.result.tag, t('tags'))}
-                        {renderItemGroup(item.result.author, t('author'))}
+                        {renderItemGroup(item.result.title, 'title')}
+                        {renderItemGroup(item.result.category, 'category')}
+                        {renderItemGroup(item.result.tag, 'tags')}
+                        {renderItemGroup(item.result.author, 'author')}
                     </React.Fragment>
                 ))
             }
@@ -88,7 +87,6 @@ const BasicSearchResult: React.FC<{
 
 
 const NavigationUnit: React.FC = () => {
-
     const { t } = useTranslation('common');
     const pathname = usePathname();
 
@@ -137,8 +135,9 @@ const NavigationUnit: React.FC = () => {
             aria-label={t(key)}
             className={[styles.navMenuItem, pathname.startsWith(href) ? styles.active : null].join(' ')}
             onClick={handleNavItemClick}
+            suppressHydrationWarning={true}
         >
-            <p className={styles.navMenuItemText}>
+            <p className={styles.navMenuItemText} suppressHydrationWarning={true}>
                 {t(key)}
                 {supText && <sup><b className={styles.navMenuItemTextSup}>{supText}</b></sup>}
             </p>

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import "@/styles/index.scss"
 import GlobalLayout from "@/layouts/GlobalLayout";
 import { ThemeProvider } from "@/hooks/useTheme";
-import '../i18n';
+import "@/i18n";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true}>
         <ThemeProvider>
           <GlobalLayout>
             {children}
