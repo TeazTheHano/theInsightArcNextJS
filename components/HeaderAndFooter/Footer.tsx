@@ -4,8 +4,8 @@ import ButtonDefault from '../Button/Button'
 import { useTheme, type Theme } from '../../hooks/useTheme'
 import { TextBodySmall, TextHeadlineLarge, TextHeadlineSmall, TextTitleLarge } from '../TextBox/textBox'
 import { DivFlexColumn, DivFlexRowSpaceBetweenBaseline } from '../LayoutDiv/LayoutDiv'
-import i18n from '../../i18n'
 import { useTranslation } from 'react-i18next'
+import i18n from '../../i18n'
 import SegmentedButton from '../Button/SegmentedButton'
 import Divider from '../Divider/Divider'
 import Button from '../Button/Button'
@@ -17,7 +17,6 @@ export default function Footer() {
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
-        console.log(i18n.language);
     };
 
     return (
