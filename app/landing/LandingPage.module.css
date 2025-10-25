@@ -1,0 +1,20 @@
+.wrapperLayout {
+    padding: var(--Spacing-Spacing-M, 24px) var(--Spacing-Spacing-M, 24px) var(--Spacing-Spacing-XL, 48px) var(--Spacing-Spacing-M, 24px);
+    gap: var(--Spacing-Spacing-M, 24px);
+}
+
+.wrapperLayoutVer2 {
+    padding: var(--Spacing-Spacing-M, 24px) var(--Spacing-Spacing-M, 24px) var(--Spacing-Spacing-XL, 48px) var(--Spacing-Spacing-M, 24px);
+    gap: var(--Spacing-Spacing-XL, 48px);
+}
+
+.wrapperLayoutVer2 .wrapperLayoutVer2_itemWrapper {
+    gap: var(--Spacing-Spacing-M, 24px);
+}
+
+:global(body.size-and-spacing-sm) .wrapperLayout,
+:global(body.size-and-spacing-sm) .wrapperLayoutVer2_itemWrapper,
+:global(body.size-and-spacing-md) [class*='shiftVerticalMd'],
+:global(body.size-and-spacing-sm) [class*='shiftVerticalSm'] {
+    flex-direction: column !important;
+}

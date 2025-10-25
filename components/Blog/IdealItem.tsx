@@ -1,4 +1,4 @@
-"use client"
+
 
 import React, { useMemo, useCallback } from 'react'
 import { DivFlexColumn, DivFlexRow } from '../LayoutDiv/LayoutDiv'
@@ -66,7 +66,6 @@ const IdealItem: React.FC<IdealItemProps> = ({
                         </DivFlexColumn>
 
                         <Button
-                            children={t('inspiration-outward_arrow')}
                             showTitleWhileHover
                             variantMode='Icon' label={t('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
                     </DivFlexRow>

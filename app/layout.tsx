@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "@/styles/index.scss"
 import GlobalLayout from "@/layouts/GlobalLayout";
 import { ThemeProvider } from "@/hooks/useTheme";
+import { ModalProvider } from "@/hooks/useModal";
 // import "../i18n"
 
 
@@ -32,10 +33,12 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <ThemeProvider>
           <GlobalLayout>
-            {children}
+            <ModalProvider>
+              {children}
+            </ModalProvider>
           </GlobalLayout>
         </ThemeProvider >
       </body>
-    </html>
+    </html >
   );
 }

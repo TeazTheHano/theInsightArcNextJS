@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 // Custom hook to detect if current screen size is in the provided sizes based on body classes
 const useCheckScreenSize = (sizes: ('xl' | 'lg' | 'md' | 'sm')[]) => {
     const getCurrentSize = () => {
+        if (typeof window == 'undefined') return null
         if (document.body.classList.contains('size-and-spacing-sm')) return 'sm';
         if (document.body.classList.contains('size-and-spacing-md')) return 'md';
         if (document.body.classList.contains('size-and-spacing-lg')) return 'lg';

@@ -169,6 +169,7 @@ export const Text: React.FC<TextBoxProps & { variant: keyof typeof textVariants 
     return (
         <div className={`typography-system-${size}`}>
             <div
+                suppressHydrationWarning
                 className={`typography-system-${size} ${className ?? ''}`}
                 style={{
                     color,
@@ -179,7 +180,7 @@ export const Text: React.FC<TextBoxProps & { variant: keyof typeof textVariants 
                 onClick={onClick}
                 {...rest}
             >
-                {headline ? React.createElement(headline, {style: headlineStyle}, children) : children}
+                {headline ? React.createElement(headline, { style: headlineStyle }, children) : children}
             </div>
         </div>
     );

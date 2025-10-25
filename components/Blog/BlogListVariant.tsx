@@ -58,7 +58,9 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                 href={item.link ? item.link : item.id ? `/blog/${item.id}` : '#'}
                 aria-label={item.title}
                 tabIndex={0}
-                style={{ width: '100%' }}
+                style={{
+                    width: '100%', textDecoration: 'none'
+                }}
                 target={openAsNewTab ? '_blank' : '_self'}
             >
                 <div className={containerClass}>
@@ -125,7 +127,7 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                         </>
                     )}
                 </div>
-            </a>
+            </a >
         ));
     }, [dataList, openAsNewTab, containerClass, compactMode, ratio, direction, thumbSize, handleTagClick, t]);
 
