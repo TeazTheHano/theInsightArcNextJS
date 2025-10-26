@@ -42,7 +42,7 @@ function LandingPage() {
                 imgRestProps={{
                     fetchPriority: 'high',
                 }}
-                src='/photos/home/theinsightArcbanner.jpg' alt='logo banner' height={'50dvh'} maxHeight='100dvw' />
+                src='https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/theinsightArcbanner.jpg' alt='logo banner' height={'50dvh'} maxHeight='100dvw' />
             <br />
             {/* content */}
 
@@ -100,7 +100,7 @@ function LandingPage() {
                 <DivFlexColumn style={{ gap: `var(--Spacing-Spacing-XS, 12px)`, flex: 1, textAlign: 'justify' }}>
                     <TextBodyMedium children={t('section-3-description-1')} />
 
-                    <LazyImage errorMessage='Will update sooooon' onErrorIcon="🙆" src='placeholder' alt='' aspectRatio='1' />
+                    <LazyImage errorMessage='Will update sooooon' onErrorIcon="🙆" src='/placeholder' alt='' aspectRatio='1' />
 
                     <TextBodyMedium children={t('section-3-description-2')} />
                     <TextBodyMedium>
@@ -140,7 +140,7 @@ function LandingPage() {
                     </DivFlexColumn>
                 </DivFlexRow>
                 {/* image */}
-                <LazyImage errorMessage='Will update sooooon' onErrorIcon="🙆" src='placeholder' alt='' aspectRatio='21/9' />
+                <LazyImage errorMessage='Will update sooooon' onErrorIcon="🙆" src='/placeholder' alt='' aspectRatio='21/9' />
             </DivFlexColumn>
 
             {/* 5 Blog section */}
@@ -204,7 +204,7 @@ function LandingPage() {
                                 {
                                     title: '',
                                     description: '',
-                                    coverImage: 'placeholder',
+                                    coverImage: '/placeholder',
                                     link: '/test',
                                 }
                             ] as BlogItemProps[]}

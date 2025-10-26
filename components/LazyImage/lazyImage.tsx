@@ -1,11 +1,9 @@
 "use client"
 
-import React, { useRef, useState, useEffect, useCallback, useMemo, memo } from 'react';
+import React, { useState, useCallback, useMemo, memo } from 'react';
+import Image from 'next/image';
 import styles from './LazyImage.module.css';
 import { useTranslation } from 'react-i18next'
-
-// A tiny, transparent 1x1 pixel GIF
-const BLANK_IMAGE_SRC = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 // Define the props for the LazyImage component
 interface LazyImageProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -21,10 +19,9 @@ interface LazyImageProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     onErrorIcon?: React.ReactNode;
     errorMessage?: string;
-    rootMargin?: string;
     disableLazyLoad?: boolean; // If true, disables lazy loading and loads image immediately
     borderRadius?: 'none' | 'default' | 'rounded' | number; // e.g., 'none', 'default', 'rounded', or a number in px
-    imgRestProps?: React.ImgHTMLAttributes<HTMLImageElement>; // Other img attributes
+    imgRestProps?: Omit<React.ComponentProps<typeof Image>, 'src' | 'alt' | 'width' | 'height' | 'fill' | 'sizes' | 'srcSet' | 'onLoad' | 'onError' | 'loading' | 'placeholder'>; // Other Image attributes
 }
 
 const LazyImageComponent: React.FC<LazyImageProps> = ({
@@ -32,7 +29,7 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
     alt,
     srcSet,
     sizes,
-    width, // Mặc định là 100% chiều rộng
+    width,
     height,
     aspectRatio,
     maxWidth,
@@ -40,16 +37,13 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
     className = '',
     onErrorIcon = '⚠️',
     errorMessage,
-    rootMargin = '0px 0px 100px 0px',
     borderRadius = 'none',
     disableLazyLoad,
-    imgRestProps, // Other img attributes
+    imgRestProps, // Other Image attributes
     ...restProps
 }) => {
-    const imgRef = useRef<HTMLImageElement>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<boolean>(false);
-    const [imageSrc, setImageSrc] = useState<string>(BLANK_IMAGE_SRC);
 
     const { t } = useTranslation("toast");
 
@@ -65,33 +59,6 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
         setError(true);
     }, []);
 
-    useEffect(() => {
-        let observer: IntersectionObserver | null = null;
-
-        if (imgRef.current) {
-            if ('IntersectionObserver' in window) {
-                observer = new IntersectionObserver((entries: IntersectionObserverEntry[], obs: IntersectionObserver) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setImageSrc(src);
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, { rootMargin });
-
-                observer.observe(imgRef.current);
-            } else {
-                setImageSrc(src);
-            }
-        }
-
-        return () => {
-            if (observer) {
-                observer.disconnect();
-            }
-        };
-    }, [src, rootMargin]);
-
     // --- Logic for handling size and aspect ratio using modern CSS ---
     const wrapperStyles = useMemo((): React.CSSProperties => {
         return {
@@ -100,6 +67,7 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
             aspectRatio: aspectRatio,
             maxWidth: maxWidth,
             maxHeight: maxHeight,
+            position: 'relative', // Required for Next.js Image fill
         };
     }, [width, height, aspectRatio, maxWidth, maxHeight]);
 
@@ -121,19 +89,19 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
                             <div className={styles.shimmer}></div>
                         </div>
                     )}
-                    <img
-                        ref={imgRef}
-                        src={imageSrc}
-                        srcSet={srcSet}
+                    <Image
+                        src={src}
                         sizes={sizes}
-                        alt={alt}
+                        alt={alt || ''}
+                        fill={true} // Fill the parent container
                         onLoad={handleImageLoad}
                         onError={handleImageError}
                         className={`${styles.image} ${isLoading ? styles.hidden : ''}`}
                         loading={disableLazyLoad ? 'eager' : 'lazy'}
-                        width={'100%'}
-                        height={'100%'}
-                        {...imgRestProps} // Truyền các thuộc tính img còn lại
+                        placeholder="blur"
+                        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" // Tiny transparent GIF
+                        // unoptimized={src.startsWith('/')} // Disable optimization for local images
+                        {...imgRestProps} // Truyền các thuộc tính Image còn lại
                     />
                 </>
             )}
