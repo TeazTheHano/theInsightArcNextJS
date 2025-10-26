@@ -1,11 +1,14 @@
 "use client"
 
+import BlogDetail from "@/components/Blog/BlogDetail";
+import ContainerWithLoading from "@/components/ContainerWithLoading/ContainerWithLoading";
+import { fetchBlogList } from "@/utils/fetchContent";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { fetchBlogList } from "../../../../ReactJS/theInsightArcReactJS/frontend/src/utils/fetchContent";
-import BlogDetail from "../../../../ReactJS/theInsightArcReactJS/frontend/src/components/Blog/BlogDetail";
+
+
 import { useTranslation } from "react-i18next";
-import ContainerWithLoading from "../../../../ReactJS/theInsightArcReactJS/frontend/src/components/ContainerWithLoading/ContainerWithLoading";
+
 
 export default function BlogDetailPage() {
   const { id } = useParams();
