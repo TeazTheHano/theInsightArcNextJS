@@ -89,7 +89,10 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                 backgroundColor: 'var(--Schemes-Surface-Tint)',
                 padding: 'var(--Spacing-Spacing-M, 24px) var(--Spacing-Spacing-S, 16px)',
             }}>
-                <TextTitleSmall color="var(--Schemes-On-Primary)" children='Viết và Bàn luận > Category 1 > Giới hạn của công nghệ, du lịch tại chỗ và du lịch từ xa' />
+                <TextTitleSmall color="var(--Schemes-On-Primary)">
+                    {/* TODO: search by category page */}
+                    <span style={{ cursor: 'pointer' }} onClick={() => { window.location.href = "/blog" }}>{t_common('blog-page')}</span> / <span style={{ cursor: 'pointer' }} onClick={() => { }}>{metadata.category}</span> / {metadata.title}
+                </TextTitleSmall>
             </div>
             <section className={styles.readingContainer}>
                 <div className={styles.readingHeader}>
