@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     'link2': '<link rel="preload" href="/assets/fonts/Epilogue-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
     'link3': '<link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
   },
+  
 };
 
 export default function RootLayout({
@@ -34,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning={true}>
+    <html lang="en-US" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
         <ThemeProvider>
           <GlobalLayout>

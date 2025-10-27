@@ -66,7 +66,7 @@ export default function Footer() {
             <Divider />
 
             <DivFlexRowSpaceBetweenCenter style={{ width: '100%' }}>
-                <TextTitleLarge children={t_common('language')} />
+                <TextTitleLarge children={t_common('language-ui')} />
                 <SegmentedButton
                     dataList={[
                         { label: 'English', value: 'en-US' },
@@ -103,7 +103,7 @@ export default function Footer() {
                 </select>
             </DivFlexRowSpaceBetweenCenter>
 
-            <Divider />
+            {/* <Divider />
             <TextHeadlineSmall children='DEV Mode' />
             <Button
                 label="clear cache"
@@ -114,7 +114,7 @@ export default function Footer() {
                     localStorage.clear();
                     window.location.reload();
                 }}
-            />
+            /> */}
 
 
         </footer >
