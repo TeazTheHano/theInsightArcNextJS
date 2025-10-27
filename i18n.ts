@@ -10,6 +10,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    supportedLngs: ['en-US', 'vi-VN'],
     fallbackLng: 'en-US',
     ns: ['common'],
     defaultNS: 'common',

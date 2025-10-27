@@ -3,7 +3,7 @@
 import ButtonDefault from '../Button/Button'
 import { useTheme, type Theme } from '../../hooks/useTheme'
 import { TextBodySmall, TextHeadlineLarge, TextHeadlineSmall, TextTitleLarge } from '../TextBox/textBox'
-import { DivFlexColumn, DivFlexRowSpaceBetweenBaseline } from '../LayoutDiv/LayoutDiv'
+import { DivFlexColumn, DivFlexRowSpaceBetweenBaseline, DivFlexRowSpaceBetweenCenter } from '../LayoutDiv/LayoutDiv'
 import { useTranslation } from 'react-i18next'
 import i18n from '../../i18n'
 import SegmentedButton from '../Button/SegmentedButton'
@@ -65,7 +65,7 @@ export default function Footer() {
 
             <Divider />
 
-            <DivFlexRowSpaceBetweenBaseline style={{ width: '100%' }}>
+            <DivFlexRowSpaceBetweenCenter style={{ width: '100%' }}>
                 <TextTitleLarge children={t_common('language')} />
                 <SegmentedButton
                     dataList={[
@@ -78,10 +78,10 @@ export default function Footer() {
                     preSelected={i18n.language}
                     iconOnSelected='check'
                 />
-            </DivFlexRowSpaceBetweenBaseline>
+            </DivFlexRowSpaceBetweenCenter>
 
-            <DivFlexRowSpaceBetweenBaseline style={{ width: '100%' }}>
-                <TextTitleLarge children={t_common('theme')} />
+            <DivFlexRowSpaceBetweenCenter style={{ width: '100%' }}>
+                <label htmlFor="themeSet"><TextTitleLarge children={t_common('theme')} /></label>
                 <select
                     name="themeSet"
                     value={theme}
@@ -101,7 +101,7 @@ export default function Footer() {
                     <option value={'light-high-contrast'}>Light High Contrast</option>
                     <option value={'system'}>System</option>
                 </select>
-            </DivFlexRowSpaceBetweenBaseline>
+            </DivFlexRowSpaceBetweenCenter>
 
             <Divider />
             <TextHeadlineSmall children='DEV Mode' />
