@@ -108,7 +108,7 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                                 </DivFlexColumn>
 
                                 <DivFlexColumn className={styles.support}>
-                                    {item.tags?.length && !hideTag && (
+                                    {item.tags?.length && !hideTag ?
                                         <DivFlexRow className={styles.tags}>
                                             {item.tags.map((e, tagIndex) => (
                                                 <Chip
@@ -120,8 +120,8 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                                                     colorMode='Secondary'
                                                 />
                                             ))}
-                                        </DivFlexRow>
-                                    )}
+                                        </DivFlexRow> : null
+                                    }
                                     <TextLabelSmall children={<DateDisplay date={item.timeStamp} />} color='var(--Schemes-Outline)' />
                                 </DivFlexColumn>
                             </DivFlexColumnSpaceBetween>

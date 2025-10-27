@@ -19,7 +19,7 @@ export const useSEO = (meta?: MetaData) => {
         if (!meta) return;
 
         const appTitle = "The Insight Arc";
-        const fullTitle = meta.title ? `${meta.title} | ${appTitle}` : appTitle;
+        const fullTitle = meta.title ? `${meta.title.slice(1, -1)} | ${appTitle}` : appTitle;
         document.title = fullTitle;
 
         const setTag = (attr: string, key: string, value?: string) => {
