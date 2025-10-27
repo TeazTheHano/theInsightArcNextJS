@@ -176,7 +176,7 @@ const TextField = forwardRef<HTMLDivElement, TextFieldProps>(({
     trailingIconAction,
     leadingIcon,
 }, ref) => {
-    const { t } = useTranslation('common')
+    const { t: t_common } = useTranslation('common')
     const { t: t_toast } = useTranslation('toast')
     const [currentValue, setCurrentValue] = useState<string>(preValue || '');
     const [focused, setFocused] = useState<boolean>(false);
@@ -358,7 +358,7 @@ const TextField = forwardRef<HTMLDivElement, TextFieldProps>(({
                 <DivFlexRowCenter>
                     {showClearButton && (
                         <Button
-                            label={t('clear')}
+                            label={t_common('clear')}
                             variantMode='Icon'
                             leadingIcon='cancel'
                             styleMode='Text'

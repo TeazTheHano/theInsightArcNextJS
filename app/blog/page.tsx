@@ -16,7 +16,7 @@ import useCheckScreenSize from '../../hooks/useCheckScreenSize';
 import ContainerWithLoading from '../../components/ContainerWithLoading/ContainerWithLoading';
 
 export default function BlogList() {
-  const { t } = useTranslation('blog')
+  const { t: t_blog } = useTranslation('blog')
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
@@ -70,10 +70,10 @@ export default function BlogList() {
         {/* LATEST */}
         <DivFlexColumn className={styles.inspirationContainer}>
           <DivFlexColumn>
-            <TextHeadlineLarge children={t('latestPost')} />
+            <TextHeadlineLarge children={t_blog('latestPost')} />
             <Button
-              label={t('viewAll')}
-              children={t('viewAll')}
+              label={t_blog('viewAll')}
+              children={t_blog('viewAll')}
               leadingIcon='arrow_outward'
               colorMode='Primary'
               onClick={handleViewAll} />
@@ -98,7 +98,7 @@ export default function BlogList() {
         <Divider />
         {/* TRENDING */}
         <DivFlexColumn className={styles.inspirationContainer}>
-          <TextHeadlineLarge children={t('trending')} />
+          <TextHeadlineLarge children={t_blog('trending')} />
           <BlogItem2RowGen dataList={TRENDING_POSTS} thumbSize={layoutConfig.trendingThumbSize} ratio={layoutConfig.trendingRatio} hideDescription />
         </DivFlexColumn>
       </ContainerWithLoading>

@@ -9,7 +9,7 @@ export const useSearch = () => {
     const [searchResult, setSearchResult] = useState<{ dataBaseName: string; result: searchEngineOutputProps }[] | undefined>()
     const [isSearchFocus, setSearchFocus] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const { t } = useTranslation('common')
+    const { t: t_common } = useTranslation('common')
 
     const performSearch = useCallback(async (input: string) => {
         const { searchEngine } = await import('../utils/searchEngine')
@@ -30,11 +30,11 @@ export const useSearch = () => {
         setSearchFocus(true)
         const res = [
             {
-                dataBaseName: t('blog'),
+                dataBaseName: t_common('blog'),
                 result: blogRes
             },
             {
-                dataBaseName: t('inspiration'),
+                dataBaseName: t_common('inspiration'),
                 result: inspireRes
             }
         ]

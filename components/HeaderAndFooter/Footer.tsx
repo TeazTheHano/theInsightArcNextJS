@@ -13,7 +13,7 @@ import Button from '../Button/Button'
 export default function Footer() {
 
     const { theme, setTheme } = useTheme()
-    const { t } = useTranslation('common');
+    const { t: t_common } = useTranslation('common');
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
@@ -34,7 +34,7 @@ export default function Footer() {
             >
                 <TextHeadlineLarge children='The insightArc - Khuong Anh Kiet' color='var(--Schemes-On-Surface-Variant, #434843)' />
                 <TextBodySmall>
-                    {t('footer-item-1')}<br />{t('footer-item-2')}
+                    {t_common('footer-item-1')}<br />{t_common('footer-item-2')}
                 </TextBodySmall>
             </DivFlexColumn>
 
@@ -66,7 +66,7 @@ export default function Footer() {
             <Divider />
 
             <DivFlexRowSpaceBetweenBaseline style={{ width: '100%' }}>
-                <TextTitleLarge children={t('language')} />
+                <TextTitleLarge children={t_common('language')} />
                 <SegmentedButton
                     dataList={[
                         { label: 'English', value: 'en-US' },
@@ -81,7 +81,7 @@ export default function Footer() {
             </DivFlexRowSpaceBetweenBaseline>
 
             <DivFlexRowSpaceBetweenBaseline style={{ width: '100%' }}>
-                <TextTitleLarge children={t('theme')} />
+                <TextTitleLarge children={t_common('theme')} />
                 <select
                     name="themeSet"
                     value={theme}

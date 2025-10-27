@@ -20,7 +20,7 @@ import ContainerWithLoading from "../ContainerWithLoading/ContainerWithLoading";
 marked.setOptions({ async: false });
 
 const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
-    const { t } = useTranslation('blog');
+    const { t: t_blog } = useTranslation('blog');
     const { t: t_common } = useTranslation('common');
     const isInSM = useCheckScreenSize(['md', 'sm']);
     const [isLoading, setIsLoading] = useState(true);
@@ -95,7 +95,7 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                 {metadata.coverImage && (
                     <LazyImage
                         src={metadata.coverImage}
-                        alt={t('coverImageAlt') + metadata.title}
+                        alt={t_blog('coverImageAlt') + metadata.title}
                         aspectRatio='21/9'
                     />
                 )}

@@ -10,6 +10,7 @@ import type { BlogItemProps } from '../../data/type'
 import Chip from '../Chip/Chip'
 import { useTranslation } from 'react-i18next'
 import DateDisplay from '../TimeDisplay/TimeDisplay'
+import Link from 'next/link'
 
 export interface Blog2RowComponentProps {
     dataList: BlogItemProps[]
@@ -35,7 +36,7 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
     smallTitle,
 }) => {
 
-    const { t } = useTranslation('toast')
+    const { t: t_toast } = useTranslation('toast')
 
     const containerClass = useMemo(() => [
         styles.blog2RowContainer,
@@ -49,11 +50,11 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
 
     const renderedItems = useMemo(() => {
         if (dataList.length === 0) {
-            return <TextBodyLarge children={t('info.noData')} color='var(--Schemes-On-Surface-Variant)' />
+            return <TextBodyLarge children={t_toast('info.noData')} color='var(--Schemes-On-Surface-Variant)' />
         }
 
         return dataList.map((item, index) => (
-            <a
+            <Link
                 key={`${item.title}_${index}`}
                 href={item.link ? item.link : item.id ? `/blog/${item.id}` : '#'}
                 aria-label={item.title}
@@ -127,9 +128,9 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                         </>
                     )}
                 </div>
-            </a >
+            </Link >
         ));
-    }, [dataList, openAsNewTab, containerClass, compactMode, ratio, direction, thumbSize, handleTagClick, t]);
+    }, [dataList, openAsNewTab, containerClass, compactMode, ratio, direction, thumbSize, handleTagClick, t_toast]);
 
     return <>{renderedItems}</>;
 }

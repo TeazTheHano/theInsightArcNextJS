@@ -25,7 +25,7 @@ const IdealItem: React.FC<IdealItemProps> = ({
     compactMode,
 }) => {
 
-    const { t } = useTranslation('toast')
+    const { t: t_toast } = useTranslation('toast')
 
     const handleTagClick = useCallback((link: string) => {
         window.open(link, '_blank');
@@ -33,7 +33,7 @@ const IdealItem: React.FC<IdealItemProps> = ({
 
     const renderedItems = useMemo(() => {
         if (dataList.length === 0) {
-            return <TextBodyLarge children={t('info.noData')} color='var(--Schemes-On-Surface-Variant)' />
+            return <TextBodyLarge children={t_toast('info.noData')} color='var(--Schemes-On-Surface-Variant)' />
         }
 
         return dataList.map((item, index) => (
@@ -67,12 +67,12 @@ const IdealItem: React.FC<IdealItemProps> = ({
 
                         <Button
                             showTitleWhileHover
-                            variantMode='Icon' label={t('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
+                            variantMode='Icon' label={t_toast('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
                     </DivFlexRow>
                 </div>
             </div>
         ));
-    }, [dataList, openAsNewTab, compactMode, handleTagClick, squareRatio, t]);
+    }, [dataList, openAsNewTab, compactMode, handleTagClick, squareRatio, t_toast]);
 
     return <>{renderedItems}</>;
 }

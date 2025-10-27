@@ -51,7 +51,7 @@ export interface ModalProps {
 }
 
 function Modal(props: ModalProps) {
-    const { t } = useTranslation('common');
+    const { t: t_common } = useTranslation('common');
 
     const {
         open,
@@ -159,7 +159,7 @@ function Modal(props: ModalProps) {
                     </DivFlexColumn>
                     {topLeftCloseButton && (
                         <Button
-                            label={t('close')}
+                            label={t_common('close')}
                             variantMode="Icon"
                             styleMode="Text"
                             colorMode="Default"
@@ -180,8 +180,8 @@ function Modal(props: ModalProps) {
                         defaultCloseButton === 'none' ?
                             null :
                             <Button
-                                label={defaultCloseButton === 'close' ? t('close') : t('cancel')}
-                                children={defaultCloseButton === 'close' ? t('close') : t('cancel')}
+                                label={defaultCloseButton === 'close' ? t_common('close') : t_common('cancel')}
+                                children={defaultCloseButton === 'close' ? t_common('close') : t_common('cancel')}
                                 styleMode="Outlined"
                                 colorMode={defaultCloseButton === 'cancel-destruction' ? 'Error' : 'Default'}
                                 onClick={handleCloseClick}

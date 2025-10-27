@@ -45,9 +45,9 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<boolean>(false);
 
-    const { t } = useTranslation("toast");
+    const { t: t_toast } = useTranslation("toast");
 
-    errorMessage = errorMessage || `${t('error.notFound')} / ${t('info.noData')}`; // "Error loading image"
+    errorMessage = errorMessage || `${t_toast('error.notFound')} / ${t_toast('info.noData')}`; // "Error loading image"
 
     const handleImageLoad = useCallback(() => {
         setIsLoading(false);

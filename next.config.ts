@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       // Add other external image domains as needed
     ],
   },
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
 export default nextConfig;

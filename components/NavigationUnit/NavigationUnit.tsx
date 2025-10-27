@@ -7,6 +7,7 @@ import Divider from '../Divider/Divider'
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 import styles from './NavigationUnit.module.css'
 import ButtonDefault from '../Button/Button'
@@ -35,10 +36,10 @@ const BasicSearchResult: React.FC<{
         if (!items || items.length === 0) {
             return null;
         }
-        const { t } = useTranslation('common');
+        const { t: t_common } = useTranslation('common');
         return (
             <React.Fragment key={label}>
-                <TextTitleMedium>{t(label)}</TextTitleMedium>
+                <TextTitleMedium>{t_common(label)}</TextTitleMedium>
                 <BlogItem2RowGen
                     dataList={items}
                     thumbSize={100}
@@ -87,7 +88,7 @@ const BasicSearchResult: React.FC<{
 
 
 const NavigationUnit: React.FC = () => {
-    const { t } = useTranslation('common');
+    const { t: t_common } = useTranslation('common');
     const pathname = usePathname();
 
 
@@ -131,18 +132,18 @@ const NavigationUnit: React.FC = () => {
     }, [isMenuOpen]);
 
     const navItems = useMemo(() => navItemsData.map(({ href, key, supText }, index) => (
-        <a key={index} href={href}
-            aria-label={t(key)}
+        <Link key={index} href={href}
+            aria-label={t_common(key)}
             className={[styles.navMenuItem, pathname.startsWith(href) ? styles.active : null].join(' ')}
             onClick={handleNavItemClick}
             suppressHydrationWarning={true}
         >
             <p className={styles.navMenuItemText} suppressHydrationWarning={true}>
-                {t(key)}
+                {t_common(key)}
                 {supText && <sup><b className={styles.navMenuItemTextSup}>{supText}</b></sup>}
             </p>
-        </a>
-    )), [pathname, handleNavItemClick, t]);
+        </Link>
+    )), [pathname, handleNavItemClick, t_common]);
 
     return (
         <>
@@ -150,20 +151,20 @@ const NavigationUnit: React.FC = () => {
                 {/* LOGO row */}
                 <DivFlexRowSpaceBetweenCenter className={styles.navLogoContainer}>
                     {/* Logo icon */}
-                    <a href="/" aria-label='Logo'>
+                    <Link href="/" aria-label='Logo'>
                         <DivFlexRow
                             id='NavLogo'
                             className={styles.navLogo}
                         >
                             <TheInsightArcLogo fillColor='var(--Schemes-On-Surface)' />
                         </DivFlexRow>
-                    </a>
+                    </Link>
 
                     {/* Logo sub button */}
                     <DivFlexRow>
                         {/* SLOT FOR SEARCH */}
                         <ButtonDefault
-                            label={t('search')}
+                            label={t_common('search')}
                             variantMode='Icon'
                             styleMode='Text'
                             leadingIcon='search'
@@ -176,7 +177,7 @@ const NavigationUnit: React.FC = () => {
                         />
                         {/* Hamburger menu */}
                         <ButtonDefault
-                            label={t('nav-menu')}
+                            label={t_common('nav-menu')}
                             onClick={() => {
                                 const newState = !isMenuOpen;
                                 setIsMenuOpen(newState);
@@ -208,7 +209,7 @@ const NavigationUnit: React.FC = () => {
                                 }} />
                                 <TextField
                                     leadingIcon='search'
-                                    placeholder={t("search")}
+                                    placeholder={t_common("search")}
                                     widthMode='fill'
                                     onChange={(e) => performSearch(e.target.value)}
                                     compactMode
@@ -239,7 +240,7 @@ const NavigationUnit: React.FC = () => {
                     {/* SLOT FOR SEARCH BAR */}
                     <TextField
                         leadingIcon='search'
-                        placeholder={t("search")}
+                        placeholder={t_common("search")}
                         widthMode='fill'
                         onChange={(e) => performSearch(e.target.value)}
                         compactMode
@@ -260,12 +261,12 @@ const NavigationUnit: React.FC = () => {
                 <Divider className={styles.hideMdSm} />
                 <DivFlexColumn
                     className={[styles.navMenuContainer, styles.hideMdSm].join(' ')}>
-                    <a href="/test" aria-label={t('test-site')} className={styles.navMenuItem}>
-                        <TextTitleSmall className={styles.navMenuItemText} color='var(--Schemes-On-Surface-Variant)' children={t('test-site')} />
-                    </a>
-                    <a href="/contact" aria-label={t('contact-page')} className={styles.navMenuItem}>
-                        <TextTitleSmall className={styles.navMenuItemText} color='var(--Schemes-On-Surface-Variant)' children={t('contact-page')} />
-                    </a>
+                    <Link href="/test" aria-label={t_common('test-site')} className={styles.navMenuItem}>
+                        <TextTitleSmall className={styles.navMenuItemText} color='var(--Schemes-On-Surface-Variant)' children={t_common('test-site')} />
+                    </Link>
+                    <Link href="/contact" aria-label={t_common('contact-page')} className={styles.navMenuItem}>
+                        <TextTitleSmall className={styles.navMenuItemText} color='var(--Schemes-On-Surface-Variant)' children={t_common('contact-page')} />
+                    </Link>
                 </DivFlexColumn>
             </nav >
             <Divider direction='vertical' className={styles.hideMdSm} />

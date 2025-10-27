@@ -12,7 +12,7 @@ interface LoadingIndicatorsProps {
 const LoadingIndicators: React.FC<LoadingIndicatorsProps> = ({ isLoading }) => {
     if (!isLoading) return null;
 
-    const { t } = useTranslation('toast')
+    const { t: t_toast } = useTranslation('toast')
     return (
         <DivFlexColumn style={{
             alignItems: 'center',
@@ -33,7 +33,7 @@ const LoadingIndicators: React.FC<LoadingIndicatorsProps> = ({ isLoading }) => {
                     animation: 'spin 1s linear infinite'
                 }} />
                 <TextTitleSmall color="var(--Schemes-On-Surface-Variant)">
-                    {t('info.loading')}
+                    {t_toast('info.loading')}
                 </TextTitleSmall>
             </DivFlexRow>
             <style>{`

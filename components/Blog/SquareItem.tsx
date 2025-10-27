@@ -9,6 +9,7 @@ import { TextBodyLarge, TextHeadlineMedium } from '../TextBox/textBox'
 import styles from './BlogComponent.module.css'
 import type { BlogItemProps } from '../../data/type'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 interface BlogSquareItemProps {
     dataList: BlogItemProps[],
@@ -26,7 +27,7 @@ const BlogSquareItemComponent: React.FC<BlogSquareItemProps> = ({
     ratio = '1',
 }) => {
 
-    const { t } = useTranslation('toast')
+    const { t: t_toast } = useTranslation('toast')
 
     const linkStyle = useMemo(() => ({
         width: '100%',
@@ -37,11 +38,11 @@ const BlogSquareItemComponent: React.FC<BlogSquareItemProps> = ({
 
     const renderedItems = useMemo(() => {
         if (dataList.length === 0) {
-            return <TextBodyLarge children={t('info.noData')} color='var(--Schemes-On-Surface-Variant)' />
+            return <TextBodyLarge children={t_toast('info.noData')} color='var(--Schemes-On-Surface-Variant)' />
         }
 
         return dataList.map((item, index) => (
-            <a
+            <Link
                 key={`${item.title}_${index}`}
                 href={item.link || `/blog/${item.id}`}
                 aria-label={item.title}
@@ -68,9 +69,9 @@ const BlogSquareItemComponent: React.FC<BlogSquareItemProps> = ({
                         {item.title ? <TextHeadlineMedium className={styles.title} maxLines={4} color=''>{item.title}</TextHeadlineMedium> : null}
                     </DivFlexColumnSpaceBetween>
                 </DivFlexColumnSpaceBetween>
-            </a>
+            </Link>
         ));
-    }, [dataList, linkStyle, openAsNewTab, ratio, maxWidth, maxHeight, t]);
+    }, [dataList, linkStyle, openAsNewTab, ratio, maxWidth, maxHeight, t_toast]);
 
     return <>{renderedItems}</>;
 }
