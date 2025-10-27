@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import { useModal } from "../../hooks/useModal";
 import { DivFlexRow } from "../LayoutDiv/LayoutDiv";
@@ -13,14 +13,6 @@ interface ShareModalProps {
 const ShareModal: React.FC<ShareModalProps> = ({ title, url }) => {
     const { closeTopModal } = useModal();
     const [copied, setCopied] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-    const [isIOS, setIsIOS] = useState(false);
-
-    useEffect(() => {
-        const userAgent = navigator.userAgent;
-        setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent));
-        setIsIOS(/iPad|iPhone|iPod/.test(userAgent));
-    }, []);
 
     const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "");
 
@@ -42,30 +34,12 @@ const ShareModal: React.FC<ShareModalProps> = ({ title, url }) => {
     const encodedTitle = encodeURIComponent(title || "Xem bài viết này!");
 
     const shareOptions = [
+
         {
             name: "Facebook",
             onClick: () => openWindow(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`),
             icon: "facebook_color",
         },
-        ...(isMobile ? [
-            {
-                name: "Messenger",
-                onClick: () => openWindow(`https://www.facebook.com/dialog/send?link=${encodedUrl}&app_id=YOUR_APP_ID&redirect_uri=${encodedUrl}`),
-                icon: "messenger_color",
-            },
-            ...(isIOS ? [
-                {
-                    name: "iMessage",
-                    onClick: () => (window.location.href = `sms:?&body=${encodedTitle}%20${encodedUrl}`),
-                    icon: "imessage_color",
-                }
-            ] : []),
-            {
-                name: "Zalo",
-                onClick: () => openWindow(`https://zalo.me/share?url=${encodedUrl}&text=${encodedTitle}`),
-                icon: "zalo_color",
-            },
-        ] : []),
         {
             name: "Threads",
             onClick: () => openWindow(`https://www.threads.net/intent/post?text=${encodedTitle}%20${encodedUrl}`),
@@ -92,7 +66,6 @@ const ShareModal: React.FC<ShareModalProps> = ({ title, url }) => {
             icon: "mail_filled",
         },
     ];
-
 
     return (
         <DivFlexRow style={{ flexWrap: 'wrap', gap: 'var(--Spacing-Spacing-XS, 8px)', margin: 'var(--Spacing-Spacing-S, 16px) 0' }}>
