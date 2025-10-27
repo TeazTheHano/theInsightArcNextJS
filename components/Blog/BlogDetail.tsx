@@ -16,6 +16,8 @@ import { fetchBlogContent } from "../../utils/fetchContent";
 import { SEOhead } from "./SEOhead";
 import useCheckScreenSize from "../../hooks/useCheckScreenSize";
 import ContainerWithLoading from "../ContainerWithLoading/ContainerWithLoading";
+import { useModal } from "@/hooks/useModal";
+import ShareModal from "../Modal/ShareModal";
 
 marked.setOptions({ async: false });
 
@@ -66,6 +68,20 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
         fetchMarkdown();
     }, [metadata.id]);
 
+    const { openModal } = useModal();
+
+    const handleShare = () => {
+        openModal({
+            element: <ShareModal title={metadata.title} url={window.location.href} />,
+            props: {
+                title: `${t_common('share')} ${t_common('blog')}`,
+                sizeMode: 600,
+                bgDark: true,
+                contentText: metadata.title,
+            },
+        });
+    };
+
     return (
         <div>
             <SEOhead meta={meta} />
@@ -90,6 +106,7 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                         children={t_common('share')}
                         leadingIcon="share_filled"
                         variantMode={isInSM ? 'Default' : 'Icon'}
+                        onClick={handleShare}
                     />
                 </div>
                 {metadata.coverImage && (
@@ -105,6 +122,26 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                         dangerouslySetInnerHTML={{ __html: html }}
                     />
                 </ContainerWithLoading>
+
+                <DivFlexRow style={{
+                    justifyContent: 'flex-end',
+                    gap: 'var(--Spacing-Spacing-XS, 8px)',
+                }}>
+                    <Button
+                        label={t_common('share')}
+                        children={t_common('share')}
+                        leadingIcon="share_filled"
+                        onClick={handleShare}
+                    />
+
+                    <Button
+                        label={t_common('report')}
+                        colorMode="Error"
+                        children={`${t_common('report')} ${t_common('blog')}`}
+                        leadingIcon="flag_2_filled"
+                        onClick={() => (window.location.href = `mailto:teaz.khuonganhkiet@gmail.com?subject=REPORT-${metadata.title}&body=${window.location.href}`)}
+                    />
+                </DivFlexRow>
             </section>
         </div>
     );

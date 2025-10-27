@@ -3,7 +3,7 @@
 import React, { useEffect, useCallback } from "react";
 import styles from './Modal.module.css'
 import { DivFlexColumn, DivFlexRowCenter, DivFlexRowSpaceBetween, DivFlexRow, DivFlexColumnSpaceBetween } from "../LayoutDiv/LayoutDiv";
-import { TextBodyLarge, TextTitleLarge, TextTitleSmall } from "../TextBox/textBox";
+import { TextBodyLarge, TextHeadlineMedium, TextTitleLarge } from "../TextBox/textBox";
 import Button from "../Button/Button";
 import { useTranslation } from "react-i18next";
 import useCheckScreenSize from "../../hooks/useCheckScreenSize";
@@ -154,8 +154,8 @@ function Modal(props: ModalProps) {
                 {/* Phần header của modal */}
                 <DivFlexRowSpaceBetween>
                     <DivFlexColumn className={styles.textPadding} style={{ justifyContent: 'center' }}>
-                        <TextTitleLarge children={title} color="currentColor" />
-                        {subTitle ? <TextTitleSmall children={subTitle} /> : null}
+                        <TextHeadlineMedium children={title} color="currentColor" />
+                        {subTitle ? <TextTitleLarge children={subTitle} /> : null}
                     </DivFlexColumn>
                     {topLeftCloseButton && (
                         <Button
