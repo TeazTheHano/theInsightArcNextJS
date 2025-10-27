@@ -223,7 +223,26 @@
   stroke: var(--Schemes-On-Surface, #1A1C1B) !important;
 }
 
-.markdownContent .blogItemContainer img, .blogItemContainer video, .blogItemContainer iframe {
+.markdownContent table,
+.markdownContent td,
+.markdownContent th {
+  border-collapse: collapse;
+  border: 1px solid var(--Schemes-On-Surface-Variant);
+  padding: var(--Spacing-Spacing-XXS);
+}
+
+.markdownContent td {
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdownContent table {
+  margin: var(--Spacing-Spacing-S) 0;
+}
+
+.markdownContent .blogItemContainer img,
+.blogItemContainer video,
+.blogItemContainer iframe {
   max-width: 100%;
   height: auto;
   display: block;
