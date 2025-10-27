@@ -100,7 +100,7 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
                         loading={disableLazyLoad ? 'eager' : 'lazy'}
                         placeholder="blur"
                         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" // Tiny transparent GIF
-                        // unoptimized={src.startsWith('/')} // Disable optimization for local images
+                        unoptimized={src.startsWith('/')} // Disable optimization for local images
                         {...imgRestProps} // Truyền các thuộc tính Image còn lại
                     />
                 </>
