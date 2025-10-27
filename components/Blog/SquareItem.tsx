@@ -66,7 +66,7 @@ const BlogSquareItemComponent: React.FC<BlogSquareItemProps> = ({
                                 <IconGen svgName='arrow_outward' fillColor='var(--Schemes-Primary)' />
                             </div>
                         </DivFlexRow>
-                        {item.title ? <TextHeadlineMedium className={styles.title} maxLines={4} color=''>{item.title}</TextHeadlineMedium> : null}
+                        {item.title ? <span><TextHeadlineMedium className={styles.title} maxLines={4} color='' children={item.title} /></span> : null}
                     </DivFlexColumnSpaceBetween>
                 </DivFlexColumnSpaceBetween>
             </Link>

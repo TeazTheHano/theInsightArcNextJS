@@ -27,10 +27,14 @@
   justify-content: space-between;
 }
 
-.overlay .title {
+.overlay>span {
   padding: var(--Spacing-Spacing-S);
   padding-top: var(--Spacing-Spacing-XL);
   background: linear-gradient(to top, var(--Schemes-On-Surface), transparent);
+}
+
+.overlay .title {
+
   color: var(--Schemes-Surface);
 }
 
