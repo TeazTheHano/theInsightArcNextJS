@@ -54,7 +54,7 @@ const BlogSquareItemComponent: React.FC<BlogSquareItemProps> = ({
                     className={`${styles.blogItemContainer} CM-border-radius-mode-default`}
                 >
                     <LazyImage
-                        src={item.coverImage}
+                        src={item.coverImageSquare || item.coverImage}
                         aspectRatio={ratio}
                         width={'100%'}
                         maxHeight={maxHeight ? `${maxHeight}px` : undefined}
