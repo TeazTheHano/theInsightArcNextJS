@@ -24,7 +24,8 @@ export const metadata: Metadata = {
   other: {
     'link1': '<link rel="preload" href="/assets/fonts/Epilogue-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
     'link2': '<link rel="preload" href="/assets/fonts/Epilogue-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
-    'link3': '<link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
+    // 'link3': '<link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
+    'link3': '<link rel="preload" href="/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
   },
   
 };

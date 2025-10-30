@@ -37,7 +37,7 @@
 .navMenuItem {
     text-decoration: none;
     transition: color 0.2s ease-in-out;
-    font-family: var(--Title-Family, Inconsolata);
+    font-family: var(--Title-Family, SpaceGrotesk);
     font-size: var(--Title-Font-Size, 14px);
     font-style: normal;
     font-weight: 500;

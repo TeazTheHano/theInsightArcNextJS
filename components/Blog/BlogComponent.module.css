@@ -180,7 +180,7 @@
   text-align: justify;
 
   /* Body */
-  font-family: var(--Body-Family, Inconsolata);
+  font-family: var(--Body-Family, 'SpaceGrotesk');
   font-size: var(--Body-Font-Size, 20px);
   font-style: normal;
   font-weight: 400;
