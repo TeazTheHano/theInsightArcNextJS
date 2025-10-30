@@ -139,6 +139,7 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
 
                     <Button
                         label={t_common('report')}
+                        variantMode="Icon"
                         colorMode="Error"
                         children={`${t_common('report')} ${t_common('blog')}`}
                         leadingIcon="flag_2_filled"

@@ -10,9 +10,15 @@
   font-display: swap;
 }
 
+// @font-face {
+//   font-family: 'Inconsolata';
+//   src: url('/assets/fonts/Inconsolata-VariableFont_wdth.ttf') format('truetype');
+//   font-display: swap;
+// }
+
 @font-face {
-  font-family: 'Inconsolata';
-  src: url('/assets/fonts/Inconsolata-VariableFont_wdth.ttf') format('truetype');
+  font-family: 'Space Grotesk';
+  src: url('/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -20,7 +26,8 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Inconsolata', 'Roboto', sans-serif;
+  // font-family: 'Inconsolata', 'Roboto', sans-serif;
+  font-family: 'Space Grotesk', 'Roboto', sans-serif;
   word-break: break-word;
   overflow-wrap: break-word;
   
