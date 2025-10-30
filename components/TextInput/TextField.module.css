@@ -32,13 +32,13 @@
 }
 
 .leadingIcon {
-    padding: var(--Spacing-Spacing-XXS, 8px) 0 var(--Spacing-Spacing-XXS, 8px) var(--Spacing-Spacing-XXS, 8px);
+    margin: var(--Spacing-Spacing-XXS, 8px) 0 var(--Spacing-Spacing-XXS, 8px) var(--Spacing-Spacing-XXS, 8px);
     width: var(--Icon-Icon-Base, 24px);
+    height: var(--Icon-Icon-Base, 24px);
 }
 
 .icon {
     width: var(--Icon-Icon-Base, 24px);
-
 }
 
 .inputRow {
