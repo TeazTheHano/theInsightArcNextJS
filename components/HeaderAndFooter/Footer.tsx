@@ -1,23 +1,47 @@
 "use client"
 
-import ButtonDefault from '../Button/Button'
-import { useTheme, type Theme } from '../../hooks/useTheme'
-import { TextBodySmall, TextHeadlineLarge, TextHeadlineSmall, TextTitleLarge } from '../TextBox/textBox'
-import { DivFlexColumn, DivFlexRowSpaceBetweenBaseline, DivFlexRowSpaceBetweenCenter } from '../LayoutDiv/LayoutDiv'
-import { useTranslation } from 'react-i18next'
-import i18n from '../../i18n'
-import SegmentedButton from '../Button/SegmentedButton'
-import Divider from '../Divider/Divider'
-import Button from '../Button/Button'
+import { useCallback, memo } from 'react';
+import ButtonDefault from '../Button/Button';
+import { useTheme, type Theme } from '../../hooks/useTheme';
+import { TextBodySmall, TextHeadlineLarge, TextTitleLarge } from '../TextBox/textBox';
+import { DivFlexColumn, DivFlexRowSpaceBetweenCenter } from '../LayoutDiv/LayoutDiv';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
+import SegmentedButton from '../Button/SegmentedButton';
+import Divider from '../Divider/Divider';
 
-export default function Footer() {
+const THEME_OPTIONS = [
+    { value: 'light', label: 'Light' },
+    { value: 'dark', label: 'Dark' },
+    { value: 'light-medium-contrast', label: 'Light Medium Contrast' },
+    { value: 'light-high-contrast', label: 'Light High Contrast' },
+    { value: 'system', label: 'System' },
+] as const;
 
-    const { theme, setTheme } = useTheme()
+const LANGUAGE_OPTIONS = [
+    { label: 'English', value: 'en-US' },
+    { label: 'Tiếng Việt', value: 'vi-VN' },
+];
+
+const Footer = memo(() => {
+    const { theme, setTheme } = useTheme();
     const { t: t_common } = useTranslation('common');
 
-    const changeLanguage = (lng: string) => {
+    const changeLanguage = useCallback((lng: string) => {
         i18n.changeLanguage(lng);
-    };
+    }, []);
+
+    const handleInstagramClick = useCallback(() => {
+        window.open('https://www.instagram.com/the_insightarc/', '_blank');
+    }, []);
+
+    const handleEmailClick = useCallback(() => {
+        window.open('mailto:teaz.khuonganhkiet@gmail.com', '_blank');
+    }, []);
+
+    const handleThemeChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+        setTheme(e.target.value as Theme);
+    }, [setTheme]);
 
     return (
         <footer
@@ -28,11 +52,13 @@ export default function Footer() {
                 alignItems: 'flex-start',
                 gap: 'var(--Spacing-Spacing-M, 24px)',
                 alignSelf: 'stretch',
-            }}>
-            <DivFlexColumn
-                style={{ gap: 'var(--Spacing-Spacing-XXS, 8px)', }}
-            >
-                <TextHeadlineLarge children='The insightArc - Khuong Anh Kiet' color='var(--Schemes-On-Surface-Variant, #434843)' />
+            }}
+        >
+            <DivFlexColumn style={{ gap: 'var(--Spacing-Spacing-XXS, 8px)' }}>
+                <TextHeadlineLarge
+                    children='The insightArc - Khuong Anh Kiet'
+                    color='var(--Schemes-On-Surface-Variant, #434843)'
+                />
                 <TextBodySmall>
                     {t_common('footer-item-1')}<br />{t_common('footer-item-2')}
                 </TextBodySmall>
@@ -44,50 +70,40 @@ export default function Footer() {
                     label='Contact us on instagram: @the_insightarc'
                     styleMode='Text'
                     colorMode='Primary'
-                    leadingIcon={'instagram'}
-                    onClick={() => {
-                        window.open('https://www.instagram.com/the_insightarc/', '_blank')
-                    }}
+                    leadingIcon='instagram'
+                    onClick={handleInstagramClick}
                 />
                 <ButtonDefault
                     children='teaz.khuonganhkiet@gmail.com'
                     label='Contact us via email: teaz.khuonganhkiet@gmail.com'
                     styleMode='Text'
                     colorMode='Primary'
-                    leadingIcon={'mail'}
-                    onClick={() => {
-                        window.open('mailto:teaz.khuonganhkiet@gmail.com', '_blank')
-                    }}
+                    leadingIcon='mail'
+                    onClick={handleEmailClick}
                 />
             </DivFlexColumn>
-
-            {/* change themes */}
 
             <Divider />
 
             <DivFlexRowSpaceBetweenCenter style={{ width: '100%' }}>
                 <TextTitleLarge children={t_common('language-ui')} />
                 <SegmentedButton
-                    dataList={[
-                        { label: 'English', value: 'en-US' },
-                        { label: 'Tiếng Việt', value: 'vi-VN' },
-                    ]}
-                    onChange={(value: string) => {
-                        changeLanguage(value)
-                    }}
+                    dataList={LANGUAGE_OPTIONS}
+                    onChange={changeLanguage}
                     preSelected={i18n.language}
                     iconOnSelected='check'
                 />
             </DivFlexRowSpaceBetweenCenter>
 
             <DivFlexRowSpaceBetweenCenter style={{ width: '100%' }}>
-                <label htmlFor="themeSet"><TextTitleLarge children={t_common('theme')} /></label>
+                <label htmlFor="themeSet">
+                    <TextTitleLarge children={t_common('theme')} />
+                </label>
                 <select
+                    id="themeSet"
                     name="themeSet"
                     value={theme}
-                    onChange={(e) => {
-                        setTheme(e.target.value as Theme)
-                    }}
+                    onChange={handleThemeChange}
                     style={{
                         padding: 'var(--Spacing-Spacing-XS)',
                         backgroundColor: 'var(--Schemes-Surface-Variant)',
@@ -95,28 +111,17 @@ export default function Footer() {
                     }}
                     className='CM-border-radius-mode-default'
                 >
-                    <option value={'light'}>Light</option>
-                    <option value={'dark'}>Dark</option>
-                    <option value={'light-medium-contrast'}>Light Medium Contrast</option>
-                    <option value={'light-high-contrast'}>Light High Contrast</option>
-                    <option value={'system'}>System</option>
+                    {THEME_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
                 </select>
             </DivFlexRowSpaceBetweenCenter>
+        </footer>
+    );
+});
 
-            {/* <Divider />
-            <TextHeadlineSmall children='DEV Mode' />
-            <Button
-                label="clear cache"
-                children="Clear Cache"
-                styleMode='Outlined'
-                colorMode='Error'
-                onClick={() => {
-                    localStorage.clear();
-                    window.location.reload();
-                }}
-            /> */}
+Footer.displayName = 'Footer';
 
-
-        </footer >
-    )
-}
+export default Footer;

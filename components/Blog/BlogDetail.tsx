@@ -6,7 +6,7 @@ import type { BlogItemProps } from "../../data/type";
 import DateDisplay from "../TimeDisplay/TimeDisplay";
 import LazyImage from "../LazyImage/lazyImage";
 import { useTranslation } from "react-i18next";
-import { TextBodyMedium, TextHeadlineLarge, TextLabelSmall, TextTitleSmall } from "../TextBox/textBox";
+import { TextBodyLarge, TextBodyMedium, TextHeadlineLarge, TextLabelSmall, TextTitleSmall } from "../TextBox/textBox";
 import { DivFlexColumn, DivFlexRow } from "../LayoutDiv/LayoutDiv";
 
 import styles from './BlogComponent.module.css';
@@ -120,10 +120,12 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                     />
                 )}
                 <ContainerWithLoading loadingState={isLoading} errMessage={error}>
-                    <div
-                        className={styles.markdownContent}
-                        dangerouslySetInnerHTML={{ __html: html }}
-                    />
+                    <TextBodyLarge>
+                        <div
+                            className={[styles.markdownContent, 'typography-system-large'].join(' ')}
+                            dangerouslySetInnerHTML={{ __html: html }}
+                        />
+                    </TextBodyLarge>
                 </ContainerWithLoading>
 
                 <DivFlexRow style={{
