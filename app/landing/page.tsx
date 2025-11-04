@@ -44,7 +44,7 @@ function LandingPage() {
                 imgRestProps={{
                     fetchPriority: 'high',
                 }}
-                src='https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/theinsightArcbanner.jpg' alt='logo banner' height={'50dvh'} maxHeight='100dvw' />
+                src='https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/theinsightArcbanner.jpg' alt='logo banner' height={'50dvh'} maxHeight='100dvw' />
             <br />
             {/* content */}
 
