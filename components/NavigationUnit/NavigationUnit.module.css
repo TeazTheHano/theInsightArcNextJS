@@ -14,6 +14,19 @@
 /* Logo Styles */
 .navLogo {
     height: var(--Icon-FAB-Icon, 36px);
+    color: var(--Schemes-On-Surface)
+}
+
+@keyframes colorCycle {
+    0% { color: var(--Schemes-On-Surface); }
+    25% { color: var(--Schemes-Primary-Container); }
+    50% { color: var(--Schemes-Secondary-Container); }
+    85% { color: var(--Schemes-Tertiary-Container); }
+    100% { color: var(--Schemes-On-Surface); }
+}
+
+.navLogo:hover {
+    animation: colorCycle 4s infinite;
 }
 
 .navLogoContainer {

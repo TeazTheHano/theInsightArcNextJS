@@ -156,7 +156,7 @@ const NavigationUnit: React.FC = () => {
                             id='NavLogo'
                             className={styles.navLogo}
                         >
-                            <TheInsightArcLogo fillColor='var(--Schemes-On-Surface)' />
+                            <TheInsightArcLogo fillColor='currentColor' />
                         </DivFlexRow>
                     </Link>
 
