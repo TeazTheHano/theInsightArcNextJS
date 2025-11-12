@@ -66,7 +66,7 @@ export default function Inspiration() {
 
   return (
     <div>
-      <LazyImage alt="Inspiration Banner" src="/placeholder" height={'30dvh'} maxHeight='50dvw' />
+      <LazyImage alt="Inspiration Banner" src="https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/inspirationBanner.jpg" height={'30dvh'} maxHeight='50dvw' />
 
       <ContainerWithLoading loadingState={loading} errMessage={error}>
 

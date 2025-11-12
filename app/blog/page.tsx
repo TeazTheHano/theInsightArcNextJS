@@ -63,7 +63,7 @@ export default function BlogList() {
 
   return (
     <div>
-      <LazyImage alt="Inspiration Banner" src="/placeholder" height={'30dvh'} maxHeight='50dvw' />
+      <LazyImage alt="Inspiration Banner" src="https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/blogBanner.jpg" height={'30dvh'} maxHeight='50dvw' imgRestProps={{ style: { objectPosition: 'top left' } }} />
 
       <ContainerWithLoading loadingState={loading} errMessage={error}>
 
@@ -81,19 +81,19 @@ export default function BlogList() {
           <BlogItem2RowGen dataList={LATEST_POSTS} thumbSize={600} direction={layoutConfig.direction} />
         </DivFlexColumn>
 
-        <Divider />
         {/* CATEGORY 1 */}
+        <Divider />
         <DivFlexColumn className={styles.inspirationContainer}>
-          <LazyImage alt="Category 1 Banner" src="/placeholder" height={'20dvh'} maxHeight='50dvw' />
+          <LazyImage alt="Category 1 Banner" src="https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/blogHotBanner.jpg" aspectRatio='3' />
           <BlogItem2RowGen dataList={CATE_1_POSTS} thumbSize={600} direction={layoutConfig.direction} />
         </DivFlexColumn>
 
-        <Divider />
         {/* CATEGORY 2 */}
+        {/* <Divider /> 
         <DivFlexColumn className={styles.inspirationContainer}>
-          <LazyImage alt="Category 2 Banner" src="/placeholder" height={'20dvh'} maxHeight='50dvw' />
+          <LazyImage alt="Category 2 Banner" src="/placeholder" aspectRatio='3'/>
           <BlogItem2RowGen dataList={CATE_2_POSTS} thumbSize={600} direction={layoutConfig.direction} />
-        </DivFlexColumn>
+        </DivFlexColumn> */}
 
         <Divider />
         {/* TRENDING */}

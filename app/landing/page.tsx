@@ -15,6 +15,7 @@ import { BlogSquareItemGen } from '../../components/Blog/SquareItem'
 import { useEffect, useState } from 'react'
 import { fetchBlogList } from '../../utils/fetchContent'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 function LandingPage() {
 
@@ -102,7 +103,7 @@ function LandingPage() {
                 <DivFlexColumn style={{ gap: `var(--Spacing-Spacing-XS, 12px)`, flex: 1, textAlign: 'justify' }}>
                     <TextBodyMedium children={t_landingPage('section-3-description-1')} />
 
-                    <LazyImage errorMessage='Will update sooooon' onErrorIcon="🙆" src='/placeholder' alt='' aspectRatio='1' />
+                    <LazyImage src='https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/%20landingDirection2.png' alt='The insightArc direction' aspectRatio='1' />
 
                     <TextBodyMedium children={t_landingPage('section-3-description-2')} />
                     <TextBodyMedium>
@@ -142,7 +143,9 @@ function LandingPage() {
                     </DivFlexColumn>
                 </DivFlexRow>
                 {/* image */}
-                <LazyImage errorMessage='Will update sooooon' onErrorIcon="🙆" src='/placeholder' alt='' aspectRatio='21/9' />
+                <Link href='/inspiration'>
+                    <LazyImage src='https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/landingInspiration.jpg' alt='' aspectRatio='21/9' borderRadius='default' />
+                </Link>
             </DivFlexColumn>
 
             {/* 5 Blog section */}
