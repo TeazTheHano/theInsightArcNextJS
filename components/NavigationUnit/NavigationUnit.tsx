@@ -261,9 +261,9 @@ const NavigationUnit: React.FC = () => {
                 <Divider className={styles.hideMdSm} />
                 <DivFlexColumn
                     className={[styles.navMenuContainer, styles.hideMdSm].join(' ')}>
-                    <Link href="/test" aria-label={t_common('test-site')} className={styles.navMenuItem}>
+                    {/* <Link href="/test" aria-label={t_common('test-site')} className={styles.navMenuItem}>
                         <TextTitleSmall className={styles.navMenuItemText} color='var(--Schemes-On-Surface-Variant)' children={t_common('test-site')} />
-                    </Link>
+                    </Link> */}
                     <Link href="/contact" aria-label={t_common('contact-page')} className={styles.navMenuItem}>
                         <TextTitleSmall className={styles.navMenuItemText} color='var(--Schemes-On-Surface-Variant)' children={t_common('contact-page')} />
                     </Link>

@@ -3,7 +3,8 @@
     "save": "Saved successfully",
     "update": "Updated successfully",
     "delete": "Deleted successfully",
-    "publish": "Published"
+    "publish": "Published",
+    "copied": "Copied to clipboard"
   },
   "error": {
     "save": "Unable to save, please try again",
@@ -39,7 +40,7 @@
     "noData": "No data available",
     "noMoreData": "No more data",
     "updating": "Updating...",
-    "inDeveloping": "This feature is in development. Come back later"
+    "inDevelopment": "This feature is in development. Come back later"
   },
   "warning": {
     "unsaved": "You have unsaved changes",
