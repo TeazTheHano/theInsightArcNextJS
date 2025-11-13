@@ -75,9 +75,9 @@ const Footer = memo(() => {
                     <Link href="/term" aria-label={t_common('term-page')} color='var(--Schemes-Tertiary)'>
                         <TextTitleMedium children={t_common('term-page')} color='var(--Schemes-Tertiary)' />
                     </Link>
-                    <Link href="/test" aria-label={t_common('test-site')} >
+                    {/* <Link href="/test" aria-label={t_common('test-site')} >
                         <TextTitleMedium children={t_common('test-site')} />
-                    </Link>
+                    </Link> */}
 
                 </DivFlexColumn>
 
