@@ -90,7 +90,7 @@ interface ButtonProps {
      * Mouse leave event handler.
      */
     mouseLeaveFnc?: () => void;
-    alternativeText?: string;
+    otherTitle?: string;
 }
 
 /**
@@ -114,6 +114,7 @@ const ButtonDefault = forwardRef<HTMLButtonElement, ButtonProps>(({
     borderRadius = 'rounded',
     autoFocus,
     showTitleWhileHover,
+    otherTitle,
     mouseDownFnc,
     mouseUpFnc,
     mouseEnterFnc,
@@ -162,7 +163,7 @@ const ButtonDefault = forwardRef<HTMLButtonElement, ButtonProps>(({
             }}
             autoFocus={autoFocus}
             // use ariaLabel as title when requested so hover text matches accessible name
-            title={showTitleWhileHover ? ariaLabel : undefined}
+            title={showTitleWhileHover ? otherTitle || ariaLabel : undefined}
         >
             <div className={[
                 buttonStyle.stateLayer,

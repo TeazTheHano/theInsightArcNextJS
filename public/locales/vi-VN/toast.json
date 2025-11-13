@@ -3,7 +3,8 @@
     "save": "Lưu thành công",
     "update": "Cập nhật thành công",
     "delete": "Xóa thành công",
-    "publish": "Đã xuất bản"
+    "publish": "Đã xuất bản",
+    "copied": "Đã sao chép vào bộ nhớ tạm"
   },
   "error": {
     "save": "Không thể lưu, vui lòng thử lại",

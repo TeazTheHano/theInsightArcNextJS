@@ -39,7 +39,7 @@
     "noData": "No data available",
     "noMoreData": "No more data",
     "updating": "Updating...",
-    "inDevelopment": "This feature is in development. Come back later"
+    "inDeveloping": "This feature is in development. Come back later"
   },
   "warning": {
     "unsaved": "You have unsaved changes",

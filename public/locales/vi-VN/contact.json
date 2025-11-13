@@ -1,0 +1,50 @@
+{
+  "cta": {
+    "contact": "Kết nối với tôi",
+    "resume": "Tải CV của tôi"
+  },
+  "teaz": {
+    "headline": "Dệt Văn Hóa vào Mã Lệnh. Kiến Tạo Hệ Thống có Linh Hồn.",
+    "name": "Xin chào, tôi là Khương Anh Kiệt (Teaz).",
+    "summary": "Tôi là Khương Anh Kiệt (Teaz) — một Front-end Engineer và nhà thiết kế yêu thích sự giao thoa giữa văn hoá, nghệ thuật và công nghệ. Tôi xây dựng The insightArc như một không gian cá nhân để thiết kế, lập trình và tạo nên những trải nghiệm số mang chiều sâu văn hoá và kết nối con người.",
+    "description": "Tôi là một Front-end Engineer và có mối quan tâm lớn tới Lịch sử và Văn hoá.",
+    "role": "Tại The insightArc, tôi đảm nhận nhiều vai trò — từ thiết kế giao diện, thiết kế đồ họa, lập trình Front-end, Back-end cho đến viết nội dung và kể chuyện bằng hình ảnh. Mọi thứ đều do tôi thực hiện, và trong tương lai, tôi hy vọng sẽ có thêm những cộng sự đồng hành cùng phát triển dự án.",
+    "content": {
+      "intro": {
+        "title": "Hành Trình Của Tôi",
+        "paragraph": "Hành trình của tôi không bắt đầu với khoa học máy tính, mà với Lịch sử. Việc nghiên cứu mối liên hệ sâu sắc giữa văn hóa và lịch sử đã dạy tôi rằng mọi tạo vật — dù là công cụ cổ đại hay phần mềm hiện đại — đều phản mang hơi thở thời đại và nhiều tầng ý nghĩa riêng."
+      },
+      "whyICode": {
+        "title": "Lý Do Tôi Lập Trình",
+        "paragraph": "Tôi tự học lập trình do tình yêu với khoa học công nghệ thôi thúc. Tôi say mê vẻ đẹp có hệ thống — sự tinh tế của mã sạch và kiến trúc được tổ chức chặt chẽ. Nhưng tôi cũng trân trọng tinh thần đổi mới và dám phá vỡ khuôn mẫu. Với tôi, công nghệ không chỉ là công cụ; nó là một tấm toan sáng tạo, nơi kỷ luật gặp gỡ sự đột phá."
+      },
+      "aboutPlatform": {
+        "title": "Về Nền Tảng Này",
+        "paragraph": "Tôi xây dựng The insightArc (với Next.js và TypeScript) như một nơi để tôi thoả sức thử nghiệm kiến thức và năng lực của mình, nói những gì mình đã bỏ công nghiên cứu, là một nơi để nghĩ, để nói, để làm."
+      },
+      "vision": {
+        "title": "Tầm Nhìn",
+        "paragraph": "Một không gian khám phá giao điểm giữa Văn hóa, Nghệ thuật và Công nghệ."
+      },
+      "mission": {
+        "title": "Sứ Mệnh",
+        "paragraph": "Khám phá những mối liên hệ tinh tế của các đối tượng văn hoá, đặc biệt là giữa chất liệu truyền thống Việt Nam và ảnh hưởng nghệ thuật châu Âu, nhằm tạo ra một 'bản thiết kế' cho sự phát triển độc đáo."
+      },
+      "future": {
+        "title": "Tương Lai",
+        "paragraph": "Dù khởi đầu là một dự án cá nhân, tôi mong muốn phát triển nó thành một cộng đồng hợp tác — nơi chúng ta cùng trau dồi kỹ năng, thể hiện quan điểm nghiên cứu, và mãi mãi chia sẻ với mọi người."
+      },
+      "collaboration": {
+        "title": "Cùng Kiến Tạo",
+        "paragraph": "Tôi tìm kiếm cơ hội xây dựng các hệ sinh thái số vừa mạnh mẽ về công nghệ, vừa giàu bản sắc văn hóa. Dù bạn cần một Front-end Developer thấu hiểu khía cạnh 'Con người' của UI/UX hay một đối tác đồng hành sáng tạo, tôi rất sẵn lòng kết nối."
+      }
+    },
+    "ctaLink": {
+      "linkedin": "linkedin.com/in/khuonganhkiet",
+      "github": "github.com/TeazTheHano",
+      "email": "teaz.khuonganhkiet@gmail.com",
+      "phone": "+84 33 980 6300",
+      "resume": "https://drive.google.com/file/d/1pgZo2EgYXIFuMOVxKZg5OGChT4zXULM2/view?usp=sharing"
+    }
+  }
+}

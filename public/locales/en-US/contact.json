@@ -1,0 +1,50 @@
+{
+  "cta": {
+    "contact": "Connect with me",
+    "resume": "Download My Resume"
+  },
+  "teaz": {
+    "headline": "Weaving Culture into Code. Architecting Systems with Soul.",
+    "name": "Hello, I’m Khuong Anh Kiet (Teaz).",
+    "summary": "I’m Khuong Anh Kiet (Teaz) — a Front-end Engineer and designer passionate about blending culture, art, and technology. I built The insightArc as a personal atelier where I design, code, and create meaningful digital experiences inspired by cultural depth and human connection.",
+    "description": "I am a Front-end Engineer with a deep interest in History and Culture.",
+    "role": "At The insightArc, I take on multiple roles — designer, developer, and writer — handling everything from UI design and front-end/back-end coding to content creation and visual storytelling.",
+    "content": {
+      "intro": {
+        "title": "My Journey",
+        "paragraph": "My journey didn’t begin with computer science, but with History. Studying the deep connections between culture and history taught me that every creation—whether an ancient artifact or modern software—carries the spirit of its era and layers of meaning within."
+      },
+      "whyICode": {
+        "title": "Why I Code",
+        "paragraph": "I taught myself programming out of a genuine love for science and technology. I’m fascinated by systematic beauty—the elegance of clean code and structured architecture. Yet, I equally value innovation and the courage to break conventions. To me, technology is not merely a tool; it’s a creative canvas where discipline meets disruption."
+      },
+      "aboutPlatform": {
+        "title": "About This Platform",
+        "paragraph": "I built The insightArc (with Next.js and TypeScript) as a space to freely experiment with my knowledge and skills — a place to think, to speak, and to create; a medium through which I share what I’ve learned through exploration and study."
+      },
+      "vision": {
+        "title": "The Vision",
+        "paragraph": "A space to explore the intersection of Culture, Art, and Technology."
+      },
+      "mission": {
+        "title": "The Mission",
+        "paragraph": "To explore the subtle relationships among cultural artifacts — especially between Vietnamese traditional elements and European artistic influences — and to form a 'blueprint' for distinctive creative development."
+      },
+      "future": {
+        "title": "The Future",
+        "paragraph": "Though it began as a personal project, I hope to grow it into a collaborative community — a place where we refine our craft, share our perspectives, and exchange ideas endlessly."
+      },
+      "collaboration": {
+        "title": "Let’s Create Together",
+        "paragraph": "I’m seeking opportunities to build digital ecosystems that are both technologically robust and culturally meaningful. Whether you’re looking for a Front-end Developer who understands the 'Human' side of UI/UX or a creative partner for collaboration, I’d love to connect."
+      }
+    },
+    "ctaLink": {
+      "linkedin": "linkedin.com/in/khuonganhkiet",
+      "github": "github.com/TeazTheHano",
+      "email": "teaz.khuonganhkiet@gmail.com",
+      "phone": "+84 33 980 6300",
+      "resume": "https://drive.google.com/file/d/1pgZo2EgYXIFuMOVxKZg5OGChT4zXULM2/view?usp=sharing"
+    }
+  }
+}
