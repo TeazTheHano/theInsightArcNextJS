@@ -38,7 +38,8 @@
     "redirect": "Đang chuyển hướng...",
     "noData": "Chưa có dữ liệu",
     "noMoreData": "Không còn dữ liệu",
-    "updating": "Đang cập nhật..."
+    "updating": "Đang cập nhật...",
+    "inDevelopment": "Tính năng này đang phát triển. Vui lòng quay lại sau"
   },
   "warning": {
     "unsaved": "Bạn có thay đổi chưa lưu",
