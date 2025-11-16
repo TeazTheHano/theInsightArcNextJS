@@ -2,20 +2,23 @@
 
 import React, { useEffect, useMemo } from "react";
 import type { BlogItemProps } from "@/data/type";
-import { TextHeadlineLarge } from "@/components/TextBox/textBox";
+import { TextHeadlineLarge, TextTitleSmall } from "@/components/TextBox/textBox";
 import { BlogItem2RowGen } from "@/components/Blog/BlogListVariant";
 import { useTranslation } from "react-i18next";
 import { fetchBlogList } from "@/utils/fetchContent";
 import { slugify } from "@/utils/slugify";
-import { DivFlexColumn } from "@/components/LayoutDiv/LayoutDiv";
+import { DivFlexColumn, DivFlexRowSpaceBetweenCenter } from "@/components/LayoutDiv/LayoutDiv";
 
 import styles from '@/app/blog/BlogList.module.css'
 import useCheckScreenSize from "@/hooks/useCheckScreenSize";
+import Button from "@/components/Button/Button";
+import { useModal } from "@/hooks/useModal";
+import ShareModal from "@/components/Modal/ShareModal";
 
 export default function BlogTagClientPage() {
     const { t: t_common } = useTranslation('common')
     const slug: string = window.location.pathname.split("/").pop() || "";
-    const displayName = slug ? slug.replace(/-/g, " ").toUpperCase() : "";
+    const displayName = slug ? slug.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase()) : "";
 
     const [blogs, setBlogs] = React.useState<BlogItemProps[]>([]);
 
@@ -35,14 +38,47 @@ export default function BlogTagClientPage() {
         });
     }, [slug])
 
-    return (
-        <DivFlexColumn className={styles.inspirationContainer}>
-            <TextHeadlineLarge headline="h1">
-                {t_common('tags')}: <span style={{ color: "var(--Schemes-Primary)" }}>{displayName}</span>
-            </TextHeadlineLarge>
+    const { openModal } = useModal()
+    const handleShare = () => {
+        openModal({
+            element: <ShareModal title={`${t_common('share')} ${t_common('tags')}`} url={window.location.href} />,
+            props: {
+                title: `${t_common('share')} ${t_common('tags')}`,
+                sizeMode: 600,
+                bgDark: true,
+                contentText: displayName,
+            },
+        });
+    };
 
-            <BlogItem2RowGen dataList={blogs} thumbSize={600} direction={layoutConfig.direction} />
-        </DivFlexColumn>
+    return (
+        <>
+            <div style={{
+                backgroundColor: 'var(--Schemes-Surface-Tint)',
+                padding: 'var(--Spacing-Spacing-M, 24px) var(--Spacing-Spacing-S, 16px)',
+            }}>
+                <TextTitleSmall color="var(--Schemes-On-Primary)">
+                    {/* TODO: search by category page */}
+                    <span style={{ cursor: 'pointer' }} onClick={() => { window.location.href = "/blog" }}>{t_common('blog-page')}</span> / {t_common('tags')} / <span style={{ cursor: 'pointer' }} onClick={() => { }}>{displayName}</span>
+                </TextTitleSmall>
+            </div>
+            <DivFlexColumn className={styles.inspirationContainer}>
+                <DivFlexRowSpaceBetweenCenter>
+                    <TextHeadlineLarge headline="h1">
+                        {t_common('tags')}: <span style={{ color: "var(--Schemes-Primary)" }}>{displayName}</span>
+                    </TextHeadlineLarge>
+                    <Button
+                        label={t_common('share')}
+                        children={t_common('share')}
+                        leadingIcon="share_filled"
+                        variantMode={ 'Icon'}
+                        onClick={handleShare}
+                    />
+                </DivFlexRowSpaceBetweenCenter>
+
+                <BlogItem2RowGen dataList={blogs} thumbSize={600} direction={layoutConfig.direction} />
+            </DivFlexColumn>
+        </>
 
     );
 }
