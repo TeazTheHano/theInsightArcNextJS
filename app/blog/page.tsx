@@ -78,14 +78,14 @@ export default function BlogList() {
               colorMode='Primary'
               onClick={handleViewAll} />
           </DivFlexColumn>
-          <BlogItem2RowGen dataList={LATEST_POSTS} thumbSize={600} direction={layoutConfig.direction} />
+          <BlogItem2RowGen dataList={LATEST_POSTS} thumbSize={600} direction={layoutConfig.direction} style={{ maxWidth: 1440 }}/>
         </DivFlexColumn>
 
         {/* CATEGORY 1 */}
         <Divider />
         <DivFlexColumn className={styles.inspirationContainer}>
           <LazyImage alt="Category 1 Banner" src="https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/blogHotBanner.jpg" aspectRatio='3' />
-          <BlogItem2RowGen dataList={CATE_1_POSTS} thumbSize={600} direction={layoutConfig.direction} />
+          <BlogItem2RowGen dataList={CATE_1_POSTS} thumbSize={600} direction={layoutConfig.direction} style={{ maxWidth: 1440 }}/>
         </DivFlexColumn>
 
         {/* CATEGORY 2 */}
@@ -99,7 +99,7 @@ export default function BlogList() {
         {/* TRENDING */}
         <DivFlexColumn className={styles.inspirationContainer}>
           <TextHeadlineLarge children={t_blog('trending')} />
-          <BlogItem2RowGen dataList={TRENDING_POSTS} thumbSize={layoutConfig.trendingThumbSize} ratio={layoutConfig.trendingRatio} hideDescription />
+          <BlogItem2RowGen dataList={TRENDING_POSTS} thumbSize={layoutConfig.trendingThumbSize} ratio={layoutConfig.trendingRatio} hideDescription style={{ maxWidth: 1440 }}/>
         </DivFlexColumn>
       </ContainerWithLoading>
 

@@ -23,6 +23,7 @@ export interface Blog2RowComponentProps {
     hideDescription?: boolean
     hideTag?: boolean
     smallTitle?: boolean
+    style?: React.CSSProperties
 }
 
 const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
@@ -35,6 +36,7 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
     hideDescription,
     hideTag,
     smallTitle,
+    style,
 }) => {
 
     const { t: t_toast } = useTranslation('toast')
@@ -69,6 +71,7 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                 tabIndex={0}
                 style={{
                     width: '100%', textDecoration: 'none'
+                    , ...style
                 }}
             // target={openAsNewTab ? '_blank' : '_self'}
             >

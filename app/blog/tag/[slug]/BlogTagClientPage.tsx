@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import type { BlogItemProps } from "@/data/type";
 import { TextHeadlineLarge, TextTitleSmall } from "@/components/TextBox/textBox";
 import { BlogItem2RowGen } from "@/components/Blog/BlogListVariant";
@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { fetchBlogList } from "@/utils/fetchContent";
 import { slugify } from "@/utils/slugify";
 import { DivFlexColumn, DivFlexRowSpaceBetweenCenter } from "@/components/LayoutDiv/LayoutDiv";
+import { useParams } from "next/navigation";
 
 import styles from '@/app/blog/BlogList.module.css'
 import useCheckScreenSize from "@/hooks/useCheckScreenSize";
@@ -17,8 +18,10 @@ import ShareModal from "@/components/Modal/ShareModal";
 
 export default function BlogTagClientPage() {
     const { t: t_common } = useTranslation('common')
-    const slug: string = window.location.pathname.split("/").pop() || "";
+    const params = useParams();
+    const slug = params.slug as string;
     const displayName = slug ? slug.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase()) : "";
+    const [currentUrl, setCurrentUrl] = useState("");
 
     const [blogs, setBlogs] = React.useState<BlogItemProps[]>([]);
 
@@ -30,6 +33,9 @@ export default function BlogTagClientPage() {
     }), [isInSM]);
 
     useEffect(() => {
+        if (typeof window !== "undefined") {
+            setCurrentUrl(window.location.href);
+        }
         fetchBlogList().then((data) => {
             const filtered = data.filter((item) =>
                 item.tags?.some((tag) => slugify(tag) === slug)
@@ -41,7 +47,7 @@ export default function BlogTagClientPage() {
     const { openModal } = useModal()
     const handleShare = () => {
         openModal({
-            element: <ShareModal title={`${t_common('share')} ${t_common('tags')}`} url={window.location.href} />,
+            element: <ShareModal title={`${t_common('share')} ${t_common('tags')}`} url={currentUrl} />,
             props: {
                 title: `${t_common('share')} ${t_common('tags')}`,
                 sizeMode: 600,
@@ -71,12 +77,12 @@ export default function BlogTagClientPage() {
                         label={t_common('share')}
                         children={t_common('share')}
                         leadingIcon="share_filled"
-                        variantMode={ 'Icon'}
+                        variantMode={isInSM ? 'Icon' : 'Default'}
                         onClick={handleShare}
                     />
                 </DivFlexRowSpaceBetweenCenter>
 
-                <BlogItem2RowGen dataList={blogs} thumbSize={600} direction={layoutConfig.direction} />
+                <BlogItem2RowGen dataList={blogs} thumbSize={600} direction={layoutConfig.direction} style={{ maxWidth: 1440 }} />
             </DivFlexColumn>
         </>
 
