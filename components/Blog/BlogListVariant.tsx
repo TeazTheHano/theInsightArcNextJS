@@ -11,6 +11,7 @@ import Chip from '../Chip/Chip'
 import { useTranslation } from 'react-i18next'
 import DateDisplay from '../TimeDisplay/TimeDisplay'
 import Link from 'next/link'
+import { slugify } from '@/utils/slugify'
 
 export interface Blog2RowComponentProps {
     dataList: BlogItemProps[]
@@ -44,9 +45,15 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
         styles[`thumbSize-${thumbSize}`]
     ].filter(Boolean).join(' ').trim(), [direction, thumbSize]);
 
-    const handleTagClick = useCallback((link: string) => {
-        window.open(link, '_blank');
+    const handleTagClick = useCallback((tag: string) => {
+        window.open(`/blog/tag/${slugify(tag)}`, '_blank');
     }, []);
+
+    const handleLinkClick = useCallback((link: string | undefined, id: string) => {
+        const href = link ? link : id ? `/blog/${id}` : '#'
+        const target = openAsNewTab ? '_blank' : '_self'
+        window.open(href, target);
+    }, [])
 
     const renderedItems = useMemo(() => {
         if (dataList.length === 0) {
@@ -54,20 +61,22 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
         }
 
         return dataList.map((item, index) => (
-            <Link
+            // <Link
+            <div
                 key={`${item.title}_${index}`}
-                href={item.link ? item.link : item.id ? `/blog/${item.id}` : '#'}
+                // href={item.link ? item.link : item.id ? `/blog/${item.id}` : '#'}
                 aria-label={item.title}
                 tabIndex={0}
                 style={{
                     width: '100%', textDecoration: 'none'
                 }}
-                target={openAsNewTab ? '_blank' : '_self'}
+            // target={openAsNewTab ? '_blank' : '_self'}
             >
                 <div className={containerClass}>
                     {compactMode ? (
                         <>
                             <LazyImage
+                                onClick={() => handleLinkClick(item.link, item.id)}
                                 src={item.coverImage}
                                 aspectRatio={ratio}
                                 width={200}
@@ -75,13 +84,14 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                                 borderRadius='default'
                             />
                             <DivFlexColumnSpaceBetween style={{ flex: 1 }}>
-                                <TextTitleMedium children={item.title} className={styles.title} maxLines={3} />
+                                <TextTitleMedium children={item.title} className={styles.title} maxLines={3} onClick={() => handleLinkClick(item.link, item.id)} />
                                 <TextLabelSmall children={<DateDisplay date={item.timeStamp} />} color='var(--Schemes-Outline)' />
                             </DivFlexColumnSpaceBetween>
                         </>
                     ) : (
                         <>
                             <LazyImage
+                                onClick={() => handleLinkClick(item.link, item.id)}
                                 src={item.coverImage}
                                 borderRadius='default'
                                 className={styles.Blog2RowComponentImage}
@@ -91,7 +101,9 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                                 maxWidth={thumbSize !== 'full' ? `${thumbSize}px` : undefined}
                             />
                             <DivFlexColumnSpaceBetween style={{ flex: 1 }} className={styles.titleHolder}>
-                                <DivFlexColumn className={styles.titleHolder}>
+                                <DivFlexColumn className={styles.titleHolder}
+                                    onClick={() => handleLinkClick(item.link, item.id)}
+                                >
                                     {
                                         smallTitle ?
                                             <TextBodyMedium children={item.title} className={styles.title} maxLines={3} />
@@ -112,12 +124,12 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                                         <DivFlexRow className={styles.tags}>
                                             {item.tags.map((e, tagIndex) => (
                                                 <Chip
-                                                    key={`${e.title}_${tagIndex}`}
-                                                    label={e.title}
-                                                    children={e.title}
-                                                    onClick={() => handleTagClick(e.link)}
+                                                    key={`${slugify(e)}_${tagIndex}`}
+                                                    label={e}
+                                                    children={e}
+                                                    onClick={() => handleTagClick(e)}
                                                     styleMode='FillFixed'
-                                                    colorMode='Secondary'
+                                                    colorMode='Tertiary'
                                                 />
                                             ))}
                                         </DivFlexRow> : null
@@ -128,7 +140,8 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                         </>
                     )}
                 </div>
-            </Link >
+                {/* </Link > */}
+            </div>
         ));
     }, [dataList, openAsNewTab, containerClass, compactMode, ratio, direction, thumbSize, handleTagClick, t_toast]);
 

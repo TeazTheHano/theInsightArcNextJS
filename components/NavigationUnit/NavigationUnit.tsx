@@ -28,6 +28,7 @@ const navItemsData = [
 const BasicSearchResult: React.FC<{
     data: { dataBaseName: string; result: searchEngineOutputProps }[] | undefined;
 }> = ({ data }) => {
+    const { t: t_common } = useTranslation('common');
     if (!data || data.length === 0) {
         return <TextBodyMedium children='No database' />
     }
@@ -36,7 +37,6 @@ const BasicSearchResult: React.FC<{
         if (!items || items.length === 0) {
             return null;
         }
-        const { t: t_common } = useTranslation('common');
         return (
             <React.Fragment key={label}>
                 <TextTitleMedium>{t_common(label)}</TextTitleMedium>

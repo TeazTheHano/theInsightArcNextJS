@@ -1,5 +1,6 @@
 import type { BlogItemProps } from "../data/type";
 import { fetchBlogList } from "./fetchContent";
+import { slugify } from "./slugify";
 
 export interface searchEngineOutputProps {
     title: BlogItemProps[],
@@ -38,7 +39,7 @@ export const searchEngine = async (
     // Filter for tags (special case as it's an array)
     const filterByTags = (items: BlogItemProps[]): BlogItemProps[] => {
         return items.filter((item) =>
-            item.tags?.some((tag) => tag.title?.toLowerCase().includes(lowerQuery))
+            item.tags?.some((tag) => typeof tag === 'string' && slugify(tag).includes(slugify(query)))
         );
     };
 

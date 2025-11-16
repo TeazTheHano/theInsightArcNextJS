@@ -7,7 +7,7 @@ import DateDisplay from "../TimeDisplay/TimeDisplay";
 import LazyImage from "../LazyImage/lazyImage";
 import { useTranslation } from "react-i18next";
 import { TextBodyLarge, TextBodyMedium, TextHeadlineLarge, TextLabelSmall, TextTitleSmall } from "../TextBox/textBox";
-import { DivFlexColumn, DivFlexRow } from "../LayoutDiv/LayoutDiv";
+import { DivFlexColumn, DivFlexRow, DivFlexRowCenter } from "../LayoutDiv/LayoutDiv";
 
 import styles from './BlogComponent.module.css';
 import Button from "../Button/Button";
@@ -18,6 +18,8 @@ import useCheckScreenSize from "../../hooks/useCheckScreenSize";
 import ContainerWithLoading from "../ContainerWithLoading/ContainerWithLoading";
 import { useModal } from "@/hooks/useModal";
 import ShareModal from "../Modal/ShareModal";
+import Chip from "../Chip/Chip";
+import { slugify } from "@/utils/slugify";
 
 marked.setOptions({ async: false });
 
@@ -100,8 +102,22 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                         <TextHeadlineLarge children={metadata.title} headline="h1" className={styles.title} />
                         <TextBodyMedium children={metadata.description} color="var(--Schemes-On-Surface-Variant)" className={styles.description} />
                         <DivFlexRow className={styles.authorRow}>
+                            <DivFlexRowCenter style={{ gap: 'var(--Spacing-Spacing-XXS' }}>
+                                <TextLabelSmall children={t_common('tags') + ':'} />
+                                {metadata.tags?.map((e, tagIndex) => (
+                                    <Chip
+                                        key={`${slugify(e)}_${tagIndex}`}
+                                        label={e}
+                                        children={e}
+                                        onClick={() => { window.location.href = `/blog/tag/${slugify(e)}` }}
+                                        styleMode='FillFixed'
+                                        colorMode='Tertiary'
+                                    />
+                                ))}
+                            </DivFlexRowCenter>
                             <TextLabelSmall>{t_common('author')}: {metadata.author}</TextLabelSmall>
                             <TextLabelSmall children={<DateDisplay date={metadata.timeStamp} />} />
+
                         </DivFlexRow>
                     </DivFlexColumn>
                     <Button

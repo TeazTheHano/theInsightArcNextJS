@@ -34,7 +34,6 @@
 }
 
 .overlay .title {
-
   color: var(--Schemes-Surface);
 }
 
@@ -73,6 +72,13 @@
 
 .tags {
   gap: var(--Spacing-Spacing-XXS, 8px);
+  z-index: 10;
+}
+
+.Blog2RowComponentImage,
+.titleHolder,
+.title {
+  cursor: pointer;
 }
 
 /* COLUMN */

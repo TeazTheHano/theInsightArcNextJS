@@ -68,16 +68,16 @@ const Footer = memo(() => {
 
             <DivFlexRow style={{ flexWrap: 'wrap', columnGap: 'var(--Spacing-Spacing-XXL, 32px)', rowGap: 'var(--Spacing-Spacing-M, 24px)' }}>
 
-                <DivFlexColumn >
-                    <Link href="/progressPage" aria-label={t_common('progress-page')} color='var(--Schemes-Tertiary)'>
+                <DivFlexColumn style={{ textDecoration: 'none' }}>
+                    <Link style={{ textDecoration: 'none' }} href="/progressPage" color='var(--Schemes-Tertiary)'>
                         <TextTitleMedium children={t_common('progress-page')} color='var(--Schemes-Tertiary)' />
                     </Link>
-                    <Link href="/term" aria-label={t_common('term-page')} color='var(--Schemes-Tertiary)'>
+                    <Link style={{ textDecoration: 'none' }} href="/term" color='var(--Schemes-Tertiary)'>
                         <TextTitleMedium children={t_common('term-page')} color='var(--Schemes-Tertiary)' />
                     </Link>
-                    {/* <Link href="/test" aria-label={t_common('test-site')} >
-                        <TextTitleMedium children={t_common('test-site')} />
-                    </Link> */}
+                    <Link style={{ textDecoration: 'none' }} href="/contact" color='var(--Schemes-Tertiary)'>
+                        <TextTitleMedium children={t_common('contact-page')} color='var(--Schemes-Tertiary)' />
+                    </Link>
 
                 </DivFlexColumn>
 

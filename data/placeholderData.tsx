@@ -8,14 +8,7 @@ export const placeholderData: BlogItemProps[] = [
         coverImage: '/placeholder',
         timeStamp: '2023-10-01T12:00:00+07:00',
         tags: [
-            {
-                title: 'Coming soon',
-                link: 'abc',
-            },
-            {
-                title: 'Coming soon',
-                link: 'abc',
-            }
+          
         ]
     },
     {

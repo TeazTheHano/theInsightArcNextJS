@@ -1,9 +1,3 @@
-export interface TagProps {
-    title: string;
-    link: string;
-    // color: string;
-}
-
 export interface BlogItemProps {
     id: string
     title?: string
@@ -14,7 +8,7 @@ export interface BlogItemProps {
     link?: string // for internal link use /example, for external link use https://example.com
     category?: string
     author?: string
-    tags?: TagProps[]
+    tags?: string[]
     ratio?: string
 }
 
