@@ -91,7 +91,7 @@ const LazyImageComponent: React.FC<LazyImageProps> = ({
                     )}
                     <Image
                         src={src}
-                        sizes={sizes}
+                        sizes={sizes || 'undefined'}
                         alt={alt || ''}
                         fill={true} // Fill the parent container
                         onLoad={handleImageLoad}

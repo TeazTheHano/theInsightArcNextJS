@@ -5,6 +5,9 @@ import "@/styles/index.scss"
 import GlobalLayout from "@/layouts/GlobalLayout";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { ModalProvider } from "@/hooks/useModal";
+import ReportWebVitals from "./reportWebVitals";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 // import "../i18n"
 
 
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
     // 'link3': '<link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
     'link3': '<link rel="preload" href="/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
   },
-  
+
 };
 
 export default function RootLayout({
@@ -41,10 +44,12 @@ export default function RootLayout({
         <ThemeProvider>
           <GlobalLayout>
             <ModalProvider>
-              {children}
+              {children}            
+              <ReportWebVitals />
             </ModalProvider>
           </GlobalLayout>
-        </ThemeProvider >
+        </ThemeProvider>
+        <SpeedInsights/>
       </body>
     </html >
   );

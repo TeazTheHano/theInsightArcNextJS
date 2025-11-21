@@ -57,6 +57,7 @@ const BlogSquareItemComponent: React.FC<BlogSquareItemProps> = ({
                         src={item.coverImageSquare || item.coverImage}
                         aspectRatio={ratio}
                         width={'100%'}
+                        sizes={JSON.stringify(maxWidth)}
                         maxHeight={maxHeight ? `${maxHeight}px` : undefined}
                         maxWidth={maxWidth ? `${maxWidth}px` : undefined}
                     />

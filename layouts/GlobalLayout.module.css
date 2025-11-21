@@ -11,6 +11,7 @@
 .contentContainerLayout {
     flex: 1;
     overflow-x: hidden;
+    min-height: 100dvh;
 }
 
 :global(body.size-and-spacing-md) .appLayout,
