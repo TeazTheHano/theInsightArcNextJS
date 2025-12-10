@@ -167,7 +167,7 @@ export const Text: React.FC<TextBoxProps & { variant: keyof typeof textVariants 
         textAlign: 'inherit' as const,
     }
     return (
-        <div className={`typography-system-${size}`}>
+        children ? <div className={`typography-system-${size}`}>
             <div
                 suppressHydrationWarning
                 className={`typography-system-${size} ${className ?? ''}`}
@@ -182,7 +182,7 @@ export const Text: React.FC<TextBoxProps & { variant: keyof typeof textVariants 
             >
                 {headline ? React.createElement(headline, { style: headlineStyle }, children) : children}
             </div>
-        </div>
+        </div> : null
     );
 };
 

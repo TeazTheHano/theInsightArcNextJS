@@ -56,7 +56,7 @@ export default function GlobalLayout({ children }: { children: React.ReactNode }
 
       {/* Content */}
       <div className={styles.contentContainerLayout}>
-        <main>
+        <main className={styles.mainLayout}>
           {children}
         </main>
 

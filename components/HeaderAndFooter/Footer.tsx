@@ -68,19 +68,6 @@ const Footer = memo(() => {
 
             <DivFlexRow style={{ flexWrap: 'wrap', columnGap: 'var(--Spacing-Spacing-XXL, 32px)', rowGap: 'var(--Spacing-Spacing-M, 24px)' }}>
 
-                <DivFlexColumn style={{ textDecoration: 'none' }}>
-                    <Link style={{ textDecoration: 'none' }} href="/progressPage" color='var(--Schemes-Tertiary)'>
-                        <TextTitleMedium children={t_common('progress-page')} color='var(--Schemes-Tertiary)' />
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/term" color='var(--Schemes-Tertiary)'>
-                        <TextTitleMedium children={t_common('term-page')} color='var(--Schemes-Tertiary)' />
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/contact" color='var(--Schemes-Tertiary)'>
-                        <TextTitleMedium children={t_common('contact-page')} color='var(--Schemes-Tertiary)' />
-                    </Link>
-
-                </DivFlexColumn>
-
                 <DivFlexColumn>
                     <ButtonDefault
                         children='@the_insightarc'
@@ -98,6 +85,19 @@ const Footer = memo(() => {
                         leadingIcon='mail'
                         onClick={handleEmailClick}
                     />
+                </DivFlexColumn>
+
+                <DivFlexColumn style={{ textDecoration: 'none', gap: 'var(--Spacing-Spacing-XXS, 8px)'}}>
+                    <Link style={{ textDecoration: 'none' }} href="/progressPage" color='var(--Schemes-Tertiary)'>
+                        <TextTitleMedium children={t_common('progress-page')} color='var(--Schemes-Tertiary)' />
+                    </Link>
+                    <Link style={{ textDecoration: 'none' }} href="/term" color='var(--Schemes-Tertiary)'>
+                        <TextTitleMedium children={t_common('term-page')} color='var(--Schemes-Tertiary)' />
+                    </Link>
+                    <Link style={{ textDecoration: 'none' }} href="/contact" color='var(--Schemes-Tertiary)'>
+                        <TextTitleMedium children={t_common('contact-page')} color='var(--Schemes-Tertiary)' />
+                    </Link>
+
                 </DivFlexColumn>
             </DivFlexRow>
 

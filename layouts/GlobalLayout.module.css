@@ -11,7 +11,8 @@
 .contentContainerLayout {
     flex: 1;
     overflow-x: hidden;
-    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
 :global(body.size-and-spacing-md) .appLayout,
@@ -19,7 +20,6 @@
     flex-direction: column;
 }
 
-.main {
-    min-height: 60dvh;
-    flex: 1;
+.mainLayout {
+    flex: inherit;
 }
