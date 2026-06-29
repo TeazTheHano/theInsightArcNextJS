@@ -1,7 +1,7 @@
 'use client'
 
-import { DivFlexColumn } from '@/components/LayoutDiv/LayoutDiv'
-import { TextBodyLarge, TextHeadlineLarge, TextTitleSmall } from '@/components/TextBox/textBox'
+import {  DivFlexColumn  } from '@/packages/shared/ui/ARC_layout';
+import {  TextBodyLarge, TextHeadlineLarge, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
 import useCheckScreenSize from '@/hooks/useCheckScreenSize'
 import React from 'react'
 import { useTranslation } from 'react-i18next'

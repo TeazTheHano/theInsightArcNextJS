@@ -2,18 +2,18 @@
 
 import { useTranslation } from 'react-i18next';
 import styles from './BlogList.module.css';
-import LazyImage from '../../components/LazyImage/lazyImage';
-import { DivFlexColumn } from '../../components/LayoutDiv/LayoutDiv';
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
+import {  DivFlexColumn  } from '@/packages/shared/ui/ARC_layout';
 import { BlogItem2RowGen } from '../../components/Blog/BlogListVariant';
-import { TextHeadlineLarge } from '../../components/TextBox/textBox';
-import Button from '../../components/Button/Button';
+import {  TextHeadlineLarge  } from '@/packages/shared/ui/ARC_typography';
+import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
 import { placeholderData } from '../../data/placeholderData';
-import Divider from '../../components/Divider/Divider';
+import { Divider } from '@/packages/shared/ui/ARC_layout';
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import type { BlogItemProps } from '../../data/type';
 import { fetchBlogList } from '../../utils/fetchContent';
 import useCheckScreenSize from '../../hooks/useCheckScreenSize';
-import ContainerWithLoading from '../../components/ContainerWithLoading/ContainerWithLoading';
+import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
 
 export default function BlogList() {
   const { t: t_blog } = useTranslation('blog')
@@ -72,7 +72,7 @@ export default function BlogList() {
           <DivFlexColumn>
             <TextHeadlineLarge children={t_blog('latestPost')} />
             <Button
-              label={t_blog('viewAll')}
+              
               children={t_blog('viewAll')}
               leadingIcon='arrow_outward'
               colorMode='Primary'

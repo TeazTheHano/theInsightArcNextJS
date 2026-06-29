@@ -1,12 +1,12 @@
 'use client'
 
-import { DivFlexColumn } from '@/components/LayoutDiv/LayoutDiv'
-import { TextBodyLarge, TextHeadlineLarge, TextTitleLarge, TextTitleSmall } from '@/components/TextBox/textBox'
+import {  DivFlexColumn  } from '@/packages/shared/ui/ARC_layout';
+import {  TextBodyLarge, TextHeadlineLarge, TextTitleLarge, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as Termdata from '@/public/locales/en-US/term.json'
 import useCheckScreenSize from '@/hooks/useCheckScreenSize'
-import LoadingIndicators from '@/components/Loading Indicators/LoadingIndicators'
+import { ARC_LoadingIndicators as LoadingIndicators } from '@/packages/shared/ui/ARC_loading'
 
 export default function page() {
     const { t: t_term } = useTranslation('term')

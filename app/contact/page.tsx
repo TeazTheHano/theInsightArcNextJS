@@ -1,9 +1,9 @@
 'use client'
 
-import Button from '@/components/Button/Button';
-import { DivFlexColumn, DivFlexRow, DivFlexRowSpaceEvenly } from '@/components/LayoutDiv/LayoutDiv';
-import LazyImage from '@/components/LazyImage/lazyImage';
-import { TextBodyLarge, TextBodyMedium, TextDisplaySmall, TextHeadlineLarge, TextHeadlineMedium, TextHeadlineSmall, TextTitleLarge, TextTitleSmall } from '@/components/TextBox/textBox';
+import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
+import {  DivFlexColumn, DivFlexRow, DivFlexRowSpaceEvenly  } from '@/packages/shared/ui/ARC_layout';
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
+import {  TextBodyLarge, TextBodyMedium, TextDisplaySmall, TextHeadlineLarge, TextHeadlineMedium, TextHeadlineSmall, TextTitleLarge, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
 import { useModal } from '@/hooks/useModal';
 import React from 'react'
 import { useTranslation } from 'react-i18next';

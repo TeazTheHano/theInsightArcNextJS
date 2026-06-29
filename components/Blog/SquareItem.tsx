@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useMemo } from 'react'
-import { DivFlexColumnSpaceBetween, DivFlexRow } from '../LayoutDiv/LayoutDiv'
-import LazyImage from '../LazyImage/lazyImage'
+import {  DivFlexColumnSpaceBetween, DivFlexRow  } from '@/packages/shared/ui/ARC_layout';
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
 import { IconGen } from '../../public/assets/icon/OtherIcon'
-import { TextBodyLarge, TextHeadlineMedium } from '../TextBox/textBox'
+import {  TextBodyLarge, TextHeadlineMedium  } from '@/packages/shared/ui/ARC_typography';
 
 import styles from './BlogComponent.module.css'
 import type { BlogItemProps } from '../../data/type'

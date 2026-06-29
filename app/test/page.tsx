@@ -1,7 +1,7 @@
 "use client"
 
-import { DivFlexColumn } from "@/components/LayoutDiv/LayoutDiv";
-import TextField from "@/components/TextInput/TextField";
+import {  DivFlexColumn  } from '@/packages/shared/ui/ARC_layout';
+import TextField from '@/packages/shared/ui/ARC_text_input/TextField';
 import ModalExample from "@/hooks/useModal.example";
 
 

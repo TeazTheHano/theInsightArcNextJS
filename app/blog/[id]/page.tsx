@@ -1,7 +1,7 @@
 "use client"
 
 import BlogDetail from "@/components/Blog/BlogDetail";
-import ContainerWithLoading from "@/components/ContainerWithLoading/ContainerWithLoading";
+import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
 import { fetchBlogList } from "@/utils/fetchContent";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";

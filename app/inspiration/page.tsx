@@ -1,18 +1,18 @@
 "use client"
 
 import { useEffect, useState, useCallback } from "react";
-import SegmentedButton from "../../components/Button/SegmentedButton";
-import { DivFlexColumn, DivFlexRow } from "../../components/LayoutDiv/LayoutDiv";
-import LazyImage from "../../components/LazyImage/lazyImage";
-import { TextBodyMedium, TextHeadlineLarge } from "../../components/TextBox/textBox";
+import SegmentedButton from '@/packages/shared/ui/ARC_button/SegmentedButton';
+import {  DivFlexColumn, DivFlexRow  } from '@/packages/shared/ui/ARC_layout';
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
+import {  TextBodyMedium, TextHeadlineLarge  } from '@/packages/shared/ui/ARC_typography';
 import { useTranslation } from 'react-i18next'
 
-import Button from "../../components/Button/Button";
+import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
 import styles from './Inspiration.module.css'
 import { IdealItemGen } from "../../components/Blog/IdealItem";
 import { type BlogItemProps } from "../../data/type";
 import { fetchInspirationList } from "../../utils/fetchContent";
-import ContainerWithLoading from "../../components/ContainerWithLoading/ContainerWithLoading";
+import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
 
 export default function Inspiration() {
   const { t: t_landingPage } = useTranslation('landingPage')
@@ -94,7 +94,7 @@ export default function Inspiration() {
               <Button
                 variantMode="Icon"
                 colorMode="Secondary"
-                label={showDescription ? t_inspiration("hide-description") : t_inspiration("show-description")}
+                ariaLabel={showDescription ? t_inspiration("hide-description") : t_inspiration("show-description")}
                 leadingIcon={showDescription ? 'comment_disabled_filled' : 'comment_filled'}
                 onClick={handleToggleDescription}
                 showTitleWhileHover

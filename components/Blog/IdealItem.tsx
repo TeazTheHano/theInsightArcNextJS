@@ -1,14 +1,14 @@
 
 
 import React, { useMemo, useCallback } from 'react'
-import { DivFlexColumn, DivFlexRow } from '../LayoutDiv/LayoutDiv'
-import LazyImage from '../LazyImage/lazyImage'
-import { TextBodyLarge, TextBodySmall, TextHeadlineSmall } from '../TextBox/textBox'
+import {  DivFlexColumn, DivFlexRow  } from '@/packages/shared/ui/ARC_layout';
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
+import {  TextBodyLarge, TextBodySmall, TextHeadlineSmall  } from '@/packages/shared/ui/ARC_typography';
 
 import styles from './BlogComponent.module.css'
 import type { BlogItemProps } from '../../data/type'
-import Button from '../Button/Button'
 import { useTranslation } from 'react-i18next'
+import { ARC_Button } from '@/packages/shared/ui/ARC_button'
 
 
 export interface IdealItemProps {
@@ -65,9 +65,9 @@ const IdealItem: React.FC<IdealItemProps> = ({
                             }
                         </DivFlexColumn>
 
-                        <Button
+                        <ARC_Button
                             showTitleWhileHover
-                            variantMode='Icon' label={t_toast('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
+                            variantMode='Icon' ariaLabel={t_toast('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
                     </DivFlexRow>
                 </div>
             </div>

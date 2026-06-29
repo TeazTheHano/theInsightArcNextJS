@@ -1,22 +1,22 @@
 "use client"
 
-import { DivFlexColumn, DivFlexRow, DivFlexRowSpaceBetweenCenter } from '../LayoutDiv/LayoutDiv'
-import { TextBodyMedium, TextTitleLarge, TextTitleMedium, TextTitleSmall } from '../TextBox/textBox'
+import {  DivFlexColumn, DivFlexRow, DivFlexRowSpaceBetweenCenter  } from '@/packages/shared/ui/ARC_layout';
+import {  TextBodyMedium, TextTitleLarge, TextTitleMedium, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
 import TheInsightArcLogo from '../../public/assets/icon/Logo'
-import Divider from '../Divider/Divider'
+import { Divider } from '@/packages/shared/ui/ARC_layout';
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 import styles from './NavigationUnit.module.css'
-import ButtonDefault from '../Button/Button'
-import TextField from '../TextInput/TextField'
+import { ARC_Button as ButtonDefault } from '@/packages/shared/ui/ARC_button';
+import TextField from '@/packages/shared/ui/ARC_text_input/TextField';
 import { type searchEngineOutputProps } from '../../utils/searchEngine'
 import { BlogItem2RowGen } from '../Blog/BlogListVariant'
 import type { BlogItemProps } from '../../data/type'
 import { useSearch } from '../../hooks/useSearch'
-import LoadingIndicators from '../Loading Indicators/LoadingIndicators'
+import { ARC_LoadingIndicators as LoadingIndicators } from '@/packages/shared/ui/ARC_loading'
 
 const navItemsData = [
     { href: '/landing', key: 'about-us', supText: '01' },
@@ -164,7 +164,7 @@ const NavigationUnit: React.FC = () => {
                     <DivFlexRow>
                         {/* SLOT FOR SEARCH */}
                         <ButtonDefault
-                            label={t_common('search')}
+                            ariaLabel={t_common('search')}
                             variantMode='Icon'
                             styleMode='Text'
                             leadingIcon='search'
@@ -177,7 +177,7 @@ const NavigationUnit: React.FC = () => {
                         />
                         {/* Hamburger menu */}
                         <ButtonDefault
-                            label={t_common('nav-menu')}
+                            children={t_common('nav-menu')}
                             onClick={() => {
                                 const newState = !isMenuOpen;
                                 setIsMenuOpen(newState);

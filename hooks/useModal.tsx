@@ -1,7 +1,8 @@
 "use client"
 
 import React, { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
-import Modal, { type ModalProps } from '../components/Modal/Modal';
+import Modal from '@/packages/shared/ui/ARC_modal/Modal';
+import { type ModalProps } from '@/packages/shared/ui/ARC_modal/Modal';
 
 /**
  * Mô tả một modal trong stack.

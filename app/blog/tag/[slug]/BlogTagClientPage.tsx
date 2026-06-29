@@ -2,19 +2,19 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import type { BlogItemProps } from "@/data/type";
-import { TextHeadlineLarge, TextTitleSmall } from "@/components/TextBox/textBox";
+import {  TextHeadlineLarge, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
 import { BlogItem2RowGen } from "@/components/Blog/BlogListVariant";
 import { useTranslation } from "react-i18next";
 import { fetchBlogList } from "@/utils/fetchContent";
 import { slugify } from "@/utils/slugify";
-import { DivFlexColumn, DivFlexRowSpaceBetweenCenter } from "@/components/LayoutDiv/LayoutDiv";
+import {  DivFlexColumn, DivFlexRowSpaceBetweenCenter  } from '@/packages/shared/ui/ARC_layout';
 import { useParams } from "next/navigation";
 
 import styles from '@/app/blog/BlogList.module.css'
 import useCheckScreenSize from "@/hooks/useCheckScreenSize";
-import Button from "@/components/Button/Button";
+import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
 import { useModal } from "@/hooks/useModal";
-import ShareModal from "@/components/Modal/ShareModal";
+import ShareModal from '@/packages/shared/ui/ARC_modal/ShareModal';
 
 export default function BlogTagClientPage() {
     const { t: t_common } = useTranslation('common')
@@ -74,7 +74,7 @@ export default function BlogTagClientPage() {
                         {t_common('tags')}: <span style={{ color: "var(--Schemes-Primary)" }}>{displayName}</span>
                     </TextHeadlineLarge>
                     <Button
-                        label={t_common('share')}
+                        
                         children={t_common('share')}
                         leadingIcon="share_filled"
                         variantMode={isInSM ? 'Icon' : 'Default'}

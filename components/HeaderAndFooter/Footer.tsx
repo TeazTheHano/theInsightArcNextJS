@@ -1,14 +1,15 @@
 "use client"
 
 import { useCallback, memo } from 'react';
-import ButtonDefault from '../Button/Button';
+
 import { useTheme, type Theme } from '../../hooks/useTheme';
-import { TextBodyLarge, TextBodySmall, TextHeadlineLarge, TextTitleLarge, TextTitleMedium } from '../TextBox/textBox';
-import { DivFlexColumn, DivFlexRow, DivFlexRowCenter, DivFlexRowSpaceBetween, DivFlexRowSpaceBetweenCenter } from '../LayoutDiv/LayoutDiv';
+import { TextBodyLarge, TextBodySmall, TextHeadlineLarge, TextTitleLarge, TextTitleMedium } from '@/packages/shared/ui/ARC_typography';
+import { DivFlexColumn, DivFlexRow, DivFlexRowCenter, DivFlexRowSpaceBetween, DivFlexRowSpaceBetweenCenter } from '@/packages/shared/ui/ARC_layout';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
-import SegmentedButton from '../Button/SegmentedButton';
-import Divider from '../Divider/Divider';
+import { ARC_Button, ARC_SegmentedButton as SegmentedButton } from '@/packages/shared/ui/ARC_button';
+import { ARC_Select as Select } from '@/packages/shared/ui/ARC_select';
+import { Divider } from '@/packages/shared/ui/ARC_layout';
 import Link from 'next/link';
 
 const THEME_OPTIONS = [
@@ -17,7 +18,7 @@ const THEME_OPTIONS = [
     { value: 'light-medium-contrast', label: 'Light Medium Contrast' },
     { value: 'light-high-contrast', label: 'Light High Contrast' },
     { value: 'system', label: 'Device Theme' },
-] as const;
+];
 
 const LANGUAGE_OPTIONS = [
     { label: 'English', value: 'en-US' },
@@ -40,8 +41,8 @@ const Footer = memo(() => {
         window.open('mailto:teaz.khuonganhkiet@gmail.com', '_blank');
     }, []);
 
-    const handleThemeChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-        setTheme(e.target.value as Theme);
+    const handleThemeChange = useCallback((value: string) => {
+        setTheme(value as Theme);
     }, [setTheme]);
 
     return (
@@ -69,17 +70,17 @@ const Footer = memo(() => {
             <DivFlexRow style={{ flexWrap: 'wrap', columnGap: 'var(--Spacing-Spacing-XXL, 32px)', rowGap: 'var(--Spacing-Spacing-M, 24px)' }}>
 
                 <DivFlexColumn>
-                    <ButtonDefault
+                    <ARC_Button
                         children='@the_insightarc'
-                        label='Contact us on instagram: @the_insightarc'
+                        ariaLabel='Contact us on instagram: @the_insightarc'
                         styleMode='Text'
                         colorMode='Primary'
                         leadingIcon='instagram'
                         onClick={handleInstagramClick}
                     />
-                    <ButtonDefault
+                    <ARC_Button
                         children='teaz.khuonganhkiet@gmail.com'
-                        label='Contact us via email: teaz.khuonganhkiet@gmail.com'
+                        ariaLabel='Contact us via email: teaz.khuonganhkiet@gmail.com'
                         styleMode='Text'
                         colorMode='Primary'
                         leadingIcon='mail'
@@ -111,27 +112,15 @@ const Footer = memo(() => {
                     compactMode
                 />
 
-                <label htmlFor="themeSet" style={{ display: 'none' }}>
-                    <TextBodySmall children={t_common('theme')} />
-                </label>
-                <select
-                    id="themeSet"
+                <Select
                     name="themeSet"
                     value={theme}
                     onChange={handleThemeChange}
-                    style={{
-                        padding: 'var(--Spacing-Spacing-XS)',
-                        backgroundColor: 'var(--Schemes-Surface-Variant)',
-                        color: 'var(--Schemes-On-Surface)',
-                    }}
-                    className='CM-border-radius-mode-default'
-                >
-                    {THEME_OPTIONS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
+                    options={THEME_OPTIONS}
+                    label={t_common('theme')}
+                    variant='Outlined'
+                    colorMode='Primary'
+                />
 
             </DivFlexColumn >
         </footer >

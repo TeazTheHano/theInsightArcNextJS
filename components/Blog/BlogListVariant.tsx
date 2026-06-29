@@ -1,13 +1,13 @@
 "use client"
 
 import React, { useMemo, useCallback } from 'react'
-import { DivFlexColumn, DivFlexColumnSpaceBetween, DivFlexRow } from '../LayoutDiv/LayoutDiv'
-import LazyImage from '../LazyImage/lazyImage'
-import { TextBodyLarge, TextBodyMedium, TextBodySmall, TextHeadlineSmall, TextLabelSmall, TextTitleMedium } from '../TextBox/textBox'
+import {  DivFlexColumn, DivFlexColumnSpaceBetween, DivFlexRow  } from '@/packages/shared/ui/ARC_layout';
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
+import {  TextBodyLarge, TextBodyMedium, TextBodySmall, TextHeadlineSmall, TextLabelSmall, TextTitleMedium  } from '@/packages/shared/ui/ARC_typography';
 
 import styles from './BlogComponent.module.css'
 import type { BlogItemProps } from '../../data/type'
-import Chip from '../Chip/Chip'
+import { ARC_Chip as Chip } from '@/packages/shared/ui/ARC_chip';
 import { useTranslation } from 'react-i18next'
 import DateDisplay from '../TimeDisplay/TimeDisplay'
 import Link from 'next/link'
@@ -128,7 +128,7 @@ const Blog2RowComponent: React.FC<Blog2RowComponentProps> = ({
                                             {item.tags.map((e, tagIndex) => (
                                                 <Chip
                                                     key={`${slugify(e)}_${tagIndex}`}
-                                                    label={e}
+                                                    
                                                     children={e}
                                                     onClick={() => handleTagClick(e)}
                                                     styleMode='FillFixed'

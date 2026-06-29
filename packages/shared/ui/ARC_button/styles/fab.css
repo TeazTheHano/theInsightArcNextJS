@@ -1,0 +1,134 @@
+/* ===========================================
+   COLOR APPLICATION
+   =========================================== */
+
+.ARC-fab-layoutLabel {
+    color: var(--Content);
+}
+
+.ARC-fab-selected .ARC-fab-layoutLabel {
+    color: var(--Content-Selected);
+}
+
+.ARC-fab-layoutButtonWrapper {
+    border: var(--Stroke-Unselected) solid var(--Content-Outline);
+    background-color: var(--BG);
+    color: var(--Content);
+    box-shadow: var(--shadow-3);
+}
+
+.ARC-fab-stateLayer {
+    background-color: var(--State-layer);
+}
+
+/* ===========================================
+   LAYOUT & TYPOGRAPHY
+   =========================================== */
+
+.ARC-fab-layoutIcon {
+    display: flex;
+    height: var(--Icon-BASE-Icon-size, 24px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.ARC-fab-layoutIcon * {
+    width: auto;
+    height: inherit;
+    object-fit: contain;
+}
+
+.ARC-fab-layoutButtonWrapper {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    padding: var(--Spacing-Spacing-XXS, 8px) var(--Spacing-Spacing-S, 16px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-Spacing-XS, 12px);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.ARC-fab-layoutButtonWrapper * {
+    transition: all 0.2s ease-in-out;
+    z-index: inherit;
+}
+
+.ARC-fab-stateLayer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0;
+}
+
+
+/* ===========================================
+   INTERACTION STATES
+   =========================================== */
+
+/* Hover */
+.ARC-fab-layoutButtonWrapper:hover {
+    box-shadow: var(--shadow-4);
+    z-index: 1;
+}
+
+.ARC-fab-layoutButtonWrapper:hover .ARC-fab-stateLayer {
+    opacity: var(--CM-state-layer-opacity-hovered);
+}
+
+/* Focus */
+
+.ARC-fab-layoutButtonWrapper:focus-visible {
+    box-shadow: var(--shadow-3);
+    z-index: 1;
+}
+
+.ARC-fab-layoutButtonWrapper:focus-visible .ARC-fab-stateLayer {
+    opacity: var(--CM-state-layer-opacity-focused);
+}
+
+/* Active */
+
+.ARC-fab-layoutButtonWrapper:active {
+    box-shadow: var(--shadow-3);
+    z-index: 1;
+}
+
+.ARC-fab-layoutButtonWrapper[dragged] {
+    box-shadow: var(--shadow-3);
+    z-index: 2;
+}
+
+.ARC-fab-layoutButtonWrapper:active .ARC-fab-stateLayer {
+    opacity: var(--CM-state-layer-opacity-pressed-and-dragged);
+}
+
+.ARC-fab-disabled {
+    filter: saturate(0);
+    box-shadow: var(--shadow-3);
+    opacity: var(--Appearance-Disabled);
+    pointer-events: none;
+}
+
+/* ===========================================
+   VARIANT MODES
+   =========================================== */
+
+.ARC-fab-layoutButtonWrapper.ARC-fab-variantModesFAB {
+    padding: var(--Spacing-Spacing-XXS);
+}
+
+.ARC-fab-layoutButtonWrapper.ARC-fab-variantModemFAB {
+    padding: var(--Spacing-Spacing-S);
+}
+
+.ARC-fab-layoutButtonWrapper.ARC-fab-variantModeFAB {
+    padding: var(--Spacing-Spacing-M);
+}

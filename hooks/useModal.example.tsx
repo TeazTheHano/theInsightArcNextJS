@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useModal } from './useModal';
-import Button from '../components/Button/Button';
+import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
 import type { ModalDescriptor } from './useModal';
 
 /**
@@ -40,8 +40,8 @@ const ModalExample: React.FC = () => {
                 element: () => (
                     <div>
                         <p>Count: {count}</p>
-                        <Button label='+c' onClick={startCount} />
-                        <Button label='Stop' onClick={stopCount} />
+                        <Button children='+c' onClick={startCount} />
+                        <Button children='Stop' onClick={stopCount} />
                     </div>
                 )
             });
@@ -62,7 +62,7 @@ const ModalExample: React.FC = () => {
             props: {
                 title: 'Modal Đơn Giản',
                 sizeMode: 'fit',
-                primaryAction: <Button label='close top' onClick={() => closeTopModal()} />,
+                primaryAction: <Button children='close top' onClick={() => closeTopModal()} />,
                 bgDark: true
             },
         });
@@ -73,8 +73,8 @@ const ModalExample: React.FC = () => {
             element: () => (
                 <div>
                     <p>Count: {count}</p>
-                    <Button label='+c' onClick={startCount} />
-                    <Button label='Stop' onClick={stopCount} />
+                    <Button children='+c' onClick={startCount} />
+                    <Button children='Stop' onClick={stopCount} />
                 </div>
             ),
             props: {
@@ -92,10 +92,10 @@ const ModalExample: React.FC = () => {
             <p>Số modal đang mở: {modalStack.length}</p>
 
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                <Button label="Mở Modal Đơn Giản" onClick={handleOpenSimpleModal} />
-                <Button label="Mở Modal Tùy Chỉnh" onClick={handleOpenCustomModal} />
-                <Button label='+c' onClick={startCount} />
-                <Button label='Stop' onClick={stopCount} />
+                <Button children="Mở Modal Đơn Giản" onClick={handleOpenSimpleModal} />
+                <Button children="Mở Modal Tùy Chỉnh" onClick={handleOpenCustomModal} />
+                <Button children='+c' onClick={startCount} />
+                <Button children='Stop' onClick={stopCount} />
             </div>
         </div>
     );

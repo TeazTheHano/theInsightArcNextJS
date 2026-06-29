@@ -1,0 +1,142 @@
+/* ===========================================
+   COLOR APPLICATION
+   =========================================== */
+
+.ARC-chip-layoutLabel {
+    color: var(--Content);
+}
+
+.ARC-chip-selected .ARC-chip-layoutLabel {
+    color: var(--Content-Selected);
+}
+
+.ARC-chip-layoutButtonWrapper {
+    border: var(--Stroke-Unselected) solid var(--Content-Outline);
+    background-color: var(--BG);
+    color: var(--Content);
+    box-shadow: var(--Shadow-Enabled);
+}
+
+.ARC-chip-selected.ARC-chip-layoutButtonWrapper {
+    border: var(--Stroke-Selected) solid var(--Content-Outline-Selected);
+    background-color: var(--BG-Selected);
+    color: var(--Content-Selected);
+    box-shadow: var(--Shadow-Enabled);
+}
+
+.ARC-chip-stateLayer {
+    background-color: var(--State-layer);
+}
+
+.ARC-chip-selected .ARC-chip-stateLayer {
+    background-color: var(--State-layer-Selected);
+}
+
+.ARC-chip-badge {
+    background-color: var(--Content-Selected);
+}
+
+/* ===========================================
+   LAYOUT & TYPOGRAPHY
+   =========================================== */
+
+.ARC-chip-layoutLabel {
+    min-height: var(--Icon-BASE-Icon-size, 24px);
+    padding: 0 var(--Spacing-Spacing-XXS, 4px);
+}
+
+.ARC-chip-layoutIcon {
+    display: flex;
+    height: var(--Icon-BASE-Icon-size, 24px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.ARC-chip-layoutIcon * {
+    width: auto;
+    height: inherit;
+    object-fit: contain;
+}
+
+.ARC-chip-layoutButtonWrapper {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    padding: var(--Spacing-Spacing-XXXS, 4px) var(--Spacing-Spacing-XS, 12px);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.ARC-chip-layoutButtonWrapper * {
+    transition: all 0.2s ease-in-out;
+    z-index: inherit;
+}
+
+.ARC-chip-stateLayer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0;
+}
+
+.ARC-chip-badge {
+    height: 4px;
+    width: 4px;
+    border-radius: 100%;
+}
+
+/* ===========================================
+   INTERACTION STATES
+   =========================================== */
+
+/* Hover */
+.ARC-chip-layoutButtonWrapper:hover {
+    box-shadow: var(--Shadow-Hovered);
+    z-index: 1;
+}
+
+.ARC-chip-layoutButtonWrapper:hover .ARC-chip-stateLayer {
+    opacity: var(--CM-state-layer-opacity-hovered);
+}
+
+/* Focus */
+
+.ARC-chip-layoutButtonWrapper:focus-visible {
+    box-shadow: var(--Shadow-Focused);
+    z-index: 1;
+}
+
+.ARC-chip-layoutButtonWrapper:focus-visible .ARC-chip-stateLayer {
+    opacity: var(--CM-state-layer-opacity-focused);
+}
+
+/* Active */
+
+.ARC-chip-layoutButtonWrapper:active {
+    box-shadow: var(--Shadow-Pressed);
+    z-index: 1;
+}
+
+.ARC-chip-layoutButtonWrapper[dragged] {
+    box-shadow: var(--Shadow-Dragged);
+    z-index: 2;
+}
+
+.ARC-chip-layoutButtonWrapper:active .ARC-chip-stateLayer {
+    opacity: var(--CM-state-layer-opacity-pressed-and-dragged);
+}
+
+.ARC-chip-disabled {
+    filter: saturate(0);
+    box-shadow: var(--Shadow-Disabled);
+    opacity: var(--Appearance-Disabled);
+    pointer-events: none;
+}

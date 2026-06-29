@@ -1,0 +1,88 @@
+/* ==========================================================================
+   ARC SELECT & DATALIST DROPDOWN STYLES
+   ========================================================================== */
+
+.ui-arc-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ui-arc-select-label {
+    font-size: var(--Label-Font-Size, 14px);
+    font-weight: 500;
+    color: var(--Schemes-On-Surface-Variant);
+    margin-bottom: var(--Spacing-Spacing-XXXS, 4px);
+    padding-left: var(--Spacing-Spacing-XS, 12px);
+}
+
+/* Dropdown list container with premium glassmorphism and absolute positioning */
+.ui-arc-select-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-sizing: border-box;
+    background-color: var(--Schemes-Surface-Container);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    animation: ui-arc-dropdown-fade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: top;
+    padding: var(--Spacing-Spacing-XXXS, 4px);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Border Radius for Dropdown matching the trigger */
+.ui-arc-select-dropdown.radius-none {
+    border-radius: var(--Border-radius-BR-none, 0px);
+}
+.ui-arc-select-dropdown.radius-default {
+    border-radius: var(--Border-radius-BR-M, 12px);
+}
+.ui-arc-select-dropdown.radius-rounded {
+    border-radius: var(--Border-radius-BR-M, 12px);
+}
+
+/* Options Scrollbar styling */
+.ui-arc-select-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+.ui-arc-select-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+.ui-arc-select-dropdown::-webkit-scrollbar-thumb {
+    background: var(--Schemes-Outline-Variant);
+    border-radius: 3px;
+}
+
+.ui-arc-select-option-wrapper {
+    width: 100%;
+}
+
+/* Trailing Chevron arrow icon */
+.ui-arc-select-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--Schemes-On-Surface-Variant);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ui-arc-select-arrow.open {
+    transform: rotate(180deg);
+    color: var(--Schemes-Primary);
+}
+
+/* Fade in animations */
+@keyframes ui-arc-dropdown-fade {
+    from { opacity: 0; transform: translateY(-8px) scaleY(0.95); }
+    to { opacity: 1; transform: translateY(0) scaleY(1); }
+}

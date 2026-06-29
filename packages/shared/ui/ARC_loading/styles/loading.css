@@ -1,0 +1,13 @@
+.ARC-loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--Schemes-Outline);
+    border-top: 2px solid var(--Schemes-Primary);
+    border-radius: 50%;
+    animation: ARC-spin 1s linear infinite;
+}
+
+@keyframes ARC-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

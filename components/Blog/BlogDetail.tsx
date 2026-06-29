@@ -4,21 +4,21 @@ import React, { useEffect, useState } from "react";
 import { marked } from "marked";
 import type { BlogItemProps } from "../../data/type";
 import DateDisplay from "../TimeDisplay/TimeDisplay";
-import LazyImage from "../LazyImage/lazyImage";
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
 import { useTranslation } from "react-i18next";
-import { TextBodyLarge, TextBodyMedium, TextHeadlineLarge, TextLabelSmall, TextTitleSmall } from "../TextBox/textBox";
-import { DivFlexColumn, DivFlexRow, DivFlexRowCenter } from "../LayoutDiv/LayoutDiv";
+import {  TextBodyLarge, TextBodyMedium, TextHeadlineLarge, TextLabelSmall, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
+import {  DivFlexColumn, DivFlexRow, DivFlexRowCenter  } from '@/packages/shared/ui/ARC_layout';
 
 import styles from './BlogComponent.module.css';
-import Button from "../Button/Button";
+import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
 import mermaid from "mermaid";
 import { fetchBlogContent } from "../../utils/fetchContent";
 import { SEOhead } from "./SEOhead";
 import useCheckScreenSize from "../../hooks/useCheckScreenSize";
-import ContainerWithLoading from "../ContainerWithLoading/ContainerWithLoading";
+import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
 import { useModal } from "@/hooks/useModal";
-import ShareModal from "../Modal/ShareModal";
-import Chip from "../Chip/Chip";
+import ShareModal from '@/packages/shared/ui/ARC_modal/ShareModal';
+import { ARC_Chip as Chip } from '@/packages/shared/ui/ARC_chip';
 import { slugify } from "@/utils/slugify";
 
 marked.setOptions({ async: false });
@@ -107,7 +107,7 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                                 {metadata.tags?.map((e, tagIndex) => (
                                     <Chip
                                         key={`${slugify(e)}_${tagIndex}`}
-                                        label={e}
+                                        
                                         children={e}
                                         onClick={() => { window.location.href = `/blog/tag/${slugify(e)}` }}
                                         styleMode='FillFixed'
@@ -121,7 +121,7 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                         </DivFlexRow>
                     </DivFlexColumn>
                     <Button
-                        label={t_common('share')}
+                        
                         children={t_common('share')}
                         leadingIcon="share_filled"
                         variantMode={isInSM ? 'Default' : 'Icon'}
@@ -149,14 +149,14 @@ const BlogDetail: React.FC<{ metadata: BlogItemProps }> = ({ metadata }) => {
                     gap: 'var(--Spacing-Spacing-XS, 8px)',
                 }}>
                     <Button
-                        label={t_common('share')}
+                        
                         children={t_common('share')}
                         leadingIcon="share_filled"
                         onClick={handleShare}
                     />
 
                     <Button
-                        label={t_common('report')}
+                        ariaLabel={t_common('report')}
                         variantMode="Icon"
                         colorMode="Error"
                         children={`${t_common('report')} ${t_common('blog')}`}

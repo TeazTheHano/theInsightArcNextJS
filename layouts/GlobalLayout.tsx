@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useTheme } from '../hooks/useTheme';
 import NavigationUnit from '../components/NavigationUnit/NavigationUnit';
 import Footer from '../components/HeaderAndFooter/Footer';
-import Divider from '../components/Divider/Divider';
+import { Divider } from '@/packages/shared/ui/ARC_layout';
 import CircleFollowMouse from '../components/CircleFollowMouse/CircleFollowMouse';
 
 import styles from './GlobalLayout.module.css'

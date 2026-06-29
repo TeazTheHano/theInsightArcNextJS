@@ -1,0 +1,191 @@
+/* ===========================================
+   COLOR APPLICATION
+   =========================================== */
+.ARC-textInput-label {
+    color: var(--Schemes-On-Surface-Variant)
+}
+
+.ARC-textInput-leadingIcon {
+    color: var(--Schemes-On-Surface-Variant);
+}
+
+.ARC-textInput-inputField {
+    color: var(--Schemes-On-Surface);
+}
+
+.ARC-textInput-stateLayer {
+    background-color: var(--Schemes-On-Surface-Variant);
+}
+
+/* ===========================================
+   LAYOUT & TYPOGRAPHY
+   =========================================== */
+
+.ARC-textInput-component {
+    height: fit-content;
+    position: relative;
+    width: 100%;
+}
+
+.ARC-textInput-main {
+    padding: var(--Spacing-Spacing-XS) var(--Spacing-Spacing-XXXS) var(--Spacing-Spacing-XS) 0;
+}
+
+.ARC-textInput-leadingIcon {
+    margin: var(--Spacing-Spacing-XXS, 8px) 0 var(--Spacing-Spacing-XXS, 8px) var(--Spacing-Spacing-XXS, 8px);
+    width: var(--Icon-Icon-Base, 24px);
+    height: var(--Icon-Icon-Base, 24px);
+}
+
+.ARC-textInput-icon {
+    width: var(--Icon-Icon-Base, 24px);
+}
+
+.ARC-textInput-inputRow {
+    padding: var(--Spacing-Spacing-0, 0) var(--Spacing-Spacing-XS, 12px);
+    position: relative;
+    flex: 1;
+    min-width: 10px;
+    max-width: none;
+}
+
+.ARC-textInput-label {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.ARC-textInput-labelCompactMode {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    top: 10%;
+}
+
+.ARC-textInput-inputField {
+    font-family: var(--Body-Family, SpaceGrotesk);
+    font-size: var(--Body-Font-Size, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Body-Line-height, 28px);
+    letter-spacing: var(--Body-Letter-spacing, 0.5px);
+    background: transparent;
+    border: none;
+    width: 100%;
+    z-index: 1;
+}
+
+.ARC-textInput-iconHeightKeeper {
+    height: var(--Icon-Icon-Base, 24px);
+    width: 0px;
+    padding: var(--Spacing-Spacing-XXS, 8px) 0;
+    box-sizing: content-box !important;
+}
+
+.ARC-textInput-perfectLengthSizer {
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none !important;
+}
+
+.ARC-textInput-stateLayer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ARC-textInput-divider {
+    position: absolute;
+    bottom: 0;
+    left: var(--Spacing-Spacing-XS);
+    width: calc(100% - var(--Spacing-Spacing-XS) - var(--Spacing-Spacing-XS)) !important;
+}
+
+/* ===========================================
+   INTERACTION STATES - COLOR CHANGES
+   =========================================== */
+
+/* Hover */
+.ARC-textInput-component:hover {
+    z-index: 1;
+}
+
+.ARC-textInput-component:hover .ARC-textInput-stateLayer {
+    opacity: var(--CM-state-layer-opacity-hovered);
+}
+
+/* Focus */
+.ARC-textInput-component.ARC-textInput-focused .ARC-textInput-leadingIcon,
+.ARC-textInput-inputField:focus {
+    color: var(--Schemes-Primary);
+    outline: none;
+}
+
+.ARC-textInput-Outlined.ARC-textInput-focused .ARC-textInput-main {
+    border-color: var(--Schemes-Primary);
+    border-width: var(--Stroke-Stroke-2, 2px);
+}
+
+.ARC-textInput-component.ARC-textInput-focused .ARC-textInput-label {
+    color: var(--Schemes-Primary);
+}
+
+.ARC-textInput-component.ARC-textInput-error .ARC-textInput-label,
+.ARC-textInput-component.ARC-textInput-error .ARC-textInput-leadingIcon,
+.ARC-textInput-component.ARC-textInput-error .ARC-textInput-inputField {
+    color: var(--Schemes-Error) !important;
+}
+
+.ARC-textInput-component.ARC-textInput-error .ARC-textInput-divider {
+    background-color: var(--Schemes-Error) !important;
+}
+
+.ARC-textInput-component.ARC-textInput-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.38;
+}
+
+/* ===========================================
+   VARIANT MODES
+   =========================================== */
+
+.ARC-textInput-Outlined .ARC-textInput-main {
+    border-style: solid;
+    border-width: var(--Stroke-Stroke-1);
+    border-color: var(--Schemes-Outline);
+}
+
+.ARC-textInput-Filled {
+    background-color: var(--Schemes-Surface-Container);
+}
+
+/* Compact mode */
+.ARC-textInput-compactMode .ARC-textInput-label {
+    display: none;
+}
+
+.ARC-textInput-compactMode .ARC-textInput-labelCompactMode {
+    display: block;
+}
+
+.ARC-textInput-compactMode .ARC-textInput-main {
+    padding: 0 var(--Spacing-Spacing-XXXS, 4px) 0 0;
+}
+
+/* width mode */
+
+.ARC-textInput-widthMode-fix-perfect-length .ARC-textInput-textField {
+    width: 100%;
+}
+
+.ARC-textInput-widthMode-fix-perfect-length.ARC-textInput-component {
+    width: fit-content !important;
+}

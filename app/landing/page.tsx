@@ -2,11 +2,11 @@
 
 import styles from './LandingPage.module.css'
 
-import LazyImage from '../../components/LazyImage/lazyImage'
-import { DivFlexColumn, DivFlexRow } from '../../components/LayoutDiv/LayoutDiv'
-import ButtonDefault from '../../components/Button/Button'
-import { TextBodyMedium, TextDisplayMedium, TextHeadlineLarge, TextHeadlineSmall } from '../../components/TextBox/textBox'
-import Divider from '../../components/Divider/Divider'
+import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
+import {  DivFlexColumn, DivFlexRow  } from '@/packages/shared/ui/ARC_layout';
+import { ARC_Button as ButtonDefault } from '@/packages/shared/ui/ARC_button';
+import {  TextBodyMedium, TextDisplayMedium, TextHeadlineLarge, TextHeadlineSmall  } from '@/packages/shared/ui/ARC_typography';
+import { Divider } from '@/packages/shared/ui/ARC_layout';
 import { Trans, useTranslation } from 'react-i18next'
 import { BlogItem2RowGen } from '../../components/Blog/BlogListVariant'
 import type { BlogItemProps } from '../../data/type'
@@ -59,7 +59,7 @@ function LandingPage() {
                     <ButtonDefault
                         variantMode='Extreme'
                         children={t_landingPage('section-1-button')}
-                        label={t_landingPage('section-1-button')}
+                        
                         onClick={() => {
                             router.push('/contact')
                         }}
@@ -132,7 +132,7 @@ function LandingPage() {
                         <TextHeadlineLarge children={t_landingPage('section-4-title')} />
                         <ButtonDefault
                             children={t_landingPage('section-4-button')}
-                            label={t_landingPage('section-4-button')}
+                            
                             onClick={() => { router.push('/inspiration') }}
                             leadingIcon={'arrow_outward'}
                         />
@@ -160,7 +160,7 @@ function LandingPage() {
                         <TextHeadlineLarge children={t_landingPage('section-5-title')} />
                         <ButtonDefault
                             children={t_landingPage('section-5-button')}
-                            label={t_landingPage('section-5-button')}
+                            
                             onClick={() => { router.push('/blog') }}
                             leadingIcon={'arrow_outward'}
                         />
@@ -188,7 +188,7 @@ function LandingPage() {
                         <TextHeadlineLarge children={t_landingPage('section-6-title')} />
                         <ButtonDefault
                             children={t_landingPage('section-6-button')}
-                            label={t_landingPage('section-6-button')}
+                            
                             onClick={() => { window.location.href = '/game' }}
                             leadingIcon={'arrow_outward'}
                         />

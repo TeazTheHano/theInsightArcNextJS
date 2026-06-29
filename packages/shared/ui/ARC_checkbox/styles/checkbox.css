@@ -1,0 +1,361 @@
+/* ==========================================================================
+   ARC CHECKBOX & RADIO SPECIFIC STYLES
+   ========================================================================== */
+
+
+
+
+
+
+/* ===========================================
+   SMART FALLBACK TOKENS (M3)
+   =========================================== */
+/* 1. LIGHT MODE (DEFAULT) */
+.ui-arc-checkbox-container {
+    /* Mix Bases */
+    --arc-mix-bg: transparent; /* Light mode: transparent lets the light surface show through */
+    --arc-mix-text: black;     /* Light mode: dark text on light containers */
+
+    /* Base Colors */
+    --local-Primary: var(--Schemes-Primary, #386a20);
+    --local-Secondary: var(--Schemes-Secondary, #55624c);
+    --local-Tertiary: var(--Schemes-Tertiary, #386666);
+    --local-Error: var(--Schemes-Error, #ba1a1a);
+    
+    /* Primary Derivatives */
+    --local-On-Primary: var(--Schemes-On-Primary, #ffffff);
+    --local-Primary-Container: var(--Schemes-Primary-Container, color-mix(in srgb, var(--local-Primary) 15%, var(--arc-mix-bg)));
+    --local-On-Primary-Container: var(--Schemes-On-Primary-Container, color-mix(in srgb, var(--local-Primary) 20%, var(--arc-mix-text)));
+    --local-Primary-Fixed: var(--Schemes-Primary-Fixed, color-mix(in srgb, var(--local-Primary) 25%, var(--arc-mix-bg)));
+    --local-Primary-Fixed-Dim: var(--Schemes-Primary-Fixed-Dim, color-mix(in srgb, var(--local-Primary) 35%, var(--arc-mix-bg)));
+    --local-On-Primary-Fixed: var(--Schemes-On-Primary-Fixed, color-mix(in srgb, var(--local-Primary) 20%, var(--arc-mix-text)));
+    --local-On-Primary-Fixed-Variant: var(--Schemes-On-Primary-Fixed-Variant, color-mix(in srgb, var(--local-Primary) 35%, var(--arc-mix-text)));
+
+    /* Secondary Derivatives */
+    --local-On-Secondary: var(--Schemes-On-Secondary, #ffffff);
+    --local-Secondary-Container: var(--Schemes-Secondary-Container, color-mix(in srgb, var(--local-Secondary) 15%, var(--arc-mix-bg)));
+    --local-On-Secondary-Container: var(--Schemes-On-Secondary-Container, color-mix(in srgb, var(--local-Secondary) 20%, var(--arc-mix-text)));
+
+    /* Tertiary Derivatives */
+    --local-On-Tertiary: var(--Schemes-On-Tertiary, #ffffff);
+    --local-Tertiary-Container: var(--Schemes-Tertiary-Container, color-mix(in srgb, var(--local-Tertiary) 15%, var(--arc-mix-bg)));
+    --local-On-Tertiary-Container: var(--Schemes-On-Tertiary-Container, color-mix(in srgb, var(--local-Tertiary) 20%, var(--arc-mix-text)));
+
+    /* Error Derivatives */
+    --local-On-Error: var(--Schemes-On-Error, #ffffff);
+    --local-Error-Container: var(--Schemes-Error-Container, color-mix(in srgb, var(--local-Error) 15%, var(--arc-mix-bg)));
+    --local-On-Error-Container: var(--Schemes-On-Error-Container, color-mix(in srgb, var(--local-Error) 20%, var(--arc-mix-text)));
+
+    /* Surfaces & Outlines (Static Fallbacks) */
+    --local-Outline: var(--Schemes-Outline, #74796e);
+    --local-Outline-Variant: var(--Schemes-Outline-Variant, #c3c8bc);
+    --local-Surface-Variant: var(--Schemes-Surface-Variant, #f0f3ea);
+    --local-Surface-Dim: var(--Schemes-Surface-Dim, #dfe4d6);
+    --local-Surface-Container: var(--Schemes-Surface-Container, #eff1e8);
+    --local-Surface-Container-Low: var(--Schemes-Surface-Container-Low, #f5f7ed);
+    --local-Surface-Container-High: var(--Schemes-Surface-Container-High, #e9ece1);
+    --local-Surface-Container-Highest: var(--Schemes-Surface-Container-Highest, #e3e6db);
+    --local-On-Surface: var(--Schemes-On-Surface, #1a1c18);
+    --local-On-Surface-Variant: var(--Schemes-On-Surface-Variant, #43493e);
+}
+
+/* 2. DARK MODE OVERRIDES */
+.is-dark .ui-arc-checkbox-container,
+.dark .ui-arc-checkbox-container,
+[data-theme="dark"] .ui-arc-checkbox-container {
+    /* In dark mode, transparent makes colors muddy against the black background.
+       Mixing with white creates the bright, high-contrast pastel containers expected in M3 Dark Mode. */
+    --arc-mix-bg: white;
+    --arc-mix-text: black; /* Text remains dark because the container background is bright */
+}
+
+.ui-arc-checkbox-container {
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: var(--ui-font-family, 'Space Grotesk', sans-serif);
+}
+
+/* Accessible Interactive Label Wrapper */
+.ui-arc-checkbox-wrapper {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* top-align for multi-line labels */
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    outline: none;
+    gap: 8px;
+    padding: 4px 0;
+    box-sizing: border-box;
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Visually Hidden Standard Accessible Input */
+.ui-arc-checkbox-native {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* The interactive button (contains the state layer and visual core) */
+.ui-arc-checkbox-button {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* Micro-animating interactive state layer circle */
+.ui-arc-checkbox-state-layer {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--ui-radius-full, 9999px);
+    background-color: var(--local-Primary);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The visual SVG container */
+.ui-arc-checkbox-core {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--local-Outline);
+    z-index: 1;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ui-arc-checkbox-core svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* --- Interactive State Triggers --- */
+
+/* Hover State */
+.ui-arc-checkbox-wrapper:not(.disabled):hover .ui-arc-checkbox-state-layer {
+    opacity: 0.12;
+}
+
+/* Focus State */
+.ui-arc-checkbox-native:focus-visible~.ui-arc-checkbox-button .ui-arc-checkbox-state-layer {
+    opacity: 0.28;
+}
+
+/* Pressed/Active State */
+.ui-arc-checkbox-wrapper:not(.disabled):active .ui-arc-checkbox-state-layer {
+    opacity: 0.20;
+}
+
+/* --- Figma State Prop Overrides (for manual stateMode overrides) --- */
+.ui-arc-checkbox-wrapper.state-hovered:not(.disabled) .ui-arc-checkbox-state-layer {
+    opacity: 0.12 !important;
+}
+
+.ui-arc-checkbox-wrapper.state-focused:not(.disabled) .ui-arc-checkbox-state-layer {
+    opacity: 0.28 !important;
+}
+
+.ui-arc-checkbox-wrapper.state-pressed:not(.disabled) .ui-arc-checkbox-state-layer {
+    opacity: 0.20 !important;
+}
+
+.ui-arc-checkbox-wrapper.state-disabled,
+.ui-arc-checkbox-wrapper.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.38 !important;
+}
+
+.ui-arc-checkbox-wrapper.state-disabled .ui-arc-checkbox-state-layer,
+.ui-arc-checkbox-wrapper.disabled .ui-arc-checkbox-state-layer {
+    opacity: 0 !important;
+}
+
+/* --- Color and Semantic Variants --- */
+
+/* Normal Selected / Checked State */
+.ui-arc-checkbox-wrapper.selected:not(.error) .ui-arc-checkbox-core {
+    color: var(--local-Primary);
+}
+
+/* Normal Unselected / Empty State */
+.ui-arc-checkbox-wrapper.unselected:not(.error) .ui-arc-checkbox-core {
+    color: var(--local-Outline);
+}
+
+/* Normal Indeterminate State */
+.ui-arc-checkbox-wrapper.indeterminate:not(.error) .ui-arc-checkbox-core {
+    color: var(--local-Primary);
+}
+
+/* Normal Waiting / Pending State */
+.ui-arc-checkbox-wrapper.waiting:not(.error) .ui-arc-checkbox-core {
+    color: var(--local-Primary);
+}
+
+/* --- Error Variant --- */
+.ui-arc-checkbox-wrapper.error .ui-arc-checkbox-state-layer {
+    background-color: var(--local-Error);
+}
+
+.ui-arc-checkbox-wrapper.error .ui-arc-checkbox-core {
+    color: var(--local-Error) !important;
+}
+
+/* --- SVG SVG Elements Styling --- */
+
+/* SVGs should morph smoothly during transitions */
+.ui-arc-checkbox-core svg rect,
+.ui-arc-checkbox-core svg circle,
+.ui-arc-checkbox-core svg path {
+    transition: fill 0.2s ease, stroke 0.2s ease, stroke-dasharray 0.2s ease;
+}
+
+/* --- BOX STYLE MAPPINGS --- */
+
+/* Filled Box Checked (Selected) */
+.ui-arc-checkbox-wrapper.box.filled.selected .ui-arc-checkbox-box-bg {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.ui-arc-checkbox-wrapper.box.filled.selected .ui-arc-checkbox-box-mark {
+    stroke: var(--ui-bg, #ffffff);
+}
+
+/* Outlined Box Checked (Selected) */
+.ui-arc-checkbox-wrapper.box.outlined.selected .ui-arc-checkbox-box-bg {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+.ui-arc-checkbox-wrapper.box.outlined.selected .ui-arc-checkbox-box-mark {
+    stroke: currentColor;
+}
+
+/* Filled Box Indeterminate */
+.ui-arc-checkbox-wrapper.box.filled.indeterminate .ui-arc-checkbox-box-bg {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.ui-arc-checkbox-wrapper.box.filled.indeterminate .ui-arc-checkbox-box-mark {
+    stroke: var(--ui-bg, #ffffff);
+}
+
+/* Outlined Box Indeterminate */
+.ui-arc-checkbox-wrapper.box.outlined.indeterminate .ui-arc-checkbox-box-bg {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+.ui-arc-checkbox-wrapper.box.outlined.indeterminate .ui-arc-checkbox-box-mark {
+    stroke: currentColor;
+}
+
+/* Box Unselected Style (Filled visual behaves as outlined for unselected) */
+.ui-arc-checkbox-wrapper.box.unselected .ui-arc-checkbox-box-bg {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+/* --- RADIO STYLE MAPPINGS --- */
+
+/* Filled Radio Checked (Selected) */
+.ui-arc-checkbox-wrapper.radio.filled.selected .ui-arc-checkbox-radio-outer {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.ui-arc-checkbox-wrapper.radio.filled.selected .ui-arc-checkbox-radio-inner {
+    fill: var(--ui-bg, #ffffff);
+}
+
+/* Outlined Radio Checked (Selected) */
+.ui-arc-checkbox-wrapper.radio.outlined.selected .ui-arc-checkbox-radio-outer {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+.ui-arc-checkbox-wrapper.radio.outlined.selected .ui-arc-checkbox-radio-inner {
+    fill: currentColor;
+}
+
+/* Filled Radio Unselected (Behaves as a solid circle in figma design!) */
+.ui-arc-checkbox-wrapper.radio.filled.unselected .ui-arc-checkbox-radio-outer {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+/* Outlined Radio Unselected */
+.ui-arc-checkbox-wrapper.radio.outlined.unselected .ui-arc-checkbox-radio-outer {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+/* Radio Indeterminate Style (Semicircle overlay) */
+.ui-arc-checkbox-wrapper.radio.selected.indeterminate .ui-arc-checkbox-radio-outer {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+/* --- Typography / Label Group CSS --- */
+
+.ui-arc-checkbox-label-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 2px;
+    /* slight visual balance offset */
+}
+
+.ui-arc-checkbox-label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    /* color: var(--local-On-Surface); */
+    transition: color 0.2s ease;
+}
+
+/* If parent wrapper is checked, style label accordingly if desired */
+.ui-arc-checkbox-wrapper.disabled .ui-arc-checkbox-label {
+    color: var(--ui-text-muted, #94a3b8);
+}
+
+.ui-arc-checkbox-wrapper.error .ui-arc-checkbox-label {
+    color: var(--local-Error);
+}
+
+.ui-arc-checkbox-support-text {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--local-On-Surface-Variant);
+    margin-top: 2px;
+    transition: color 0.2s ease;
+}
+
+.ui-arc-checkbox-wrapper.disabled .ui-arc-checkbox-support-text {
+    color: var(--ui-text-muted, #94a3b8);
+}
+
+.ui-arc-checkbox-wrapper.error .ui-arc-checkbox-support-text {
+    color: var(--local-Error);
+}

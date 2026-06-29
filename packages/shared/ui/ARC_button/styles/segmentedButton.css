@@ -1,0 +1,4 @@
+.ARC-segmented-buttonWrapper {
+    padding: var(--Spacing-Spacing-XXXS);
+    background-color: var(--Fill-Content);
+}
