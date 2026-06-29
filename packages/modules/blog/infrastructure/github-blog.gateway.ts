@@ -44,7 +44,7 @@ export class GitHubBlogGateway implements IBlogGateway {
   async getBlogList(): Promise<BlogItemContract[]> {
     const res = await fetch(`${BASE_PATH}/metadata.json?ref=${CONFIG.GITHUB.BRANCH}`, { 
         headers: getHeaders("application/vnd.github.v3.raw+json"),
-        cache: 'no-store' 
+        next: { revalidate: 60 } 
     });
     if (!res.ok) throw new Error("Failed to fetch Blog List");
     
@@ -62,7 +62,7 @@ export class GitHubBlogGateway implements IBlogGateway {
   async getBlogDetail(slug: string): Promise<BlogDetailContract> {
     const res = await fetch(`${BASE_PATH}/${slug}.md?ref=${CONFIG.GITHUB.BRANCH}`, { 
         headers: getHeaders("application/vnd.github.v3+json"),
-        cache: 'no-store'
+        next: { revalidate: 60 }
     });
     if (!res.ok) throw new Error(`Failed to fetch Blog Detail for ${slug}`);
     

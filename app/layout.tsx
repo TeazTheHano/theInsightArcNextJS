@@ -25,6 +25,22 @@ import { QueryProvider } from "@/packages/shared/providers/QueryProvider";
 export const metadata: Metadata = {
   title: "The insightArc",
   description: "Tech, Design and Culture explore",
+  metadataBase: new URL('https://theinsightarc.com'),
+  openGraph: {
+    title: "The insightArc",
+    description: "Tech, Design and Culture explore",
+    url: 'https://theinsightarc.com',
+    siteName: 'The insightArc',
+    images: [
+      {
+        url: 'https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/theinsightArcbanner.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'vi_VN',
+    type: 'website',
+  },
   other: {
     'link1': '<link rel="preload" href="/assets/fonts/Epilogue-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',
     'link2': '<link rel="preload" href="/assets/fonts/Epilogue-Italic-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">',

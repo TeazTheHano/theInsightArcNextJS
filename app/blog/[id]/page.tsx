@@ -1,21 +1,54 @@
-"use client"
+import { Metadata, ResolvingMetadata } from 'next';
+import { GitHubBlogGateway } from '@/packages/modules/blog/infrastructure/github-blog.gateway';
+import ClientWrapper from './ClientWrapper';
 
-import { BlogDetail, useBlogDetail } from '@/packages/modules/blog';
-import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
-import { useParams } from "next/navigation";
-import { useTranslation } from "react-i18next";
+type Props = {
+  params: Promise<{ id: string }>
+}
 
-export default function BlogDetailPage() {
-  const { id } = useParams();
-  const { data: blogDetail, isLoading, error } = useBlogDetail(id as string);
-  const { t: t_toast } = useTranslation('toast');
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
+  
+  const gateway = new GitHubBlogGateway();
+  try {
+    const blogDetail = await gateway.getBlogDetail(id);
+    
+    return {
+      title: blogDetail.meta.title + ' | The insightArc',
+      description: blogDetail.meta.description || 'Tech, Design and Culture explore',
+      openGraph: {
+        title: blogDetail.meta.title,
+        description: blogDetail.meta.description,
+        images: blogDetail.meta.coverImage ? [blogDetail.meta.coverImage] : [],
+        type: 'article',
+        publishedTime: blogDetail.meta.timeStamp,
+        authors: [blogDetail.meta.authorName || 'The insightArc'],
+      },
+    }
+  } catch (e) {
+    return {
+      title: 'Not Found | The insightArc',
+    }
+  }
+}
+
+export default async function BlogDetailPage({ params }: Props) {
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
+  const gateway = new GitHubBlogGateway();
+  
+  let initialData = null;
+  try {
+    initialData = await gateway.getBlogDetail(id);
+  } catch (e) {
+    // If it fails on the server, we let React Query retry or fail on the client
+  }
 
   return (
-    <ContainerWithLoading 
-      loadingState={isLoading} 
-      errMessage={error ? t_toast('error.notFound') : ""} 
-    >
-      {blogDetail && <BlogDetail data={blogDetail} />}
-    </ContainerWithLoading>
+    <ClientWrapper id={id} initialData={initialData as any} />
   );
 }

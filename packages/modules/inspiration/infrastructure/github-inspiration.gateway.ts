@@ -20,7 +20,7 @@ export class GitHubInspirationGateway implements IInspirationGateway {
       headers["Authorization"] = `token ${token}`;
     }
 
-    const res = await fetch(url, { headers, cache: 'no-store' }); // Disable cache for dev
+    const res = await fetch(url, { headers, next: { revalidate: 60 } });
     if (!res.ok) {
       throw new Error(`GitHub API error for Inspirations: ${res.statusText}`);
     }

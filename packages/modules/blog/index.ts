@@ -7,7 +7,8 @@ const blogGateway = new GitHubBlogGateway();
 
 // Public Hooks cho UI (Application Layer)
 export const useBlogs = () => useGetBlogList(blogGateway);
-export const useBlogDetail = (slug: string) => useGetBlogDetail(blogGateway, slug);
+import { BlogDetailContract } from "./application/contracts/blog.contract";
+export const useBlogDetail = (slug: string, initialData?: BlogDetailContract) => useGetBlogDetail(blogGateway, slug, initialData);
 
 // Public Entities (Domain Layer)
 export * from "./domain/Blog";
