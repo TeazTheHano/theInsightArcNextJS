@@ -4,22 +4,19 @@ import { useTranslation } from 'react-i18next';
 import styles from './BlogList.module.css';
 import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
 import {  DivFlexColumn  } from '@/packages/shared/ui/ARC_layout';
-import { BlogItem2RowGen } from '../../components/Blog/BlogListVariant';
+import { BlogItem2RowGen } from '@/packages/modules/blog';
 import {  TextHeadlineLarge  } from '@/packages/shared/ui/ARC_typography';
 import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
-import { placeholderData } from '../../data/placeholderData';
 import { Divider } from '@/packages/shared/ui/ARC_layout';
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import type { BlogItemProps } from '../../data/type';
-import { fetchBlogList } from '../../utils/fetchContent';
+import { BlogItemContract as BlogItemProps, useBlogs } from '@/packages/modules/blog';
 import useCheckScreenSize from '../../hooks/useCheckScreenSize';
 import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
 
 export default function BlogList() {
   const { t: t_blog } = useTranslation('blog')
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string>('');
+  const { data: blogList, isLoading, error } = useBlogs();
 
   const isInSM = useCheckScreenSize(['sm']);
   const layoutConfig = useMemo(() => ({
@@ -40,23 +37,19 @@ export default function BlogList() {
       return dateB - dateA;
     });
 
-    set_LATEST_POSTS(sortedByTime.slice(0, 5) || placeholderData);
+    set_LATEST_POSTS(sortedByTime.slice(0, 5) || []);
     set_TRENDING_POSTS(sortedByTime.slice(0, 5));
-    const category1 = data.filter(item => item.category === 'Category 1');
-    set_CATE_1_POSTS(category1.slice(0, 5) || placeholderData);
-    const category2 = data.filter(item => item.category === 'Category 2');
-    set_CATE_2_POSTS(category2.slice(0, 5) || placeholderData);
+    const category1 = data.filter(item => item.categoryName === 'Category 1');
+    set_CATE_1_POSTS(category1.slice(0, 5) || []);
+    const category2 = data.filter(item => item.categoryName === 'Category 2');
+    set_CATE_2_POSTS(category2.slice(0, 5) || []);
   }, []);
 
   useEffect(() => {
-    setLoading(true);
-    fetchBlogList()
-      .then((data) => {
-        sortData(data);
-        setLoading(false);
-      })
-      .catch((err) => { setError(err.message); setLoading(false); });
-  }, []);
+    if (blogList) {
+      sortData(blogList);
+    }
+  }, [blogList, sortData]);
 
   // TODO: handle view all
   const handleViewAll = useCallback(() => { }, []);
@@ -65,7 +58,7 @@ export default function BlogList() {
     <div>
       <LazyImage alt="Inspiration Banner" src="https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/blogBanner.jpg" height={'30dvh'} maxHeight='50dvw' imgRestProps={{ style: { objectPosition: 'top left' } }} />
 
-      <ContainerWithLoading loadingState={loading} errMessage={error}>
+      <ContainerWithLoading loadingState={isLoading} errMessage={error ? error.message : ""}>
 
         {/* LATEST */}
         <DivFlexColumn className={styles.inspirationContainer}>

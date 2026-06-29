@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../hooks/useTheme';
-import NavigationUnit from '../components/NavigationUnit/NavigationUnit';
-import Footer from '../components/HeaderAndFooter/Footer';
+import NavigationUnit from '@/packages/shared/ui/NavigationUnit/NavigationUnit';
+import Footer from '@/packages/shared/ui/HeaderAndFooter/Footer';
 import { Divider } from '@/packages/shared/ui/ARC_layout';
-import CircleFollowMouse from '../components/CircleFollowMouse/CircleFollowMouse';
+import CircleFollowMouse from '@/packages/shared/ui/CircleFollowMouse/CircleFollowMouse';
 
 import styles from './GlobalLayout.module.css'
 

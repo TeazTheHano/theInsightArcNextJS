@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import type { BlogItemProps } from "@/data/type";
+import { Blog as BlogItemProps, useBlogs } from '@/packages/modules/blog';
 import {  TextHeadlineLarge, TextTitleSmall  } from '@/packages/shared/ui/ARC_typography';
-import { BlogItem2RowGen } from "@/components/Blog/BlogListVariant";
+import { BlogItem2RowGen } from "@/packages/modules/blog";
 import { useTranslation } from "react-i18next";
-import { fetchBlogList } from "@/utils/fetchContent";
 import { slugify } from "@/utils/slugify";
 import {  DivFlexColumn, DivFlexRowSpaceBetweenCenter  } from '@/packages/shared/ui/ARC_layout';
 import { useParams } from "next/navigation";
@@ -22,8 +21,14 @@ export default function BlogTagClientPage() {
     const slug = params.slug as string;
     const displayName = slug ? slug.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase()) : "";
     const [currentUrl, setCurrentUrl] = useState("");
-
-    const [blogs, setBlogs] = React.useState<BlogItemProps[]>([]);
+    const { data: allBlogs } = useBlogs();
+    
+    const blogs = useMemo(() => {
+        if (!allBlogs) return [];
+        return allBlogs.filter((item) =>
+            item.tags && item.tags.some(tag => slugify(tag) === slug)
+        );
+    }, [allBlogs, slug]);
 
     const isInSM = useCheckScreenSize(['sm']);
     const layoutConfig = useMemo(() => ({
@@ -36,13 +41,7 @@ export default function BlogTagClientPage() {
         if (typeof window !== "undefined") {
             setCurrentUrl(window.location.href);
         }
-        fetchBlogList().then((data) => {
-            const filtered = data.filter((item) =>
-                item.tags?.some((tag) => slugify(tag) === slug)
-            );
-            setBlogs(filtered);
-        });
-    }, [slug])
+    }, []);
 
     const { openModal } = useModal()
     const handleShare = () => {

@@ -13,7 +13,6 @@ export const useSearch = () => {
 
     const performSearch = useCallback(async (input: string) => {
         const { searchEngine } = await import('../utils/searchEngine')
-        const { fetchInspirationList } = await import('../utils/fetchContent')
 
         const trimmedInput = input.trim()
         if (!trimmedInput) {
@@ -25,7 +24,8 @@ export const useSearch = () => {
 
         setIsLoading(true)
         const blogRes = await searchEngine(trimmedInput)
-        const inspireRes = await searchEngine(trimmedInput, await fetchInspirationList())
+        const { GitHubInspirationGateway } = await import('@/packages/modules/inspiration/infrastructure/github-inspiration.gateway')
+        const inspireRes = await searchEngine(trimmedInput, await (new GitHubInspirationGateway()).getInspirationList() as any)
         setIsLoading(false)
         setSearchFocus(true)
         const res = [

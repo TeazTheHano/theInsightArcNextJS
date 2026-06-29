@@ -1,5 +1,6 @@
-import type { BlogItemProps } from "../data/type";
-import { fetchBlogList } from "./fetchContent";
+import type { BlogItemContract as BlogItemProps } from '@/packages/modules/blog';
+import { GitHubBlogGateway } from '@/packages/modules/blog/infrastructure/github-blog.gateway';
+
 import { slugify } from "./slugify";
 
 export interface searchEngineOutputProps {
@@ -23,7 +24,7 @@ export const searchEngine = async (
     if (!query.trim()) return result;
     const lowerQuery = query.toLowerCase();
 
-    const target: BlogItemProps[] = dataBase || (await fetchBlogList());
+    const target: BlogItemProps[] = dataBase || (await (new GitHubBlogGateway()).getBlogList());
 
     // Helper function to filter items based on a property
     const filterByProperty = (
@@ -44,8 +45,8 @@ export const searchEngine = async (
     };
 
     result.title = filterByProperty(target, (item) => item.title);
-    result.author = filterByProperty(target, (item) => item.author);
-    result.category = filterByProperty(target, (item) => item.category);
+    result.author = filterByProperty(target, (item) => item.authorName);
+    result.category = filterByProperty(target, (item) => item.categoryName);
     result.tag = filterByTags(target);
 
     return result;

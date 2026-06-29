@@ -1,0 +1,11 @@
+.circle {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  backdrop-filter: invert(1) saturate(0);
+  /* Invert colors for better visibility */
+  transition: transform 0.1s ease-out;
+}

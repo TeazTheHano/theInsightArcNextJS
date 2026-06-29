@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { ModalProvider } from "@/hooks/useModal";
 import ReportWebVitals from "./reportWebVitals";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { QueryProvider } from "@/packages/shared/providers/QueryProvider";
 
 // import "../i18n"
 
@@ -41,14 +42,16 @@ export default function RootLayout({
   return (
     <html lang="en-US" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-        <ThemeProvider>
-          <GlobalLayout>
-            <ModalProvider>
-              {children}            
-              <ReportWebVitals />
-            </ModalProvider>
-          </GlobalLayout>
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider>
+            <GlobalLayout>
+              <ModalProvider>
+                {children}            
+                <ReportWebVitals />
+              </ModalProvider>
+            </GlobalLayout>
+          </ThemeProvider>
+        </QueryProvider>
         <SpeedInsights/>
       </body>
     </html >

@@ -1,0 +1,1 @@
+export { default as TermPage } from './ui/page';

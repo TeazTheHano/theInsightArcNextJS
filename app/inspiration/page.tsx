@@ -9,10 +9,9 @@ import { useTranslation } from 'react-i18next'
 
 import { ARC_Button as Button } from '@/packages/shared/ui/ARC_button';
 import styles from './Inspiration.module.css'
-import { IdealItemGen } from "../../components/Blog/IdealItem";
-import { type BlogItemProps } from "../../data/type";
-import { fetchInspirationList } from "../../utils/fetchContent";
+import { IdealItemGen, type BlogItemContract } from '@/packages/modules/blog';
 import { ARC_ContainerWithLoading as ContainerWithLoading } from '@/packages/shared/ui/ARC_loading';
+import { useInspirations } from '@/packages/modules/inspiration';
 
 export default function Inspiration() {
   const { t: t_landingPage } = useTranslation('landingPage')
@@ -48,27 +47,14 @@ export default function Inspiration() {
   const handleToggleDescription = useCallback(() => setShowDescription(prev => !prev), []);
 
 
-  const [data, setData] = useState<BlogItemProps[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string>('')
-  useEffect(() => {
-    setLoading(true);
-    fetchInspirationList()
-      .then((data) => {
-        setData(data)
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+  const { data, isLoading: loading, error } = useInspirations();
+  const mappedData = data ? (data as unknown as BlogItemContract[]) : [];
 
   return (
     <div>
       <LazyImage alt="Inspiration Banner" src="https://ivtxx5b3es8d9dnb.public.blob.vercel-storage.com/common/inspirationBanner.jpg" height={'30dvh'} maxHeight='50dvw' />
 
-      <ContainerWithLoading loadingState={loading} errMessage={error}>
+      <ContainerWithLoading loadingState={loading} errMessage={error ? (error as Error).message : undefined}>
 
         <DivFlexColumn className={styles.inspirationContainer}>
           <DivFlexColumn className={styles.titleSectionStyle}>
@@ -106,7 +92,7 @@ export default function Inspiration() {
 
         <div className={[styles.inspirationContainer, styles[`gridView-${gridView}`]].join(' ')}>
           {loading ? <TextBodyMedium children={t_toast('info.loading')} /> : null}
-          <IdealItemGen dataList={data} squareRatio={gridView} compactMode={!showDescription} openAsNewTab />
+          <IdealItemGen dataList={mappedData} squareRatio={gridView} compactMode={!showDescription} openAsNewTab />
         </div>
 
       </ContainerWithLoading>
