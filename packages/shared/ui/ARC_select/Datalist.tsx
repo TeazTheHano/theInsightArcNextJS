@@ -48,6 +48,7 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
   const [inputValue, setInputValue] = useState<string>(
     value ?? defaultValue ?? ""
   );
+  const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -88,6 +89,18 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const calculatePlacement = () => {
+    if (wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      // Datalist uses filteredOptions, but at the moment of opening, we can estimate based on current filteredOptions
+      const dropdownHeight = Math.min(240, filteredOptions.length * 38 + 8); 
+      return spaceBelow < dropdownHeight && spaceAbove > spaceBelow ? "top" : "bottom";
+    }
+    return "bottom";
+  };
+
   const handleSelect = (val: string) => {
     if (disabled) return;
     setInputValue(val);
@@ -101,6 +114,7 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
     if (disabled) return;
     const val = e.target.value;
     setInputValue(val);
+    if (!isOpen) setPlacement(calculatePlacement());
     setIsOpen(true);
     if (onChange) {
       onChange(val);
@@ -109,6 +123,9 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
 
   const toggleDropdown = () => {
     if (disabled) return;
+    if (!isOpen) {
+      setPlacement(calculatePlacement());
+    }
     setIsOpen((prev) => !prev);
   };
 
@@ -119,6 +136,7 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
       setIsOpen(false);
     } else if (e.key === "ArrowDown" && !isOpen) {
       e.preventDefault();
+      setPlacement(calculatePlacement());
       setIsOpen(true);
     }
   };
@@ -151,7 +169,12 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
       className={`ui-arc-select-wrapper ${className}`}
       style={style}
       onKeyDown={handleKeyDown}
-      onClick={() => !disabled && setIsOpen(true)}
+      onClick={() => {
+        if (!disabled && !isOpen) {
+          setPlacement(calculatePlacement());
+          setIsOpen(true);
+        }
+      }}
     >
       <TextField
         name={name}
@@ -171,7 +194,7 @@ const ARC_DatalistDefault: React.FC<ARC_DatalistProps> = ({
 
       {isOpen && filteredOptions.length > 0 && (
         <div
-          className={`ui-arc-select-dropdown ${borderRadiusClass}`}
+          className={`ui-arc-select-dropdown position-${placement} ${borderRadiusClass}`}
           style={typeof borderRadius === "number" ? { borderRadius: Math.min(12, borderRadius) } : {}}
         >
           {filteredOptions.map((option) => {

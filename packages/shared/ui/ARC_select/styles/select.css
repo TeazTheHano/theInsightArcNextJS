@@ -21,7 +21,6 @@
 /* Dropdown list container with premium glassmorphism and absolute positioning */
 .ui-arc-select-dropdown {
     position: absolute;
-    top: calc(100% + 4px);
     left: 0;
     width: 100%;
     max-height: 240px;
@@ -36,6 +35,17 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+/* Dynamic Placement */
+.ui-arc-select-dropdown.position-bottom {
+    top: calc(100% + 4px);
+    transform-origin: top;
+}
+.ui-arc-select-dropdown.position-top {
+    bottom: calc(100% + 4px);
+    top: auto;
+    transform-origin: bottom;
 }
 
 /* Border Radius for Dropdown matching the trigger */
@@ -83,6 +93,6 @@
 
 /* Fade in animations */
 @keyframes ui-arc-dropdown-fade {
-    from { opacity: 0; transform: translateY(-8px) scaleY(0.95); }
-    to { opacity: 1; transform: translateY(0) scaleY(1); }
+    from { opacity: 0; transform: scaleY(0.95); }
+    to { opacity: 1; transform: scaleY(1); }
 }

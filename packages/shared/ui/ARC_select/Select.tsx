@@ -48,6 +48,7 @@ const ARC_SelectDefault: React.FC<ARC_SelectProps> = ({
   const [internalValue, setInternalValue] = useState<string>(
     value ?? defaultValue ?? ""
   );
+  const [placement, setPlacement] = useState<"bottom" | "top">("bottom");
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -73,6 +74,17 @@ const ARC_SelectDefault: React.FC<ARC_SelectProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const calculatePlacement = () => {
+    if (wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const dropdownHeight = Math.min(240, options.length * 38 + 8); // Estimated real height
+      return spaceBelow < dropdownHeight && spaceAbove > spaceBelow ? "top" : "bottom";
+    }
+    return "bottom";
+  };
+
   const handleSelect = (val: string) => {
     if (disabled) return;
     setInternalValue(val);
@@ -84,6 +96,9 @@ const ARC_SelectDefault: React.FC<ARC_SelectProps> = ({
 
   const toggleDropdown = () => {
     if (disabled) return;
+    if (!isOpen) {
+      setPlacement(calculatePlacement());
+    }
     setIsOpen((prev) => !prev);
   };
 
@@ -91,6 +106,7 @@ const ARC_SelectDefault: React.FC<ARC_SelectProps> = ({
     if (disabled) return;
     if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
       e.preventDefault();
+      if (!isOpen) setPlacement(calculatePlacement());
       setIsOpen(true);
     } else if (e.key === "Escape") {
       e.preventDefault();
@@ -147,7 +163,7 @@ const ARC_SelectDefault: React.FC<ARC_SelectProps> = ({
 
       {isOpen && (
         <div
-          className={`ui-arc-select-dropdown ${borderRadiusClass}`}
+          className={`ui-arc-select-dropdown position-${placement} ${borderRadiusClass}`}
           style={typeof borderRadius === "number" ? { borderRadius: Math.min(12, borderRadius) } : {}}
         >
           {options.map((option) => {
