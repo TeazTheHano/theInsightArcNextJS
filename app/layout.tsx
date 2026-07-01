@@ -8,6 +8,7 @@ import { ModalProvider } from "@/hooks/useModal";
 import ReportWebVitals from "./reportWebVitals";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { QueryProvider } from "@/packages/shared/providers/QueryProvider";
+import { Analytics } from "@vercel/analytics/next"
 
 // import "../i18n"
 
@@ -62,13 +63,14 @@ export default function RootLayout({
           <ThemeProvider>
             <GlobalLayout>
               <ModalProvider>
-                {children}            
+                {children}
                 <ReportWebVitals />
               </ModalProvider>
             </GlobalLayout>
           </ThemeProvider>
         </QueryProvider>
-        <SpeedInsights/>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html >
   );
