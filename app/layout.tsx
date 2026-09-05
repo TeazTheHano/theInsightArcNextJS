@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { ModalProvider } from "@/hooks/useModal";
 import ReportWebVitals from "./reportWebVitals";
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { QueryProvider } from "@/packages/shared/providers/QueryProvider";
+import { I18nProvider, QueryProvider } from "@/packages/shared/providers";
 import { Analytics } from "@vercel/analytics/next"
 
 // import "../i18n"
@@ -59,16 +59,19 @@ export default function RootLayout({
   return (
     <html lang="en-US" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-        <QueryProvider>
-          <ThemeProvider>
-            <GlobalLayout>
-              <ModalProvider>
-                {children}
-                <ReportWebVitals />
-              </ModalProvider>
-            </GlobalLayout>
-          </ThemeProvider>
-        </QueryProvider>
+        {/* KHU VỰC THAY ĐỔI: i18n được khởi tạo tại application composition root. */}
+        <I18nProvider>
+          <QueryProvider>
+            <ThemeProvider>
+              <GlobalLayout>
+                <ModalProvider>
+                  {children}
+                  <ReportWebVitals />
+                </ModalProvider>
+              </GlobalLayout>
+            </ThemeProvider>
+          </QueryProvider>
+        </I18nProvider>
         <SpeedInsights />
         <Analytics />
       </body>

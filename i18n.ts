@@ -4,15 +4,19 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpBackend from 'i18next-http-backend';
 
 const isClient = typeof window !== 'undefined';
+export const I18N_NAMESPACES = ['common', 'blog', 'contact', 'dialog', 'inspiration', 'landingPage', 'term', 'toast'];
 
-i18n
-  .use(HttpBackend)
-  .use(LanguageDetector)
+// KHU VỰC THAY ĐỔI: chỉ dùng HTTP backend và detector trong trình duyệt.
+if (isClient) {
+  i18n.use(HttpBackend).use(LanguageDetector);
+}
+
+export const i18nReady = i18n
   .use(initReactI18next)
   .init({
     supportedLngs: ['en-US', 'vi-VN'],
     fallbackLng: 'en-US',
-    ns: ['common'],
+    ns: I18N_NAMESPACES,
     defaultNS: 'common',
     interpolation: {
       escapeValue: false,
@@ -25,7 +29,7 @@ i18n
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     react: {
-      useSuspense: false,
+      useSuspense: true,
     },
   });
 

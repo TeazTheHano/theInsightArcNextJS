@@ -23,6 +23,7 @@ const navItemsData = [
     { href: '/inspiration', key: 'inspiration', supText: '02' },
     { href: '/blog', key: 'blog-page', supText: '03' },
     { href: '/game', key: 'game-page', supText: '04' },
+    { href: '/project-list', key: 'project-list', supText: '05' },
 ];
 
 const BasicSearchResult: React.FC<{

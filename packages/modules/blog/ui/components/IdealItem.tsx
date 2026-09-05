@@ -1,5 +1,3 @@
-
-
 import React, { useMemo, useCallback } from 'react'
 import {  DivFlexColumn, DivFlexRow  } from '@/packages/shared/ui/ARC_layout';
 import { ARC_LazyImage as LazyImage } from '@/packages/shared/ui/ARC_image';
@@ -26,6 +24,7 @@ const IdealItem: React.FC<IdealItemProps> = ({
 }) => {
 
     const { t: t_toast } = useTranslation('toast')
+    const { t: t_inspiration } = useTranslation('inspiration')
 
     const handleTagClick = useCallback((link: string) => {
         window.open(link, '_blank');
@@ -67,7 +66,7 @@ const IdealItem: React.FC<IdealItemProps> = ({
 
                         <ARC_Button
                             showTitleWhileHover
-                            variantMode='Icon' ariaLabel={t_toast('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
+                            variantMode='Icon' ariaLabel={t_inspiration('inspiration-outward_arrow')} leadingIcon='arrow_outward' onClick={() => handleTagClick(item.link || '')} />
                     </DivFlexRow>
                 </div>
             </div>

@@ -6,7 +6,6 @@ import { useTheme, type Theme } from '@/hooks/useTheme';
 import { TextBodyLarge, TextBodySmall, TextHeadlineLarge, TextTitleLarge, TextTitleMedium } from '@/packages/shared/ui/ARC_typography';
 import { DivFlexColumn, DivFlexRow, DivFlexRowCenter, DivFlexRowSpaceBetween, DivFlexRowSpaceBetweenCenter } from '@/packages/shared/ui/ARC_layout';
 import { useTranslation } from 'react-i18next';
-import i18n from '@/i18n';
 import { ARC_Button, ARC_SegmentedButton as SegmentedButton } from '@/packages/shared/ui/ARC_button';
 import { ARC_Select as Select } from '@/packages/shared/ui/ARC_select';
 import { Divider } from '@/packages/shared/ui/ARC_layout';
@@ -27,18 +26,18 @@ const LANGUAGE_OPTIONS = [
 
 const Footer = memo(() => {
     const { theme, setTheme } = useTheme();
-    const { t: t_common } = useTranslation('common');
+    const { t: t_common, i18n } = useTranslation('common');
 
     const changeLanguage = useCallback((lng: string) => {
         i18n.changeLanguage(lng);
-    }, []);
+    }, [i18n]);
 
     const handleInstagramClick = useCallback(() => {
         window.open('https://www.instagram.com/the_insightarc/', '_blank');
     }, []);
 
     const handleEmailClick = useCallback(() => {
-        window.open('mailto:teaz.khuonganhkiet@gmail.com', '_blank');
+        window.open('mailto:contact@theinsightarc.id.vn', '_blank');
     }, []);
 
     const handleThemeChange = useCallback((value: string) => {
@@ -79,8 +78,8 @@ const Footer = memo(() => {
                         onClick={handleInstagramClick}
                     />
                     <ARC_Button
-                        children='teaz.khuonganhkiet@gmail.com'
-                        ariaLabel='Contact us via email: teaz.khuonganhkiet@gmail.com'
+                        children='contact@theinsightarc.id.vn'
+                        ariaLabel='Contact us via email: contact@theinsightarc.id.vn'
                         styleMode='Text'
                         colorMode='Primary'
                         leadingIcon='mail'
